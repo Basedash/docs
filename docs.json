@@ -20,12 +20,7 @@
           {
             "group": "Essentials",
             "pages": [
-              "essentials/security",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "essentials/security"
             ]
           }
         ]
