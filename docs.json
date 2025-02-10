@@ -29,16 +29,22 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Integrations",
+        "groups": [
+          {
+            "group": "Databases",
+            "pages": [
+              "integrations/mysql",
+              "integrations/postgres"
+            ]
+          }
+        ]
       }
     ],
     "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://docs.basedash.com",
-          "icon": "book-open-cover"
-        }
-      ]
+      "anchors": []
     }
   },
   "logo": {
