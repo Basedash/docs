@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
             "group": "Get Started",
@@ -20,7 +20,7 @@
           {
             "group": "Essentials",
             "pages": [
-              "essentials/markdown",
+              "essentials/security",
               "essentials/code",
               "essentials/images",
               "essentials/settings",
