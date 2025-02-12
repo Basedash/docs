@@ -14,8 +14,8 @@
         "tab": "Documentation",
         "groups": [
           {
-            "group": "Get started",
-            "pages": ["introduction", "quickstart"]
+            "group": "Getting started",
+            "pages": ["introduction"]
           },
           {
             "group": "Essentials",
