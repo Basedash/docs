@@ -19,9 +19,7 @@
           },
           {
             "group": "Essentials",
-            "pages": [
-              "essentials/security"
-            ]
+            "pages": ["essentials/security"]
           }
         ]
       },
@@ -31,9 +29,16 @@
           {
             "group": "Databases",
             "pages": [
+              "data-sources/clickhouse",
               "data-sources/mysql",
-              "data-sources/postgres"
+              "data-sources/planetscale",
+              "data-sources/postgres",
+              "data-sources/spanner"
             ]
+          },
+          {
+            "group": "Warehouses",
+            "pages": ["data-sources/bigquery", "data-sources/snowflake"]
           }
         ]
       }
