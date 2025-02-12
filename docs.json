@@ -26,13 +26,13 @@
         ]
       },
       {
-        "tab": "Integrations",
+        "tab": "Data sources",
         "groups": [
           {
             "group": "Databases",
             "pages": [
-              "integrations/mysql",
-              "integrations/postgres"
+              "data-sources/mysql",
+              "data-sources/postgres"
             ]
           }
         ]
