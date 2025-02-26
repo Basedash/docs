@@ -9,7 +9,8 @@ Basedash takes security and data privacy seriously.
 - Basedash is SOC 2 Type II compliant. You can request our latest report by emailing us at [support@basedash.com](mailto:support@basedash.com).
 - All Basedash servers are located in San Francisco, California.
 - Basedash only requires read access to your data sources, so you can connect using read-only credentials.
-- Basedash doesn’t send any of your data to third-party AI providers. We only share metadata about your data source, like the table and column names available to query.
+- Basedash doesn’t send any of your response data to third-party AI providers. We only share metadata about your data source, like the table and column names available to query.
+- HTTPS is required on all connections, data in-transit is encrypted with TLS. Our database data is encrypted at-rest with LUKS and credentials that we save to the database (such as database passwords and SSH keys) are additionally encrypted with AES-256.
 - By default, Basedash caches query results to improve performance and reduce strain on your database. The cached data is fully encrypted and all cached data gets permanently deleted after 1 day. You can request for us to disable data caching for your organization by emailing us at [support@basedash.com](mailto:support@basedash.com).
 - All database credentials are encrypted and stored in a way that Basedash employees cannot access them.
 - Basedash supports connecting to databases through SSH. This allows you to connect to databases contained within private networks that are accessible only to the Basedash servers. You can set this up by whitelisting the Basedash server IP: `24.199.77.73`
