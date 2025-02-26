@@ -15,11 +15,15 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["introduction"]
+            "pages": [
+              "introduction"
+            ]
           },
           {
             "group": "Essentials",
-            "pages": ["essentials/security"]
+            "pages": [
+              "essentials/security"
+            ]
           }
         ]
       },
@@ -38,7 +42,10 @@
           },
           {
             "group": "Warehouses",
-            "pages": ["data-sources/bigquery", "data-sources/snowflake"]
+            "pages": [
+              "data-sources/bigquery",
+              "data-sources/snowflake"
+            ]
           }
         ]
       }
