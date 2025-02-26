@@ -1,0 +1,21 @@
+<Card
+  className="overflow-hidden transition-all duration-200 hover:shadow-lg border border-gray-200 hover:border-[#07C983] rounded-xl"
+  {...props}
+>
+  <div className="h-full p-6">
+    <div className="flex items-center gap-2 mb-4">
+      {props.icon && (
+        <div className="p-2 rounded-lg bg-[#16A34A]/10">
+          <Icon 
+            icon={props.icon} 
+            className="w-5 h-5 text-[#16A34A]" 
+          />
+        </div>
+      )}
+      <h3 className="text-lg font-semibold text-gray-900">{props.title}</h3>
+    </div>
+    <div className="text-gray-600">
+      {props.children}
+    </div>
+  </div>
+</Card>

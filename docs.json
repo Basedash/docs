@@ -15,11 +15,15 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["introduction"]
+            "pages": [
+              "introduction"
+            ]
           },
           {
             "group": "Essentials",
-            "pages": ["essentials/security"]
+            "pages": [
+              "essentials/security"
+            ]
           }
         ]
       },
@@ -33,12 +37,18 @@
               "data-sources/mysql",
               "data-sources/planetscale",
               "data-sources/postgres",
-              "data-sources/spanner"
+              "data-sources/spanner",
+              "data-sources/bigquery",
+              "data-sources/snowflake",
+              "data-sources/postgres"
             ]
           },
           {
             "group": "Warehouses",
-            "pages": ["data-sources/bigquery", "data-sources/snowflake"]
+            "pages": [
+              "data-sources/bigquery",
+              "data-sources/snowflake"
+            ]
           }
         ]
       }

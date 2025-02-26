@@ -3,4 +3,70 @@ title: 'BigQuery'
 description: 'Connect your BigQuery data warehouse to Basedash'
 ---
 
-Connect your BigQuery data warehouse to Basedash to start querying and managing your data.
+<Frame>
+  <img src="https://mintlify-assets.b-cdn.net/bigquery-connection-flow.png" alt="BigQuery Connection Flow" />
+</Frame>
+
+Connect your BigQuery data warehouse to Basedash to start querying and managing your data efficiently and securely.
+
+<Note>
+  Before you begin, make sure you have admin access to your BigQuery project and the necessary credentials ready.
+</Note>
+
+<Steps>
+  <Step title="Prepare Your Credentials">
+    You'll need:
+    - A Google Cloud Project ID
+    - Service Account Key (JSON format)
+    - Appropriate IAM permissions set up
+  </Step>
+
+  <Step title="Configure Connection">
+    In Basedash:
+    1. Navigate to **Data Sources**
+    2. Click **+ Add New Source**
+    3. Select **BigQuery** from the available connectors
+  </Step>
+
+  <Step title="Enter Connection Details">
+    Fill in the following required fields:
+    - Project ID
+    - Upload your Service Account Key
+    - (Optional) Set a custom connection name
+  </Step>
+
+  <Step title="Test and Verify">
+    - Click **Test Connection** to verify your credentials
+    - Ensure all necessary datasets are accessible
+    - Review any permission warnings
+  </Step>
+</Steps>
+
+<AccordionGroup>
+  <Accordion title="Connection Requirements" icon="list-check">
+    - Google Cloud Project with BigQuery API enabled
+    - Service account with `bigquery.dataViewer` role (minimum)
+    - Network access configured (if using VPC)
+  </Accordion>
+
+  <Accordion title="Security Best Practices" icon="shield-check">
+    - Use dedicated service accounts for Basedash
+    - Implement least-privilege access principles
+    - Regularly rotate service account keys
+    - Monitor query usage through BigQuery audit logs
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Need Help?" icon="question-circle">
+    Contact our support team for assistance with your BigQuery connection setup.
+  </Card>
+
+  <Card title="View Pricing" icon="credit-card" href="/pricing">
+    Learn about our pricing plans and BigQuery-specific features.
+  </Card>
+</CardGroup>
+
+<Tip>
+  For optimal performance, consider setting up a separate BigQuery project for Basedash connections and implementing appropriate usage quotas.
+</Tip>
