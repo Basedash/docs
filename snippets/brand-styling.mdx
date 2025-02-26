@@ -1,0 +1,202 @@
+{/* Base Typography Styles */}
+<div className="brand-typography">
+  {/* Headings */}
+  <style>
+    {`
+      h1 {
+        @apply text-4xl font-bold text-slate-900 mb-6 font-display;
+      }
+      
+      h2 {
+        @apply text-3xl font-semibold text-slate-800 mt-8 mb-4 font-display;
+      }
+      
+      h3 {
+        @apply text-2xl font-medium text-slate-800 mt-6 mb-3 font-display;
+      }
+      
+      h4 {
+        @apply text-xl font-medium text-slate-700 mt-4 mb-2 font-display;
+      }
+
+      /* Paragraph and Text */
+      p {
+        @apply text-slate-600 leading-relaxed mb-4 text-base;
+      }
+
+      /* Links */
+      a:not(.card-link) {
+        @apply text-primary-600 hover:text-primary-700 transition-colors duration-200;
+        @apply border-b border-primary-300 hover:border-primary-500;
+      }
+
+      /* Lists */
+      ul:not(.reset), ol:not(.reset) {
+        @apply pl-6 mb-4 text-slate-600;
+      }
+
+      ul:not(.reset) li {
+        @apply mb-2 list-disc;
+      }
+
+      ol:not(.reset) li {
+        @apply mb-2 list-decimal;
+      }
+
+      /* Code Inline */
+      code:not([class*="language-"]) {
+        @apply bg-slate-100 text-slate-800 rounded px-1.5 py-0.5 text-sm font-mono;
+      }
+
+      /* Blockquotes */
+      blockquote {
+        @apply border-l-4 border-primary-300 pl-4 italic text-slate-700 my-4;
+      }
+    `}
+  </style>
+</div>
+
+{/* Brand Colors */}
+<div className="brand-colors">
+  <style>
+    {`
+      :root {
+        /* Primary Colors */
+        --color-primary-50: #f0f9ff;
+        --color-primary-100: #e0f2fe;
+        --color-primary-200: #bae6fd;
+        --color-primary-300: #7dd3fc;
+        --color-primary-400: #38bdf8;
+        --color-primary-500: #0ea5e9;
+        --color-primary-600: #0284c7;
+        --color-primary-700: #0369a1;
+        --color-primary-800: #075985;
+        --color-primary-900: #0c4a6e;
+
+        /* Neutral Colors */
+        --color-slate-50: #f8fafc;
+        --color-slate-100: #f1f5f9;
+        --color-slate-200: #e2e8f0;
+        --color-slate-300: #cbd5e1;
+        --color-slate-400: #94a3b8;
+        --color-slate-500: #64748b;
+        --color-slate-600: #475569;
+        --color-slate-700: #334155;
+        --color-slate-800: #1e293b;
+        --color-slate-900: #0f172a;
+      }
+    `}
+  </style>
+</div>
+
+{/* Component-specific Styles */}
+<div className="brand-components">
+  <style>
+    {`
+      /* Cards */
+      .card {
+        @apply bg-white rounded-lg shadow-sm border border-slate-200 p-6 transition-all duration-200;
+        @apply hover:shadow-md hover:border-primary-200;
+      }
+
+      .card-title {
+        @apply text-xl font-semibold text-slate-800 mb-2;
+      }
+
+      /* Buttons */
+      .btn {
+        @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+      }
+
+      .btn-primary {
+        @apply bg-primary-600 text-white hover:bg-primary-700;
+      }
+
+      .btn-secondary {
+        @apply bg-slate-200 text-slate-800 hover:bg-slate-300;
+      }
+
+      /* Tables */
+      table {
+        @apply w-full border-collapse mb-4;
+      }
+
+      th {
+        @apply bg-slate-100 text-left p-3 font-semibold text-slate-700 border-b border-slate-200;
+      }
+
+      td {
+        @apply p-3 border-b border-slate-200 text-slate-600;
+      }
+
+      /* Callouts */
+      .callout {
+        @apply p-4 rounded-lg mb-4;
+      }
+
+      .callout-info {
+        @apply bg-primary-50 border-l-4 border-primary-500;
+      }
+
+      .callout-warning {
+        @apply bg-amber-50 border-l-4 border-amber-500;
+      }
+
+      /* Code Blocks */
+      pre[class*="language-"] {
+        @apply rounded-lg shadow-sm border border-slate-200 my-4;
+      }
+    `}
+  </style>
+</div>
+
+{/* Spacing and Layout */}
+<div className="brand-layout">
+  <style>
+    {`
+      /* Section Spacing */
+      .section {
+        @apply py-12;
+      }
+
+      .section-sm {
+        @apply py-6;
+      }
+
+      .section-lg {
+        @apply py-16;
+      }
+
+      /* Container */
+      .container {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+      }
+
+      /* Grid */
+      .grid-cols-auto-fit {
+        @apply grid gap-6;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    `}
+  </style>
+</div>
+
+{/* Animation and Transitions */}
+<div className="brand-animations">
+  <style>
+    {`
+      .fade-in {
+        @apply transition-opacity duration-300 ease-in-out;
+      }
+
+      .hover-lift {
+        @apply transition-transform duration-200;
+        @apply hover:-translate-y-1;
+      }
+
+      .focus-ring {
+        @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+      }
+    `}
+  </style>
+</div>
