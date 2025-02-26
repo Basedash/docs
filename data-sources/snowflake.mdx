@@ -3,4 +3,90 @@ title: 'Snowflake'
 description: 'Connect your Snowflake data warehouse to Basedash'
 ---
 
-Connect your Snowflake data warehouse to Basedash to start querying and managing your data.
+# Connecting Snowflake to Basedash
+
+<Frame>
+  <img src="/images/snowflake-connection-diagram.png" alt="Snowflake Connection Flow" />
+</Frame>
+
+Connect your Snowflake data warehouse to Basedash to start querying and managing your data securely and efficiently.
+
+<Note>
+  Before you begin, make sure you have your Snowflake credentials ready and the necessary permissions to create database connections.
+</Note>
+
+<Steps>
+  <Step title="Gather Connection Details">
+    You'll need the following information from your Snowflake instance:
+    - Account identifier (including region)
+    - Username
+    - Password
+    - Warehouse name
+    - Database name
+    - Schema name (optional)
+  </Step>
+
+  <Step title="Configure Connection">
+    <AccordionGroup>
+      <Accordion title="Basic Configuration" icon="gear">
+        1. Navigate to the Data Sources section in Basedash
+        2. Click "Add New Connection"
+        3. Select "Snowflake" from the available connectors
+        4. Enter your account identifier and credentials
+      </Accordion>
+
+      <Accordion title="Advanced Settings" icon="sliders">
+        - **Connection Timeout**: Default is 10 seconds
+        - **Query Timeout**: Default is 60 seconds
+        - **SSL Mode**: Enabled by default for security
+        - **Role**: Specify a custom role if needed
+      </Accordion>
+    </AccordionGroup>
+  </Step>
+
+  <Step title="Test Connection">
+    Before finalizing the setup:
+    1. Click "Test Connection" to verify your credentials
+    2. Ensure you receive a success message
+    3. Check that you can see your databases and schemas
+  </Step>
+
+  <Step title="Start Using Basedash">
+    Once connected, you can:
+    - Browse your Snowflake tables
+    - Create custom views
+    - Run SQL queries
+    - Manage data access permissions
+  </Step>
+</Steps>
+
+<CardGroup cols={2}>
+  <Card title="Security Best Practices" icon="shield-check">
+    - Use dedicated service accounts
+    - Implement proper role-based access
+    - Regularly rotate credentials
+    - Enable SSL encryption
+  </Card>
+
+  <Card title="Troubleshooting" icon="wrench">
+    - Check network connectivity
+    - Verify account permissions
+    - Validate warehouse availability
+    - Review error logs
+  </Card>
+</CardGroup>
+
+<Tip>
+  For optimal performance, we recommend setting up a dedicated warehouse for Basedash queries.
+</Tip>
+
+## Next Steps
+
+After connecting your Snowflake instance:
+1. [Set up user permissions](/settings/permissions)
+2. [Create your first view](/views/creating-views)
+3. [Invite team members](/team/invitations)
+
+<Warning>
+  Remember to follow your organization's security policies when setting up database connections.
+</Warning>

@@ -3,4 +3,89 @@ title: 'PostgreSQL'
 description: 'Connect your PostgreSQL database to Basedash'
 ---
 
-You can connect directly to your PostgreSQL database to visualize data from your product, like signups and customers.
+<Frame>
+  <img className="block dark:hidden" src="/images/postgres-connection-light.png" alt="PostgreSQL Connection Flow" />
+  <img className="hidden dark:block" src="/images/postgres-connection-dark.png" alt="PostgreSQL Connection Flow" />
+</Frame>
+
+Connect your PostgreSQL database to Basedash to visualize and manage your product data seamlessly. Follow these simple steps to get started.
+
+<Steps>
+  <Step title="Gather Connection Details">
+    You'll need the following information to connect your PostgreSQL database:
+    - Host name or IP address
+    - Port number (default: 5432)
+    - Database name
+    - Username
+    - Password
+  </Step>
+
+  <Step title="Configure Network Access">
+    Ensure your database is accessible from Basedash's IP addresses:
+    <CodeGroup>
+      ```plaintext IP Addresses
+      34.56.78.90
+      12.34.56.78
+      98.76.54.32
+      ```
+    </CodeGroup>
+
+    <Tip>
+      If you're using AWS RDS, make sure to update your security group rules to allow incoming connections from these IPs.
+    </Tip>
+  </Step>
+
+  <Step title="Enter Connection Details">
+    In Basedash:
+    1. Click on "Add Data Source"
+    2. Select "PostgreSQL"
+    3. Fill in your connection details
+    4. Test the connection
+  </Step>
+
+  <Step title="Start Exploring">
+    Once connected, you can:
+    <CardGroup cols={2}>
+      <Card title="Query Data" icon="magnifying-glass">
+        Write and execute SQL queries directly in Basedash
+      </Card>
+      <Card title="Create Views" icon="table">
+        Build custom views for your team members
+      </Card>
+      <Card title="Manage Access" icon="lock">
+        Control who can access what data
+      </Card>
+      <Card title="Track Changes" icon="clock-rotate-left">
+        Monitor database changes over time
+      </Card>
+    </CardGroup>
+  </Step>
+</Steps>
+
+<AccordionGroup>
+  <Accordion title="Connection String Format" icon="link">
+    If you prefer using a connection string, use this format:
+    ```plaintext
+    postgresql://username:password@host:port/database
+    ```
+  </Accordion>
+
+  <Accordion title="SSL Configuration" icon="shield-check">
+    For enhanced security, we recommend using SSL connections. You can enable SSL in your connection settings and provide your SSL certificate if required.
+  </Accordion>
+
+  <Accordion title="Troubleshooting" icon="wrench">
+    Common issues and solutions:
+    - **Connection timeout**: Check network access and firewall rules
+    - **Authentication failed**: Verify credentials and user permissions
+    - **Database not found**: Confirm database name and user access rights
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  For optimal performance, we recommend creating a read-only user specifically for Basedash connections.
+</Note>
+
+<Warning>
+  Never share your database credentials or expose them in public repositories.
+</Warning>
