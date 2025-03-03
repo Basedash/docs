@@ -3,4 +3,71 @@ title: 'BigQuery'
 description: 'Connect your BigQuery data warehouse to Basedash'
 ---
 
-Connect your BigQuery data warehouse to Basedash to start querying and managing your data.
+## Overview
+
+Google BigQuery is a fully-managed, serverless data warehouse that enables scalable analysis over petabytes of data. With a powerful SQL interface and fast query performance, BigQuery is designed for analyzing massive datasets with ease.
+
+Connecting BigQuery to Basedash Charts allows you to create beautiful visualizations and dashboards from your data warehouse without moving your data.
+
+## Connection Requirements
+
+To connect your BigQuery data warehouse to Basedash Charts, you'll need:
+
+- **Google Cloud Project ID**: The ID of your Google Cloud project
+- **Dataset**: The BigQuery dataset you want to analyze
+- **Authentication**: Service account credentials with appropriate permissions
+
+For authentication, you can use:
+- **Service Account Key**: A JSON key file for a service account with BigQuery access
+- **OAuth**: Connect using your Google account credentials (for personal projects)
+
+For security best practices, we recommend:
+- Creating a dedicated service account with minimal permissions
+- Granting only the necessary dataset access
+- Regularly rotating service account keys
+
+## Connection Steps
+
+1. From your Basedash Charts dashboard, click on "Add Data Source"
+2. Select "BigQuery" from the list of available data sources
+3. Enter your connection details:
+   - Project ID
+   - Dataset (optional)
+   - Upload your service account key file or authenticate via OAuth
+4. Click "Test Connection" to verify your settings
+5. Once successful, click "Add Data Source"
+
+## Features and Benefits
+
+BigQuery with Basedash Charts offers several advantages:
+
+- **Massive Scale**: Analyze petabytes of data without infrastructure management
+- **Fast Performance**: Get results quickly even for complex queries on large datasets
+- **Cost Efficiency**: Pay only for the queries you run and storage you use
+- **Real-time Insights**: Create dashboards that update as your data changes
+- **Integrated Analytics**: Combine BigQuery with other data sources in unified dashboards
+
+## Common Use Cases
+
+- **Business Intelligence**: Analyze business metrics across large datasets
+- **User Analytics**: Track user behavior and engagement at scale
+- **Log Analysis**: Query and visualize application logs and event data
+- **Marketing Analytics**: Analyze campaign performance and customer journeys
+- **IoT Data Analysis**: Process and visualize data from connected devices
+
+## Troubleshooting
+
+### Connection Issues
+
+- **Authentication Failed**: Verify your service account key is valid and has the correct permissions
+- **Project Not Found**: Check that your project ID is correct
+- **Dataset Access Denied**: Ensure your service account has access to the specified dataset
+- **Quota Exceeded**: Check your BigQuery quotas in Google Cloud Console
+
+### Performance Optimization
+
+- Use partitioned and clustered tables for better query performance
+- Optimize your queries to minimize data scanned
+- Consider materialized views for frequently accessed data
+- Use appropriate caching strategies for dashboards
+- Monitor query costs and set up budget alerts

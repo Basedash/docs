@@ -3,4 +3,73 @@ title: 'Cloud Spanner'
 description: 'Connect your Cloud Spanner database to Basedash'
 ---
 
-Connect your Cloud Spanner database to Basedash to start querying and managing your data.
+## Overview
+
+Google Cloud Spanner is a fully managed, mission-critical, relational database service that offers transactional consistency at global scale, automatic, synchronous replication for high availability, and support for schema changes without downtime. It combines the benefits of relational database structure with non-relational horizontal scale.
+
+Connecting Cloud Spanner to Basedash Charts allows you to create powerful visualizations from your globally distributed database with enterprise-grade reliability.
+
+## Connection Requirements
+
+To connect your Cloud Spanner database to Basedash Charts, you'll need:
+
+- **Project ID**: Your Google Cloud project ID
+- **Instance ID**: The ID of your Spanner instance
+- **Database**: The name of your Spanner database
+- **Authentication**: Service account credentials with appropriate permissions
+
+For authentication, you can use:
+- **Service Account Key**: A JSON key file for a service account with Spanner access
+- **OAuth**: Connect using your Google account credentials (for personal projects)
+
+For security best practices, we recommend:
+- Creating a dedicated service account with minimal permissions
+- Granting only the necessary database access
+- Regularly rotating service account keys
+
+## Connection Steps
+
+1. From your Basedash Charts dashboard, click on "Add Data Source"
+2. Select "Cloud Spanner" from the list of available data sources
+3. Enter your connection details:
+   - Project ID
+   - Instance ID
+   - Database
+   - Upload your service account key file or authenticate via OAuth
+4. Click "Test Connection" to verify your settings
+5. Once successful, click "Add Data Source"
+
+## Features and Benefits
+
+Cloud Spanner with Basedash Charts offers several advantages:
+
+- **Global Distribution**: Visualize data from a globally distributed database
+- **High Availability**: Benefit from Spanner's 99.999% availability guarantee
+- **Strong Consistency**: Get consistent results across all queries
+- **Horizontal Scalability**: Handle large datasets with ease
+- **Integrated Analytics**: Combine Spanner with other data sources in unified dashboards
+
+## Common Use Cases
+
+- **Global Application Metrics**: Track performance across different regions
+- **Financial Services**: Monitor transactions and account activities
+- **Retail Inventory**: Track inventory levels across multiple locations
+- **Gaming Analytics**: Analyze player behavior and game performance
+- **IoT Data Analysis**: Process and visualize data from globally distributed devices
+
+## Troubleshooting
+
+### Connection Issues
+
+- **Authentication Failed**: Verify your service account key is valid and has the correct permissions
+- **Project Not Found**: Check that your project ID is correct
+- **Instance Not Found**: Ensure your instance ID is correct
+- **Database Not Found**: Verify the database name exists in your instance
+
+### Performance Optimization
+
+- Use appropriate primary keys and interleaved tables
+- Implement secondary indexes for frequently queried columns
+- Consider query optimization for complex joins
+- Monitor instance utilization and scale as needed
+- Use appropriate caching strategies for dashboards

@@ -3,4 +3,73 @@ title: 'ClickHouse'
 description: 'Connect your ClickHouse database to Basedash'
 ---
 
-Connect your ClickHouse database to Basedash to start querying and managing your data.
+## Overview
+
+ClickHouse is an open-source, column-oriented database management system designed for online analytical processing (OLAP). Known for its exceptional query performance and efficient data compression, ClickHouse excels at processing and analyzing large volumes of data in real-time.
+
+Connecting ClickHouse to Basedash Charts allows you to create powerful visualizations from your analytical data with minimal latency.
+
+## Connection Requirements
+
+To connect your ClickHouse database to Basedash Charts, you'll need:
+
+- **Host**: Your ClickHouse server hostname or IP address
+- **Port**: The port your ClickHouse server is running on (default: 8123 for HTTP, 9000 for native)
+- **Database name**: The name of your ClickHouse database
+- **Username**: A database user with appropriate read permissions
+- **Password**: The password for the database user
+- **Protocol**: HTTP or Native (TCP)
+
+For security best practices, we recommend:
+- Creating a read-only user specifically for Basedash
+- Enabling SSL/TLS connections
+- Implementing IP-based access restrictions (Basedash server IP: `24.199.77.73`)
+
+## Connection Steps
+
+1. From your Basedash Charts dashboard, click on "Add Data Source"
+2. Select "ClickHouse" from the list of available data sources
+3. Enter your connection details:
+   - Host
+   - Port
+   - Database name
+   - Username
+   - Password
+   - Protocol (HTTP or Native)
+4. Click "Test Connection" to verify your settings
+5. Once successful, click "Add Data Source"
+
+## Features and Benefits
+
+ClickHouse with Basedash Charts offers several advantages:
+
+- **Lightning-Fast Analytics**: Leverage ClickHouse's column-oriented architecture for rapid data analysis
+- **Real-time Dashboards**: Create dashboards that update in real-time as your data changes
+- **Efficient Storage**: Benefit from ClickHouse's efficient data compression
+- **Complex Analytics**: Perform complex analytical queries with ease
+- **Time-Series Visualization**: Excellent for time-series data visualization
+
+## Common Use Cases
+
+- **Log Analysis**: Analyze application logs and event data at scale
+- **Time-Series Analytics**: Track metrics over time with high precision
+- **User Behavior Analysis**: Analyze user interactions and engagement patterns
+- **IoT Data Processing**: Process and visualize data from connected devices
+- **Real-time Monitoring**: Create dashboards for real-time system monitoring
+
+## Troubleshooting
+
+### Connection Issues
+
+- **Connection Refused**: Verify your ClickHouse server is running and accessible
+- **Authentication Failed**: Check that your username and password are correct
+- **Database Not Found**: Ensure the database name exists on your server
+- **Protocol Mismatch**: Verify you're using the correct protocol and port
+
+### Performance Optimization
+
+- Use appropriate table engines for your use case
+- Implement proper partitioning strategies
+- Utilize materialized views for complex queries
+- Consider using distributed tables for large datasets
+- Monitor query performance and optimize as needed

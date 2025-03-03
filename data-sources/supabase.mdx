@@ -3,4 +3,73 @@ title: 'Supabase'
 description: 'Connect your Supabase database to Basedash'
 ---
 
-You can connect directly to your Supabase database to visualize data from your product, like signups and customers.
+## Overview
+
+Supabase is an open-source Firebase alternative that provides a PostgreSQL database, authentication, instant APIs, real-time subscriptions, and storage. Built on top of PostgreSQL, Supabase offers a powerful and flexible database solution with the simplicity of a modern development platform.
+
+With Basedash Charts, you can connect directly to your Supabase database to visualize data from your product, like signups, customers, and business metrics.
+
+## Connection Requirements
+
+To connect your Supabase database to Basedash Charts, you'll need:
+
+- **Host**: Your Supabase PostgreSQL connection host (found in your Supabase dashboard)
+- **Port**: The port for your PostgreSQL connection (default: 5432)
+- **Database name**: The name of your Supabase database (usually "postgres")
+- **Username**: Your Supabase database username
+- **Password**: Your Supabase database password
+
+You can find these connection details in your Supabase dashboard under Project Settings > Database > Connection string > Connection parameters.
+
+For security best practices, we recommend:
+- Creating a dedicated database user with read-only permissions
+- Using SSL connections
+- Implementing IP restrictions (Basedash server IP: `24.199.77.73`)
+
+## Connection Steps
+
+1. From your Basedash Charts dashboard, click on "Add Data Source"
+2. Select "Supabase" from the list of available data sources
+3. Enter your connection details:
+   - Host
+   - Port
+   - Database name
+   - Username
+   - Password
+4. Click "Test Connection" to verify your settings
+5. Once successful, click "Add Data Source"
+
+## Features and Benefits
+
+Supabase with Basedash Charts offers several advantages:
+
+- **PostgreSQL Foundation**: Leverage the power and flexibility of PostgreSQL
+- **Row-Level Security**: Maintain your Supabase security policies
+- **Real-time Data**: Create dashboards that update as your data changes
+- **JSON Support**: Visualize JSON data stored in your Supabase tables
+- **Integrated Analytics**: Combine Supabase with other data sources in unified dashboards
+
+## Common Use Cases
+
+- **User Analytics**: Track user signups, engagement, and retention
+- **Content Performance**: Analyze content views, likes, and shares
+- **Application Metrics**: Monitor application usage and performance
+- **E-commerce Insights**: Track sales, inventory, and customer behavior
+- **Game Analytics**: Analyze player behavior and game performance
+
+## Troubleshooting
+
+### Connection Issues
+
+- **Connection Refused**: Verify your Supabase database is accessible from external services
+- **Authentication Failed**: Check your username and password
+- **Database Not Found**: Ensure you're using the correct database name
+- **SSL Required**: Make sure SSL is enabled for your connection
+
+### Performance Optimization
+
+- Create indexes on frequently queried columns
+- Use appropriate RLS policies that don't overly restrict queries
+- Consider using Supabase views for complex queries
+- Implement appropriate caching strategies
+- Monitor query performance using Supabase's built-in tools
