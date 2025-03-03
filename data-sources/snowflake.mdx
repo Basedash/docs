@@ -3,4 +3,75 @@ title: 'Snowflake'
 description: 'Connect your Snowflake data warehouse to Basedash'
 ---
 
-Connect your Snowflake data warehouse to Basedash to start querying and managing your data.
+## Overview
+
+Snowflake is a cloud-based data warehousing platform that provides a single, integrated solution for data storage, processing, and analytics. With its unique architecture that separates compute from storage, Snowflake offers virtually unlimited scalability, concurrency, and performance.
+
+Connecting Snowflake to Basedash Charts allows you to create powerful visualizations from your enterprise data warehouse without the complexity of traditional BI tools.
+
+## Connection Requirements
+
+To connect your Snowflake data warehouse to Basedash Charts, you'll need:
+
+- **Account**: Your Snowflake account identifier (e.g., `xy12345.us-east-1.aws.snowflakecomputing.com`)
+- **Warehouse**: The name of the Snowflake warehouse to use for queries
+- **Database**: The Snowflake database you want to analyze
+- **Schema**: The schema within the database (default: `PUBLIC`)
+- **Username**: A Snowflake user with appropriate access permissions
+- **Password**: The password for the Snowflake user
+- **Role** (optional): The Snowflake role to use for queries
+
+For security best practices, we recommend:
+- Creating a dedicated read-only user for Basedash
+- Assigning appropriate role-based access controls
+- Setting resource monitors on the warehouse used for analytics
+
+## Connection Steps
+
+1. From your Basedash Charts dashboard, click on "Add Data Source"
+2. Select "Snowflake" from the list of available data sources
+3. Enter your connection details:
+   - Account
+   - Warehouse
+   - Database
+   - Schema
+   - Username
+   - Password
+   - Role (optional)
+4. Click "Test Connection" to verify your settings
+5. Once successful, click "Add Data Source"
+
+## Features and Benefits
+
+Snowflake with Basedash Charts offers several advantages:
+
+- **Elastic Scalability**: Automatically scale compute resources based on query demands
+- **Multi-cluster Architecture**: Support multiple concurrent users without performance degradation
+- **Time Travel**: Query historical data at specific points in time
+- **Semi-structured Data**: Visualize JSON, Avro, Parquet, and other semi-structured data
+- **Cross-database Joins**: Create visualizations that combine data from multiple databases
+
+## Common Use Cases
+
+- **Enterprise Analytics**: Create dashboards for company-wide metrics and KPIs
+- **Data Science Insights**: Visualize results from data science models stored in Snowflake
+- **Financial Reporting**: Generate detailed financial reports and forecasts
+- **Customer 360**: Build comprehensive views of customer behavior and interactions
+- **Supply Chain Analytics**: Monitor inventory, logistics, and supplier performance
+
+## Troubleshooting
+
+### Connection Issues
+
+- **Account Not Found**: Verify your Snowflake account identifier is correct
+- **Authentication Failed**: Check your username and password
+- **Warehouse Suspended**: Ensure your warehouse is running or set to auto-resume
+- **Insufficient Privileges**: Verify the user has appropriate access to the database and schema
+
+### Performance Optimization
+
+- Use appropriate warehouse sizing for your query workload
+- Implement clustering keys for frequently filtered columns
+- Consider materialized views for complex queries
+- Set appropriate timeouts for long-running queries
+- Monitor warehouse credit usage to optimize costs

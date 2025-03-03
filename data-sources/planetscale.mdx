@@ -3,4 +3,69 @@ title: 'PlanetScale'
 description: 'Connect your PlanetScale database to Basedash'
 ---
 
-Connect your PlanetScale database to Basedash to start querying and managing your data.
+## Overview
+
+PlanetScale is a serverless MySQL-compatible database platform built on Vitess, the same technology that powers YouTube and Slack. It offers horizontal scaling, automated failover, and a unique branching workflow that makes database schema changes safe and easy.
+
+Connecting PlanetScale to Basedash Charts allows you to create beautiful visualizations from your application data without worrying about database management.
+
+## Connection Requirements
+
+To connect your PlanetScale database to Basedash Charts, you'll need:
+
+- **Host**: Your PlanetScale connection host (usually `[database-name].[region].psdb.cloud`)
+- **Username**: Your PlanetScale username
+- **Password**: Your PlanetScale password
+- **Database name**: The name of your PlanetScale database
+
+For authentication, you'll need to create a database password in the PlanetScale dashboard with appropriate permissions. We recommend:
+- Creating a read-only password specifically for Basedash
+- Setting appropriate IP restrictions
+- Using the "General Access" connection type
+
+## Connection Steps
+
+1. From your Basedash Charts dashboard, click on "Add Data Source"
+2. Select "PlanetScale" from the list of available data sources
+3. Enter your connection details:
+   - Host
+   - Username
+   - Password
+   - Database name
+4. Click "Test Connection" to verify your settings
+5. Once successful, click "Add Data Source"
+
+## Features and Benefits
+
+PlanetScale with Basedash Charts offers several advantages:
+
+- **Serverless Architecture**: No database management overhead
+- **Scalability**: Automatically scales with your application needs
+- **Branch-based Workflow**: Easily visualize data from different database branches
+- **High Availability**: Built-in redundancy and failover
+- **MySQL Compatibility**: Leverage familiar MySQL query syntax
+
+## Common Use Cases
+
+- **SaaS Application Metrics**: Track user signups, engagement, and retention
+- **E-commerce Analytics**: Monitor sales, inventory, and customer behavior
+- **Content Platform Insights**: Analyze content performance and user engagement
+- **Developer Tool Usage**: Track API usage, errors, and performance
+- **Financial Reporting**: Create dashboards for revenue and transaction data
+
+## Troubleshooting
+
+### Connection Issues
+
+- **Connection Refused**: Verify your PlanetScale database is active
+- **Authentication Failed**: Check that your username and password are correct
+- **Database Not Found**: Ensure you're connecting to the correct branch
+- **Timeout**: PlanetScale may have connection limits based on your plan
+
+### Performance Optimization
+
+- Use appropriate indexes for your queries
+- Consider PlanetScale's query insights to identify slow queries
+- Implement connection pooling for better performance
+- Use appropriate WHERE clauses to limit data returned
+- Consider PlanetScale's read-only regions for analytics workloads

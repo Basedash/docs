@@ -3,4 +3,80 @@ title: 'PostgreSQL'
 description: 'Connect your PostgreSQL database to Basedash'
 ---
 
-You can connect directly to your PostgreSQL database to visualize data from your product, like signups and customers.
+## Overview
+
+PostgreSQL is a powerful, open-source object-relational database system with over 30 years of active development. Known for reliability, feature robustness, and performance, PostgreSQL is a popular choice for applications of all sizes.
+
+With Basedash Charts, you can connect directly to your PostgreSQL database to visualize data from your product, like signups, customers, and business metrics.
+
+## Connection Requirements
+
+To connect your PostgreSQL database to Basedash Charts, you'll need:
+
+- **Host**: Your database hostname or IP address
+- **Port**: The port your PostgreSQL server is running on (default: 5432)
+- **Database name**: The name of your database
+- **Username**: A database user with appropriate read permissions
+- **Password**: The password for the database user
+
+For security best practices, we recommend:
+- Creating a read-only user specifically for Basedash
+- Using SSL connections
+- Restricting access by IP address (Basedash server IP: `24.199.77.73`)
+
+## Connection Steps
+
+1. From your Basedash Charts dashboard, click on "Add Data Source"
+2. Select "PostgreSQL" from the list of available data sources
+3. Enter your connection details:
+   - Host
+   - Port
+   - Database name
+   - Username
+   - Password
+4. Click "Test Connection" to verify your settings
+5. Once successful, click "Add Data Source"
+
+### SSH Tunnel Connection
+
+If your database is behind a firewall, you can connect using an SSH tunnel:
+
+1. Select the "Connect via SSH" option when adding your data source
+2. Provide your SSH server details:
+   - SSH Host
+   - SSH Port (default: 22)
+   - SSH Username
+   - Authentication method (Password or SSH Key)
+
+## Features and Benefits
+
+PostgreSQL with Basedash Charts offers several advantages:
+
+- **Rich Data Types**: Visualize complex data types including arrays, JSON, and geometric data
+- **Advanced Queries**: Leverage PostgreSQL's powerful query capabilities for complex data analysis
+- **Performance**: Benefit from PostgreSQL's efficient query execution for large datasets
+- **Real-time Data**: Create dashboards that update in real-time as your data changes
+- **Materialized Views**: Use PostgreSQL's materialized views for faster dashboard loading
+
+## Common Use Cases
+
+- **User Analytics**: Track user signups, engagement, and retention
+- **Product Metrics**: Monitor product usage, feature adoption, and performance
+- **Business Intelligence**: Analyze revenue, customer acquisition costs, and other business metrics
+- **Operational Monitoring**: Track system performance, error rates, and other operational metrics
+
+## Troubleshooting
+
+### Connection Issues
+
+- **Connection Refused**: Verify your PostgreSQL server is running and accessible from the internet
+- **Authentication Failed**: Double-check your username and password
+- **Database Not Found**: Verify the database name exists on your server
+- **SSL Required**: If your server requires SSL, ensure the "Use SSL" option is enabled
+
+### Performance Optimization
+
+- Create indexes on frequently queried columns
+- Use materialized views for complex queries
+- Consider query timeouts for long-running queries
+- Limit the amount of data returned by using appropriate WHERE clauses

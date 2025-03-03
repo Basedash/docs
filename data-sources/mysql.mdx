@@ -3,4 +3,82 @@ title: 'MySQL'
 description: 'Connect your MySQL database to Basedash'
 ---
 
-You can connect directly to your MySQL database to visualize data from your product, like signups and customers.
+## Overview
+
+MySQL is one of the world's most popular open-source relational database management systems. Known for its reliability, ease of use, and performance, MySQL powers millions of web applications, from small personal projects to large enterprise systems.
+
+With Basedash Charts, you can connect directly to your MySQL database to visualize data from your product, like signups, customers, and business metrics.
+
+## Connection Requirements
+
+To connect your MySQL database to Basedash Charts, you'll need:
+
+- **Host**: Your database hostname or IP address
+- **Port**: The port your MySQL server is running on (default: 3306)
+- **Database name**: The name of your database
+- **Username**: A database user with appropriate read permissions
+- **Password**: The password for the database user
+
+For security best practices, we recommend:
+- Creating a read-only user specifically for Basedash
+- Enabling SSL/TLS connections
+- Restricting access by IP address (Basedash server IP: `24.199.77.73`)
+
+## Connection Steps
+
+1. From your Basedash Charts dashboard, click on "Add Data Source"
+2. Select "MySQL" from the list of available data sources
+3. Enter your connection details:
+   - Host
+   - Port
+   - Database name
+   - Username
+   - Password
+4. Click "Test Connection" to verify your settings
+5. Once successful, click "Add Data Source"
+
+### SSH Tunnel Connection
+
+If your database is behind a firewall, you can connect using an SSH tunnel:
+
+1. Select the "Connect via SSH" option when adding your data source
+2. Provide your SSH server details:
+   - SSH Host
+   - SSH Port (default: 22)
+   - SSH Username
+   - Authentication method (Password or SSH Key)
+
+## Features and Benefits
+
+MySQL with Basedash Charts offers several advantages:
+
+- **Widespread Compatibility**: Easily connect to your existing MySQL infrastructure
+- **Efficient Queries**: MySQL's query optimizer ensures efficient data retrieval
+- **Real-time Dashboards**: Create dashboards that update as your data changes
+- **Flexible Visualization**: Transform your MySQL data into insightful charts and graphs
+- **Scheduled Refreshes**: Set up automatic dashboard refreshes to keep data current
+
+## Common Use Cases
+
+- **E-commerce Analytics**: Track sales, inventory, and customer behavior
+- **User Engagement**: Monitor user signups, logins, and activity
+- **Content Performance**: Analyze content views, engagement, and conversion
+- **Financial Reporting**: Create dashboards for revenue, expenses, and profitability
+- **Application Monitoring**: Track application performance and error rates
+
+## Troubleshooting
+
+### Connection Issues
+
+- **Connection Refused**: Verify your MySQL server is running and accessible
+- **Access Denied**: Check that your username and password are correct
+- **Host Not Allowed**: Ensure the Basedash IP address is allowed in your MySQL configuration
+- **SSL Required**: If your server requires SSL, ensure the "Use SSL" option is enabled
+
+### Performance Optimization
+
+- Create indexes on frequently queried columns
+- Optimize your queries to avoid full table scans
+- Consider using MySQL views for complex queries
+- Limit the amount of data returned by using appropriate WHERE clauses
+- Use connection pooling for better performance
