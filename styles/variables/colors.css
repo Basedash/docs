@@ -1,0 +1,178 @@
+:root {
+  /* Theme colors - Dark mode by default */
+  --_theme-1: rgba(60, 80, 255, 1);
+  --_theme-1-text: rgba(99, 115, 255, 1);
+  --_theme-1-highlight: rgba(99, 115, 255, 0.6);
+  --_theme-2: rgba(218, 65, 13, 1);
+  --_theme-2-text: rgba(225, 103, 61, 1);
+  --_theme-3: rgba(167, 98, 255, 1);
+  --_theme-3-text: rgba(185, 129, 255, 1);
+
+  /* Neutral colors */
+  --_neutral-1: rgba(255, 255, 255, 1);
+  --_neutral-2: rgba(255, 255, 255, 0.7);
+  --_neutral-3: rgba(255, 255, 255, 0.5);
+  --_neutral-4: rgba(255, 255, 255, 0.2);
+  --_neutral-5: rgba(255, 255, 255, 0.1);
+  --_neutral-6: rgba(255, 255, 255, 0.04);
+
+  /* Neutral opaque colors */
+  --_neutral-1-opaque: rgba(255, 255, 255, 1);
+  --_neutral-2-opaque: rgba(185, 185, 185, 1);
+  --_neutral-3-opaque: rgba(138, 138, 138, 1);
+  --_neutral-4-opaque: rgba(68, 68, 68, 1);
+  --_neutral-5-opaque: rgba(44, 44, 44, 1);
+  --_neutral-6-opaque: rgba(30, 30, 30, 1);
+
+  /* Background colors */
+  --_background-1: rgba(21, 21, 21, 1);
+  --_background-2: rgba(33, 33, 33, 1);
+  --_background-3: rgba(21, 21, 21, 0.2);
+  --_background-4: rgba(16, 16, 16, 1);
+
+  --_on-anycolor: rgba(255, 255, 255, 1);
+  --_on-neutral: rgba(21, 21, 21, 1);
+
+  /* Semantic colors */
+  --_semantic-good: rgba(0, 169, 78, 1);
+  --_semantic-good-background: rgba(0, 169, 78, 0.1);
+  --_semantic-warning: rgba(236, 165, 0, 1);
+  --_semantic-warning-background: rgba(236, 165, 0, 0.1);
+  --_semantic-warning-background-opaque: #261f0e;
+  --_semantic-danger: rgba(243, 58, 69, 1);
+  --_semantic-danger-background: rgba(243, 58, 69, 0.1);
+  --_semantic-ai: rgba(185, 129, 255, 1);
+  --_semantic-ai-background: rgba(185, 129, 255, 0.1);
+
+  /* Chart colors */
+  --_chart-member-1: rgb(238, 238, 238);
+  --_chart-member-2: rgba(255, 156, 116);
+  --_chart-member-3: rgba(140, 152, 255);
+  --_chart-member-4: rgba(242, 161, 254);
+  --_chart-member-5: rgba(255, 216, 216);
+  --_chart-member-6: rgba(230, 245, 170);
+  --_chart-member-7: rgba(126, 225, 202);
+  --_chart-member-8: rgba(145, 170, 255);
+  --_chart-member-9: rgba(210, 202, 255);
+  --_chart-member-10: rgba(234, 216, 151);
+  --_chart-member-11: rgba(238, 170, 170);
+  --_chart-member-12: rgba(146, 209, 255);
+
+  /* Chart labels */
+  --_chart-label-resting: rgba(138, 138, 138, 1);
+  --_chart-label-highlight: rgba(255, 255, 255, 1);
+  --_chart-label-lowlight: rgba(44, 44, 44, 1);
+
+  /* Chart lines */
+  --_chart-line-axis: rgba(68, 68, 68, 1);
+  --_chart-line-hoverbox: rgba(255, 255, 255, 0.05);
+
+  /* SQL colors */
+  --_sql-variable: #ff2173;
+  --_sql-variable-background: rgba(255, 33, 115, 0.1);
+
+  /* Other variables */
+  --_designers-workbench: #252525;
+
+  /* Mapped variables - Dark mode */
+  /* Background colors mapping */
+  --color-bdc-background-primary: rgba(60, 80, 255, 0.1);
+  --color-bdc-background-1: rgba(21, 21, 21, 1);
+  --color-bdc-background-1-blurred: rgba(21, 21, 21, 0.6);
+  --color-bdc-background-2: rgba(33, 33, 33, 1);
+  --color-bdc-background-3: rgba(21, 21, 21, 0.2);
+  --color-bdc-background-4: rgba(16, 16, 16, 1);
+
+  /* Theme colors mapping */
+  --color-bdc-theme-1: var(--_theme-1);
+  --color-bdc-theme-1-text: var(--_theme-1-text);
+  --color-bdc-theme-1-highlight: var(--_theme-1-highlight);
+  --color-bdc-theme-2: var(--_theme-2);
+  --color-bdc-theme-2-text: var(--_theme-2-text);
+  --color-bdc-theme-3: var(--_theme-3);
+  --color-bdc-theme-3-text: var(--_theme-3-text);
+
+  /* Neutral colors mapping */
+  --color-bdc-neutral-1: var(--_neutral-1);
+  --color-bdc-neutral-2: var(--_neutral-2);
+  --color-bdc-neutral-3: var(--_neutral-3);
+  --color-bdc-neutral-4: var(--_neutral-4);
+  --color-bdc-neutral-5: var(--_neutral-5);
+  --color-bdc-neutral-6: var(--_neutral-6);
+
+  /* Neutral opaque colors mapping */
+  --color-bdc-neutral-1-opaque: var(--_neutral-1-opaque);
+  --color-bdc-neutral-2-opaque: var(--_neutral-2-opaque);
+  --color-bdc-neutral-3-opaque: var(--_neutral-3-opaque);
+  --color-bdc-neutral-4-opaque: var(--_neutral-4-opaque);
+  --color-bdc-neutral-5-opaque: var(--_neutral-5-opaque);
+  --color-bdc-neutral-6-opaque: var(--_neutral-6-opaque);
+
+  /* Background colors mapping */
+  --color-bdc-background-1: var(--_background-1);
+  --color-bdc-background-2: var(--_background-2);
+  --color-bdc-background-3: var(--_background-3);
+  --color-bdc-background-4: var(--_background-4);
+
+  /* On colors mapping */
+  --color-bdc-on-anycolor: var(--_on-anycolor);
+  --color-bdc-on-neutral: var(--_on-neutral);
+
+  /* Semantic colors mapping */
+  --color-bdc-semantic-good: var(--_semantic-good);
+  --color-bdc-semantic-good-background: var(--_semantic-good-background);
+  --color-bdc-semantic-warning: var(--_semantic-warning);
+  --color-bdc-semantic-warning-background: var(--_semantic-warning-background);
+  --color-bdc-semantic-warning-background-opaque: var(--_semantic-warning-background-opaque);
+  --color-bdc-semantic-danger: var(--_semantic-danger);
+  --color-bdc-semantic-danger-background: var(--_semantic-danger-background);
+  --color-bdc-semantic-ai: var(--_semantic-ai);
+  --color-bdc-semantic-ai-background: var(--_semantic-ai-background);
+
+  /* Chart colors mapping */
+  --color-bdc-chart-member-1: var(--_chart-member-1);
+  --color-bdc-chart-member-2: var(--_chart-member-2);
+  --color-bdc-chart-member-3: var(--_chart-member-3);
+  --color-bdc-chart-member-4: var(--_chart-member-4);
+  --color-bdc-chart-member-5: var(--_chart-member-5);
+  --color-bdc-chart-member-6: var(--_chart-member-6);
+  --color-bdc-chart-member-7: var(--_chart-member-7);
+  --color-bdc-chart-member-8: var(--_chart-member-8);
+  --color-bdc-chart-member-9: var(--_chart-member-9);
+  --color-bdc-chart-member-10: var(--_chart-member-10);
+  --color-bdc-chart-member-11: var(--_chart-member-11);
+  --color-bdc-chart-member-12: var(--_chart-member-12);
+
+  /* Chart labels mapping */
+  --color-bdc-chart-label-resting: var(--_chart-label-resting);
+  --color-bdc-chart-label-highlight: var(--_chart-label-highlight);
+  --color-bdc-chart-label-lowlight: var(--_chart-label-lowlight);
+
+  /* Chart lines mapping */
+  --color-bdc-chart-line-axis: var(--_chart-line-axis);
+  --color-bdc-chart-line-hoverbox: var(--_chart-line-hoverbox);
+
+  /* SQL colors mapping */
+  --color-bdc-sql-variable: var(--_sql-variable);
+  --color-bdc-sql-variable-background: var(--_sql-variable-background);
+
+  /* ShadCN UI variables mapping */
+  --color-background: var(--color-bdc-background-2);
+  --color-foreground: var(--color-bdc-neutral-1);
+  --color-card: var(--color-bdc-background-1);
+  --color-card-foreground: var(--color-bdc-neutral-1);
+  --color-popover: var(--color-bdc-background-1);
+  --color-popover-foreground: var(--color-bdc-neutral-1);
+  --color-primary: var(--color-bdc-neutral-2);
+  --color-primary-foreground: var(--color-bdc-on-neutral);
+  --color-secondary: var(--color-bdc-neutral-5);
+  --color-secondary-foreground: var(--color-bdc-on-anycolor);
+  --color-muted: var(--color-bdc-neutral-4);
+  --color-muted-foreground: var(--color-bdc-neutral-2);
+  --color-accent: var(--color-bdc-neutral-4);
+  --color-accent-foreground: var(--color-bdc-neutral-1);
+  --color-destructive: var(--color-bdc-semantic-danger);
+  --color-destructive-foreground: var(--color-bdc-on-neutral);
+  --color-border: var(--color-bdc-neutral-2);
+  --color-input: var(--color-bdc-neutral-2);
+}
