@@ -1,0 +1,103 @@
+/* Theme toggle component styling */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-bdc-background-2);
+  color: var(--color-bdc-neutral-2);
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-bdc-neutral-5);
+  color: var(--color-bdc-neutral-1);
+}
+
+.theme-toggle-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Light mode specific styles */
+.light .theme-toggle {
+  background-color: var(--color-bdc-background-2);
+  color: var(--color-bdc-neutral-2);
+}
+
+.light .theme-toggle:hover {
+  background-color: var(--color-bdc-neutral-5);
+  color: var(--color-bdc-neutral-1);
+}
+
+/* Dark mode specific styles for components */
+.light .card, 
+.light .mint-card {
+  background-color: var(--color-bdc-background-1);
+  border-color: var(--color-bdc-neutral-5);
+}
+
+.light .sidebar {
+  background-color: var(--color-bdc-background-1);
+  border-right-color: var(--color-bdc-neutral-5);
+}
+
+.light .navbar {
+  background-color: var(--color-bdc-background-1);
+  border-bottom-color: var(--color-bdc-neutral-5);
+}
+
+.light .content h1, 
+.light .content h2, 
+.light .content h3, 
+.light .content h4, 
+.light .content h5, 
+.light .content h6 {
+  color: var(--color-bdc-neutral-1);
+}
+
+.light .content p, 
+.light .content li {
+  color: var(--color-bdc-neutral-2);
+}
+
+.light .content a {
+  color: var(--color-bdc-theme-1-text);
+}
+
+.light .content code {
+  background-color: var(--color-bdc-neutral-5);
+  color: var(--color-bdc-neutral-1);
+}
+
+.light .content pre {
+  background-color: var(--color-bdc-background-4);
+}
+
+.light .button-primary, 
+.light .mint-button-primary {
+  background-color: var(--color-bdc-theme-1);
+  color: var(--color-bdc-on-anycolor);
+}
+
+.light .button-secondary, 
+.light .mint-button-secondary {
+  background-color: var(--color-bdc-neutral-5);
+  color: var(--color-bdc-neutral-1);
+}
+
+.light .tab {
+  color: var(--color-bdc-neutral-2);
+}
+
+.light .tab:hover {
+  color: var(--color-bdc-neutral-1);
+}
+
+.light .tab.active {
+  color: var(--color-bdc-theme-1-text);
+  border-bottom-color: var(--color-bdc-theme-1);
+}

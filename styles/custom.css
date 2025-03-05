@@ -7,6 +7,7 @@
 @import './components/navigation.css';
 @import './components/code.css';
 @import './components/mintlify-dark.css';
+@import './components/theme-toggle.css';
 
 /* Base styles */
 body {
@@ -17,4 +18,10 @@ body {
 
 code, pre {
   font-family: var(--font-mono);
+}
+
+/* Light mode base styles */
+body.light {
+  background-color: var(--color-bdc-background-1);
+  color: var(--color-bdc-neutral-1);
 }
