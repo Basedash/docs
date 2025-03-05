@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "dark",
+  "theme": "mint",
   "name": "Basedash Documentation",
   "colors": {
     "primary": "#3C50FF",
@@ -8,7 +8,7 @@
     "dark": "#061DE0"
   },
   "favicon": "/favicon.svg",
-  "css": ["./styles/custom.css"],
+  "css": ["/styles/custom.css"],
   "modeToggle": {
     "default": "dark"
   },
