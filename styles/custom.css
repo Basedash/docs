@@ -8,6 +8,8 @@
 @import './components/code.css';
 @import './components/mintlify-dark.css';
 @import './components/theme-toggle.css';
+@import './components/docs-specific.css';
+@import './components/mintlify-components.css';
 
 /* Base styles */
 body {

@@ -1,0 +1,203 @@
+/* Mintlify-specific components styling */
+
+/* Sidebar */
+.sidebar {
+  background-color: var(--color-bdc-background-1);
+  border-right: 1px solid var(--color-bdc-neutral-5);
+}
+
+.sidebar-title {
+  color: var(--color-bdc-neutral-1);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+}
+
+.sidebar-item {
+  color: var(--color-bdc-neutral-2);
+  transition: color 150ms ease-in-out;
+}
+
+.sidebar-item:hover {
+  color: var(--color-bdc-neutral-1);
+}
+
+.sidebar-item.active {
+  color: var(--color-bdc-theme-1-text);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--color-bdc-background-1);
+  border-bottom: 1px solid var(--color-bdc-neutral-5);
+}
+
+.navbar-logo {
+  height: 2rem;
+}
+
+.navbar-link {
+  color: var(--color-bdc-neutral-2);
+  transition: color 150ms ease-in-out;
+}
+
+.navbar-link:hover {
+  color: var(--color-bdc-neutral-1);
+}
+
+.navbar-button {
+  background-color: var(--color-bdc-theme-1);
+  color: var(--color-bdc-on-anycolor);
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-weight: var(--font-weight-medium);
+  transition: background-color 150ms ease-in-out;
+}
+
+.navbar-button:hover {
+  background-color: var(--color-bdc-theme-1-highlight);
+}
+
+/* Search */
+.search-button {
+  background-color: var(--color-bdc-background-2);
+  border: 1px solid var(--color-bdc-neutral-5);
+  border-radius: 0.25rem;
+  color: var(--color-bdc-neutral-2);
+  padding: 0.5rem 1rem;
+  transition: border-color 150ms ease-in-out, color 150ms ease-in-out;
+}
+
+.search-button:hover {
+  border-color: var(--color-bdc-neutral-4);
+  color: var(--color-bdc-neutral-1);
+}
+
+.search-shortcut {
+  background-color: var(--color-bdc-background-2);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  font-size: var(--font-size-xs);
+  color: var(--color-bdc-neutral-2);
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--color-bdc-neutral-5);
+  background-color: var(--color-bdc-background-1);
+}
+
+.footer-link {
+  color: var(--color-bdc-neutral-2);
+  transition: color 150ms ease-in-out;
+}
+
+.footer-link:hover {
+  color: var(--color-bdc-neutral-1);
+}
+
+.footer-social {
+  color: var(--color-bdc-neutral-2);
+  transition: color 150ms ease-in-out;
+}
+
+.footer-social:hover {
+  color: var(--color-bdc-neutral-1);
+}
+
+/* Content */
+.content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.content h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 1.5rem;
+  color: var(--color-bdc-neutral-1);
+}
+
+.content h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-bdc-neutral-1);
+}
+
+.content h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-bdc-neutral-1);
+}
+
+.content p {
+  margin-bottom: 1rem;
+  color: var(--color-bdc-neutral-2);
+  line-height: var(--line-height-relaxed);
+}
+
+.content a {
+  color: var(--color-bdc-theme-1-text);
+  text-decoration: none;
+  transition: color 150ms ease-in-out;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+.content ul, .content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  color: var(--color-bdc-neutral-2);
+}
+
+.content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Light mode overrides */
+.light .sidebar {
+  background-color: var(--color-bdc-background-1);
+  border-right-color: var(--color-bdc-neutral-5);
+}
+
+.light .navbar {
+  background-color: var(--color-bdc-background-1);
+  border-bottom-color: var(--color-bdc-neutral-5);
+}
+
+.light .search-button {
+  background-color: var(--color-bdc-background-2);
+  border-color: var(--color-bdc-neutral-5);
+}
+
+.light .search-shortcut {
+  background-color: var(--color-bdc-background-2);
+}
+
+.light .footer {
+  border-top-color: var(--color-bdc-neutral-5);
+  background-color: var(--color-bdc-background-1);
+}
+
+.light .content h1, 
+.light .content h2, 
+.light .content h3 {
+  color: var(--color-bdc-neutral-1);
+}
+
+.light .content p, 
+.light .content ul, 
+.light .content ol {
+  color: var(--color-bdc-neutral-2);
+}
+
+.light .content a {
+  color: var(--color-bdc-theme-1-text);
+}
