@@ -9,6 +9,7 @@
   },
   "favicon": "/favicon.svg",
   "css": ["/styles/custom.css"],
+  "javascript": ["/js/theme-toggle.js"],
   "modeToggle": {
     "default": "dark"
   },
