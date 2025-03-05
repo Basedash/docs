@@ -1,6 +1,6 @@
 // Theme toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
-  // Apply our custom light/dark mode classes based on Mintlify's theme
+  // Function to apply our custom light/dark mode classes
   const applyThemeClass = () => {
     // Check if dark mode is active
     const isDarkMode = document.documentElement.classList.contains('dark') || 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  // Run initially
+  // Initial application
   setTimeout(applyThemeClass, 100);
 
   // Watch for theme changes via DOM mutations
@@ -37,9 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Force reapply when theme toggle is clicked
+  // Add click event listener to the theme toggle button
   document.addEventListener('click', (event) => {
-    if (event.target.closest('[aria-label="Toggle dark mode"]')) {
+    const themeToggleButton = event.target.closest('[aria-label="Toggle dark mode"]');
+    if (themeToggleButton) {
       setTimeout(applyThemeClass, 100);
     }
   });
