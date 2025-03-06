@@ -1,0 +1,29 @@
+/* Import variables */
+@import './variables/colors.css';
+@import './variables/typography.css';
+
+/* Import component styles */
+@import './components/cards.css';
+@import './components/navigation.css';
+@import './components/code.css';
+@import './components/mintlify-dark.css';
+@import './components/theme-toggle.css';
+@import './components/docs-specific.css';
+@import './components/mintlify-components.css';
+
+/* Base styles */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bdc-background-1);
+  color: var(--color-bdc-neutral-1);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+/* Light mode base styles */
+body.light {
+  background-color: var(--color-bdc-background-1);
+  color: var(--color-bdc-neutral-1);
+}
