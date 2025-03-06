@@ -60,6 +60,19 @@
   color: var(--color-bdc-neutral-2);
 }
 
+/* Icon styling */
+.icon {
+  color: var(--color-bdc-neutral-2);
+}
+
+.icon:hover {
+  color: var(--color-bdc-neutral-1);
+}
+
+.active .icon {
+  color: var(--color-bdc-neutral-1);
+}
+
 /* Info callout */
 .callout-info {
   border-left-color: var(--color-bdc-theme-1);
@@ -133,7 +146,7 @@ tr:last-child td {
 }
 
 .api-method-post {
-  background-color: rgba(60, 80, 255, 0.1);
+  background-color: var(--color-bdc-background-primary);
   color: var(--color-bdc-theme-1-text);
 }
 

@@ -46,16 +46,17 @@
 }
 
 .navbar-button {
-  background-color: var(--color-bdc-theme-1);
-  color: var(--color-bdc-on-anycolor);
+  background-color: var(--color-bdc-neutral-2);
+  color: var(--color-bdc-on-neutral);
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
   font-weight: var(--font-weight-medium);
   transition: background-color 150ms ease-in-out;
+  border: 1px solid var(--color-bdc-neutral-3);
 }
 
 .navbar-button:hover {
-  background-color: var(--color-bdc-theme-1-highlight);
+  background-color: var(--color-bdc-neutral-1);
 }
 
 /* Search */
@@ -117,6 +118,7 @@
   font-weight: var(--font-weight-semibold);
   margin-bottom: 1.5rem;
   color: var(--color-bdc-neutral-1);
+  font-family: var(--font-sans);
 }
 
 .content h2 {
@@ -125,36 +127,43 @@
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   color: var(--color-bdc-neutral-1);
+  font-family: var(--font-sans);
 }
 
-.content h3 {
+.content h3, 
+.content h4, 
+.content h5, 
+.content h6 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   color: var(--color-bdc-neutral-1);
+  font-family: var(--font-mono);
 }
 
 .content p {
   margin-bottom: 1rem;
-  color: var(--color-bdc-neutral-2);
+  color: var(--color-bdc-neutral-1);
   line-height: var(--line-height-relaxed);
 }
 
 .content a {
-  color: var(--color-bdc-theme-1-text);
-  text-decoration: none;
-  transition: color 150ms ease-in-out;
+  color: var(--color-bdc-neutral-1);
+  text-decoration: underline;
+  text-decoration-color: var(--color-bdc-neutral-4);
+  transition: text-decoration-color 150ms ease-in-out;
 }
 
 .content a:hover {
   text-decoration: underline;
+  text-decoration-color: var(--color-bdc-neutral-2);
 }
 
 .content ul, .content ol {
   margin-bottom: 1rem;
   padding-left: 1.5rem;
-  color: var(--color-bdc-neutral-2);
+  color: var(--color-bdc-neutral-1);
 }
 
 .content li {
@@ -195,9 +204,9 @@
 .light .content p, 
 .light .content ul, 
 .light .content ol {
-  color: var(--color-bdc-neutral-2);
+  color: var(--color-bdc-neutral-1);
 }
 
 .light .content a {
-  color: var(--color-bdc-theme-1-text);
+  color: var(--color-bdc-neutral-1);
 }

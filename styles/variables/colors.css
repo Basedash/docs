@@ -76,7 +76,7 @@
 
   /* Mapped variables - Dark mode */
   /* Background colors mapping */
-  --color-bdc-background-primary: rgba(60, 80, 255, 0.1);
+  --color-bdc-background-primary: rgba(21, 21, 21, 0.1);
   --color-bdc-background-1: var(--_background-1);
   --color-bdc-background-1-blurred: rgba(21, 21, 21, 0.6);
   --color-bdc-background-2: var(--_background-2);
