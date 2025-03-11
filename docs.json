@@ -8,7 +8,13 @@
     "dark": "#061DE0"
   },
   "favicon": "/favicon.svg",
-  "css": ["/styles/custom.css"],
+  "css": [
+    "/styles/custom.css",
+    "/styles/fixes/typography-fixes.css",
+    "/styles/fixes/button-fixes.css",
+    "/styles/fixes/background-fixes.css",
+    "/styles/fixes/mintlify-overrides.css"
+  ],
   "javascript": ["/js/theme-toggle.js"],
   "modeToggle": {
     "default": "dark"

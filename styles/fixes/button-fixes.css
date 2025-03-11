@@ -1,0 +1,74 @@
+/* Button fixes to align with charts repo */
+
+/* Base button styles to match charts repo */
+.button, .mint-button,
+a[href="https://charts.basedash.com"],
+.navbar-container a[href="https://charts.basedash.com"],
+nav a[href="https://charts.basedash.com"] {
+  display: inline-flex !important;
+  height: 30px !important;
+  cursor: default !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  white-space: nowrap !important;
+  border-radius: 0.5rem !important;
+  border-width: 1px !important;
+  padding: 0.25rem 0.5rem !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.75rem !important;
+  font-weight: 400 !important;
+  outline: none !important;
+}
+
+/* Primary button variant */
+.button-primary, .mint-button-primary,
+a[href="https://charts.basedash.com"],
+.navbar-container a[href="https://charts.basedash.com"],
+nav a[href="https://charts.basedash.com"] {
+  background-color: var(--color-bdc-neutral-1) !important;
+  border-color: var(--color-bdc-neutral-3) !important;
+  color: var(--color-bdc-on-neutral) !important;
+}
+
+.button-primary:hover, .mint-button-primary:hover,
+a[href="https://charts.basedash.com"]:hover,
+.navbar-container a[href="https://charts.basedash.com"]:hover,
+nav a[href="https://charts.basedash.com"]:hover {
+  background-color: var(--color-bdc-neutral-2) !important;
+}
+
+/* Secondary button variant */
+.button-secondary, .mint-button-secondary {
+  background-color: transparent !important;
+  border-color: var(--color-bdc-neutral-5) !important;
+  color: var(--color-bdc-neutral-1) !important;
+}
+
+.button-secondary:hover, .mint-button-secondary:hover {
+  background-color: var(--color-bdc-neutral-5) !important;
+}
+
+/* Tertiary button variant */
+.button-tertiary, .mint-button-tertiary {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--color-bdc-neutral-1) !important;
+}
+
+.button-tertiary:hover, .mint-button-tertiary:hover {
+  background-color: var(--color-bdc-neutral-5) !important;
+}
+
+/* Disabled state for all buttons */
+.button:disabled, .mint-button:disabled {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+}
+
+/* Focus state for all buttons */
+.button:focus-visible, .mint-button:focus-visible,
+a[href="https://charts.basedash.com"]:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 1px var(--color-bdc-neutral-3) !important;
+}

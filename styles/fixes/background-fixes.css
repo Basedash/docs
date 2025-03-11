@@ -1,0 +1,15 @@
+/* Background color fixes to ensure correct dark mode background */
+
+/* Force the correct background color and override any Mintlify theme settings */
+:root {
+  --mint-background: rgb(21, 21, 21) !important;
+}
+
+body, html, #__next, main, .dark {
+  background-color: rgb(21, 21, 21) !important;
+}
+
+/* Ensure no blueish tints in any container backgrounds */
+.sidebar, .navbar, .footer, .content, .card, .mint-card {
+  background-color: transparent !important;
+}
