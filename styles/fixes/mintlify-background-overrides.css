@@ -1,0 +1,38 @@
+/* Override Mintlify-specific background styles */
+
+/* Force dark mode background color */
+.dark {
+  --mint-background: rgb(21, 21, 21) !important;
+  --bg-color: rgb(21, 21, 21) !important;
+  --nextra-primary-hue: 0 !important;
+  --nextra-primary-saturation: 0% !important;
+}
+
+/* Force all Mintlify containers to use our background color */
+.dark .nextra-container,
+.dark .nextra-sidebar,
+.dark .nextra-menu-desktop,
+.dark .nextra-nav,
+.dark .nextra-content,
+.dark [class*="nextra-"],
+.dark [data-nextra-container],
+.dark [data-nextra-body] {
+  background-color: rgb(21, 21, 21) !important;
+}
+
+/* Light mode overrides */
+.light {
+  --mint-background: rgb(255, 255, 255) !important;
+  --bg-color: rgb(255, 255, 255) !important;
+}
+
+.light .nextra-container,
+.light .nextra-sidebar,
+.light .nextra-menu-desktop,
+.light .nextra-nav,
+.light .nextra-content,
+.light [class*="nextra-"],
+.light [data-nextra-container],
+.light [data-nextra-body] {
+  background-color: rgb(255, 255, 255) !important;
+}

@@ -14,7 +14,8 @@
     "/styles/fixes/button-fixes.css",
     "/styles/fixes/background-fixes.css",
     "/styles/fixes/sidebar-fixes.css",
-    "/styles/fixes/mintlify-overrides.css"
+    "/styles/fixes/mintlify-overrides.css",
+    "/styles/fixes/mintlify-background-overrides.css"
   ],
   "javascript": ["/js/theme-toggle.js"],
   "modeToggle": {

@@ -11,7 +11,7 @@
   color-scheme: dark;
 }
 
-html, body, #__next, main {
+html, body, #__next, main, .dark, .dark body, .dark #__next, .dark main {
   background-color: rgb(21, 21, 21) !important;
 }
 
@@ -42,4 +42,12 @@ html.light .content h6 {
 /* Ensure sidebar has correct background in both modes */
 .sidebar {
   position: relative;
+}
+
+/* Force background color on all container elements */
+.dark .mint-page-container,
+.dark .mint-container,
+.dark [data-nextra-container],
+.dark [data-nextra-body] {
+  background-color: rgb(21, 21, 21) !important;
 }
