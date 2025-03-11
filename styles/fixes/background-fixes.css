@@ -1,15 +1,45 @@
-/* Background color fixes to ensure correct dark mode background */
+/* Background color fixes to ensure correct background colors in both modes */
 
-/* Force the correct background color and override any Mintlify theme settings */
-:root {
-  --mint-background: rgb(21, 21, 21) !important;
+/* Base styles for all elements */
+:root, html, body, #__next, main {
+  transition: background-color 200ms ease-in-out;
 }
 
-body, html, #__next, main, .dark {
+/* Dark mode specific overrides - default state */
+:root {
+  --mint-background: rgb(21, 21, 21) !important;
+  color-scheme: dark;
+}
+
+html, body, #__next, main {
   background-color: rgb(21, 21, 21) !important;
+}
+
+/* Light mode specific overrides */
+html.light, body.light {
+  --mint-background: rgb(255, 255, 255) !important;
+  background-color: rgb(255, 255, 255) !important;
+  color-scheme: light;
+}
+
+/* Ensure text colors are correct in light mode */
+html.light .content p, 
+html.light .content li,
+html.light .content h1, 
+html.light .content h2, 
+html.light .content h3, 
+html.light .content h4, 
+html.light .content h5, 
+html.light .content h6 {
+  color: rgb(21, 21, 21) !important;
 }
 
 /* Ensure no blueish tints in any container backgrounds */
 .sidebar, .navbar, .footer, .content, .card, .mint-card {
   background-color: transparent !important;
+}
+
+/* Ensure sidebar has correct background in both modes */
+.sidebar {
+  position: relative;
 }

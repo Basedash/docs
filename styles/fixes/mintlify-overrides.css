@@ -32,3 +32,13 @@
   background-color: var(--color-bdc-neutral-5) !important;
   color: var(--color-bdc-neutral-1) !important;
 }
+
+/* Fix light mode specific styling */
+.light .mint-link {
+  color: var(--color-bdc-theme-1) !important;
+}
+
+.light .mint-badge {
+  background-color: var(--color-bdc-neutral-5) !important;
+  color: var(--color-bdc-neutral-1) !important;
+}
