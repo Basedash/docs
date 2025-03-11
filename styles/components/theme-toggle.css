@@ -79,8 +79,11 @@
 
 .light .button-primary, 
 .light .mint-button-primary {
-  background-color: var(--color-bdc-theme-1);
+  background-color: var(--color-bdc-neutral-2);
   color: var(--color-bdc-on-anycolor);
+  border-radius: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
 }
 
 .light .button-secondary, 

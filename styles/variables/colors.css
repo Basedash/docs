@@ -174,9 +174,9 @@
 /* Light mode variables */
 .light {
   /* Theme colors - Light mode */
-  --_theme-1: rgba(6, 29, 224, 1);
-  --_theme-1-text: rgba(6, 29, 224, 1);
-  --_theme-1-highlight: rgba(6, 29, 224, 0.3);
+  --_theme-1: rgba(60, 80, 255, 1);
+  --_theme-1-text: rgba(99, 115, 255, 1);
+  --_theme-1-highlight: rgba(99, 115, 255, 0.6);
   --_theme-2: rgba(218, 65, 13, 1);
   --_theme-2-text: rgba(225, 103, 61, 1);
   --_theme-3: rgba(167, 98, 255, 1);
