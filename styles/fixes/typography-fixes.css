@@ -1,0 +1,23 @@
+/* Typography fixes to align with charts repo */
+
+/* Apply JetBrains Mono to all headings as required */
+h1, h2, h3, h4, h5, h6,
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  font-family: var(--font-mono) !important;
+}
+
+/* Ensure proper font weights match the charts repo */
+h1 {
+  font-weight: var(--font-weight-semibold) !important;
+}
+
+h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-medium) !important;
+}
+
+/* Ensure text colors match the charts repo */
+.content p, 
+.content li,
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  color: var(--color-bdc-neutral-1) !important;
+}

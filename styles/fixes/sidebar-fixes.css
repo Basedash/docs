@@ -1,0 +1,20 @@
+/* Sidebar styling fixes to match charts repo */
+
+/* Add the dither gradient to the sidebar */
+.sidebar::after {
+  content: '';
+  position: absolute;
+  height: 4rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-image: url('/assets/dither-gradient.svg');
+  background-position: top left;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+/* Ensure sidebar has correct background in both modes */
+.sidebar {
+  background-color: var(--color-bdc-background-1) !important;
+}
