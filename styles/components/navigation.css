@@ -32,8 +32,8 @@
 }
 
 .nav-item.active {
-  color: var(--color-bdc-neutral-1);
-  background-color: var(--color-bdc-neutral-5);
+  color: var(--color-bdc-on-anycolor);
+  background-color: var(--color-bdc-theme-1);
 }
 
 .nav-group-title {

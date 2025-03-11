@@ -54,8 +54,8 @@ body {
 }
 
 .sidebar-item.active {
-  color: var(--color-bdc-neutral-1);
-  background-color: var(--color-bdc-neutral-5);
+  color: var(--color-bdc-on-anycolor);
+  background-color: var(--color-bdc-theme-1);
 }
 
 .sidebar-group-title {
@@ -203,13 +203,16 @@ body {
 }
 
 .button-primary, .mint-button-primary {
-  background-color: var(--color-bdc-neutral-2);
+  background-color: var(--color-bdc-neutral-1);
   color: var(--color-bdc-on-neutral);
   border: 1px solid var(--color-bdc-neutral-3);
+  border-radius: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
 }
 
 .button-primary:hover, .mint-button-primary:hover {
-  background-color: var(--color-bdc-neutral-1);
+  background-color: var(--color-bdc-neutral-2);
 }
 
 .button-secondary, .mint-button-secondary {
@@ -231,6 +234,7 @@ body {
   color: var(--color-bdc-neutral-2);
   border-bottom: 2px solid transparent;
   transition: color 150ms ease-in-out, border-color 150ms ease-in-out;
+  font-family: var(--font-mono);
 }
 
 .tab:hover {

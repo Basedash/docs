@@ -22,7 +22,8 @@
 }
 
 .sidebar-item.active {
-  color: var(--color-bdc-theme-1-text);
+  color: var(--color-bdc-on-anycolor);
+  background-color: var(--color-bdc-theme-1);
   font-weight: var(--font-weight-medium);
 }
 
@@ -118,7 +119,7 @@
   font-weight: var(--font-weight-semibold);
   margin-bottom: 1.5rem;
   color: var(--color-bdc-neutral-1);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
 }
 
 .content h2 {
@@ -127,7 +128,7 @@
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   color: var(--color-bdc-neutral-1);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
 }
 
 .content h3, 
