@@ -21,3 +21,5 @@ Pages typically should not include an h1 at the start of the content since they 
 Use sentence case everywhere, never title case. This includes for page names, titles, headers, etc. Example:
 Good: "Connect your data"
 Bad: "Connect Your Data"
+
+Icons use Font Awesome. For example, 'comments', 'database', 'book-open'.
