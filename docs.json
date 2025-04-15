@@ -8,13 +8,8 @@
     "dark": "#061DE0"
   },
   "favicon": "/favicon.svg",
-  "css": ["/styles/custom.css"],
-  "javascript": ["/js/theme-toggle.js"],
-  "modeToggle": {
-    "default": "dark"
-  },
-  "feedback": {
-    "suggestEdit": true
+  "appearance": {
+    "default": "system"
   },
   "navigation": {
     "tabs": [
@@ -82,8 +77,21 @@
       "linkedin": "https://linkedin.com/company/Basedash"
     }
   },
-  "typography": {
-    "fontFamily": "InterVariable, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    "code": "'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+  "fonts": {
+    "body": {
+      "family": "InterVariable",
+      "source": "/public/fonts/inter/InterVariable.woff2",
+      "format": "woff2",
+      "weight": 400
+    },
+    "heading": {
+      "family": "InterVariable",
+      "source": "/public/fonts/inter/InterVariable.woff2",
+      "format": "woff2",
+      "weight": 600
+    }
+  },
+  "styling": {
+    "codeblocks": "dark"
   }
 }
