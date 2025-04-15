@@ -21,10 +21,17 @@
             "pages": [
               "getting-started/introduction",
               "getting-started/connect-data",
-              "getting-started/create-dashboard",
-              "getting-started/sql-editor",
-              "getting-started/chat-with-your-data",
               "getting-started/invite-team"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "features/dashboards",
+              "features/charts",
+              "features/tables",
+              "features/sql-editor",
+              "features/chat"
             ]
           },
           {
