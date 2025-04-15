@@ -1,0 +1,14 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+This docs codebase uses Mintlify.
+
+When adding a new page, make sure to create the .mdx file and also add the page to [docs.json](mdc:docs.json).
+
+# Testing
+
+You can run the dev server using `npx mintlify dev` (if it's not already running). This starts the local dev server at localhost:3000.
+
+You can use the playwright MCP server to test the docs site locally.

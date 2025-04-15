@@ -1,0 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+This is the documentation codebase for Basedash, an AI-native business intelligence platform. It is a cloud-based web app that allows companies to connect their various data sources and build charts and dashboards for internal use. Users can either connect their own SQL databases directly, or set up connections through Fivetran to a Postgres warehouse managed by Basedash.
+
+Unlike traditional BI tools, Basedash primarily handles chart creation through AI. Users describe the chart they want to see and AI automatically figures out how to write the SQL query and visualize the data. There is also an open-ended chat interface that allows users to ask AI questions about their data.
