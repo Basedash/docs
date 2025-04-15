@@ -3,4 +3,54 @@ title: 'Cloud Spanner'
 description: 'Connect your Cloud Spanner database to Basedash'
 ---
 
-Connect your Cloud Spanner database to Basedash to start querying and managing your data.
+Connect your Google Cloud Spanner database to Basedash to visualize and analyze your application data.
+
+## Prerequisites
+- A Google Cloud project with Cloud Spanner enabled
+- Service account with Spanner access
+- Service account key file (JSON)
+- Instance and database information
+
+## Connection methods
+
+### Direct connection
+1. From your Basedash dashboard, click "Add Data Source"
+2. Select "Cloud Spanner" as your database type
+3. Upload your service account key file
+4. Enter your connection details:
+   - Project ID
+   - Instance ID
+   - Database name
+5. Click "Test Connection" to verify
+6. Save your connection
+
+## Required permissions
+Your service account needs the following IAM roles:
+- `roles/spanner.databaseReader` - to read data
+- `roles/spanner.viewer` - to view instance and database information
+
+## Best practices
+- Create a dedicated service account for Basedash
+- Grant minimum required permissions
+- Regularly rotate service account keys
+- Monitor query performance and costs
+- Use appropriate instance configurations
+
+## Performance optimization
+- Design efficient schemas
+- Use appropriate indexes
+- Monitor query patterns
+- Set up proper backup policies
+- Configure appropriate resource limits
+
+## Troubleshooting
+- Verify service account permissions
+- Check instance and database status
+- Monitor quota usage
+- Review Spanner audit logs
+- Validate network connectivity
+
+## Next steps
+- [Create your first dashboard](/getting-started/create-dashboard)
+- [Write SQL queries](/getting-started/sql-editor)
+- [Learn about security](/essentials/security)

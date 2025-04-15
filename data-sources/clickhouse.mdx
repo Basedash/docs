@@ -3,4 +3,58 @@ title: 'ClickHouse'
 description: 'Connect your ClickHouse database to Basedash'
 ---
 
-Connect your ClickHouse database to Basedash to start querying and managing your data.
+Connect your ClickHouse data warehouse to Basedash to analyze and visualize your enterprise data.
+
+## Prerequisites
+- A ClickHouse server or cloud instance
+- User credentials with appropriate access
+- Server host and port information
+- SSL certificates (if using secure connection)
+
+## Connection setup
+1. From your Basedash dashboard, click "Add Data Source"
+2. Select "ClickHouse" as your data warehouse
+3. Enter your connection details:
+   - Host
+   - Port (default: 8123 for HTTP, 9440 for HTTPS)
+   - Database name
+   - Username
+   - Password
+   - SSL settings (if required)
+4. Click "Test Connection" to verify
+5. Save your connection
+
+## Required permissions
+Your ClickHouse user needs:
+- `SELECT` privilege on required databases/tables
+- `SHOW` privilege on databases
+- `SHOW TABLES` privilege
+- `SHOW COLUMNS` privilege
+
+## Best practices
+- Create a dedicated user for Basedash
+- Enable SSL for secure connections
+- Grant minimum required permissions
+- Set appropriate query limits
+- Regularly rotate credentials
+
+## Performance optimization
+- Use appropriate table engines
+- Configure proper partitioning
+- Set up materialized views
+- Monitor query performance
+- Use efficient indexing
+- Enable query caching
+
+## Troubleshooting
+- Verify user permissions
+- Check server connectivity
+- Monitor resource usage
+- Review server logs
+- Validate query syntax
+- Check SSL configuration
+
+## Next steps
+- [Create your first dashboard](/getting-started/create-dashboard)
+- [Write SQL queries](/getting-started/sql-editor)
+- [Learn about security](/essentials/security)

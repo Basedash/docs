@@ -3,4 +3,50 @@ title: 'BigQuery'
 description: 'Connect your BigQuery data warehouse to Basedash'
 ---
 
-Connect your BigQuery data warehouse to Basedash to start querying and managing your data.
+Connect your Google BigQuery data warehouse to Basedash to analyze and visualize your enterprise data.
+
+## Prerequisites
+- A Google Cloud project with BigQuery enabled
+- Service account with BigQuery access
+- Service account key file (JSON)
+- Relevant dataset permissions
+
+## Connection setup
+1. From your Basedash dashboard, click "Add Data Source"
+2. Select "BigQuery" as your data warehouse
+3. Upload your service account key file
+4. Select or enter your project ID
+5. Choose default dataset (optional)
+6. Click "Test Connection" to verify
+7. Save your connection
+
+## Required permissions
+Your service account needs the following IAM roles:
+- `roles/bigquery.dataViewer` - to read data
+- `roles/bigquery.jobUser` - to run queries
+- `roles/bigquery.resourceViewer` - to list projects and datasets
+
+## Best practices
+- Create a dedicated service account for Basedash
+- Grant minimum required permissions
+- Regularly rotate service account keys
+- Use table partitioning for large datasets
+- Set appropriate query cost limits
+
+## Performance optimization
+- Use clustered and partitioned tables
+- Materialize commonly used views
+- Create appropriate table statistics
+- Monitor query costs and performance
+- Set up appropriate caching policies
+
+## Troubleshooting
+- Verify service account permissions
+- Check if datasets are accessible
+- Monitor query quotas and limits
+- Review BigQuery audit logs for errors
+
+## Next steps
+- [Create your first dashboard](/getting-started/create-dashboard)
+- [Write SQL queries](/getting-started/sql-editor)
+- [Learn about security](/essentials/security)

@@ -3,4 +3,59 @@ title: 'Snowflake'
 description: 'Connect your Snowflake data warehouse to Basedash'
 ---
 
-Connect your Snowflake data warehouse to Basedash to start querying and managing your data.
+Connect your Snowflake data warehouse to Basedash to analyze and visualize your enterprise data.
+
+## Prerequisites
+- A Snowflake account
+- User credentials with appropriate access
+- Account identifier (organization-account.region)
+- Warehouse, database, and schema information
+
+## Connection setup
+1. From your Basedash dashboard, click "Add Data Source"
+2. Select "Snowflake" as your data warehouse
+3. Enter your connection details:
+   - Account identifier
+   - Username
+   - Password
+   - Warehouse name
+   - Database name
+   - Schema (optional)
+   - Role (optional)
+4. Click "Test Connection" to verify
+5. Save your connection
+
+## Required permissions
+Your Snowflake user needs:
+- `USAGE` on warehouse
+- `USAGE` on database
+- `USAGE` on schema
+- `SELECT` on required tables
+- `MONITOR` on warehouse (recommended)
+
+## Best practices
+- Create a dedicated user for Basedash
+- Use appropriate warehouse sizing
+- Grant minimum required permissions
+- Set resource monitors for cost control
+- Regularly rotate credentials
+
+## Performance optimization
+- Choose appropriate warehouse size
+- Use clustering keys for large tables
+- Leverage materialized views
+- Set up proper table maintenance
+- Configure query timeouts
+- Enable result caching
+
+## Troubleshooting
+- Verify user permissions
+- Check warehouse availability
+- Monitor credit usage
+- Review query history for errors
+- Validate network access
+
+## Next steps
+- [Create your first dashboard](/getting-started/create-dashboard)
+- [Write SQL queries](/getting-started/sql-editor)
+- [Learn about security](/essentials/security)

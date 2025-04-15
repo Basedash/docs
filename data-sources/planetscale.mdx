@@ -3,4 +3,55 @@ title: 'PlanetScale'
 description: 'Connect your PlanetScale database to Basedash'
 ---
 
-Connect your PlanetScale database to Basedash to start querying and managing your data.
+Connect your PlanetScale database to Basedash to visualize and analyze your application data.
+
+## Prerequisites
+- A PlanetScale account and database
+- Database branch name
+- Database password (generated from PlanetScale dashboard)
+- Connection string or individual credentials
+
+## Connection methods
+
+### Direct connection
+1. From your Basedash dashboard, click "Add Data Source"
+2. Select "PlanetScale" as your database type
+3. Enter your connection details:
+   - Host (from PlanetScale connection string)
+   - Database name
+   - Username
+   - Password
+   - SSL mode (required)
+4. Click "Test Connection" to verify
+5. Save your connection
+
+## Required permissions
+- Database password with read access
+- Access to the desired branch (main or development)
+- Appropriate organization permissions
+
+## Best practices
+- Use a dedicated password for Basedash
+- Connect to the appropriate branch
+- Enable SSL for secure connections
+- Regularly rotate database passwords
+- Monitor query performance
+
+## Performance optimization
+- Use appropriate indexes
+- Monitor slow queries
+- Set up proper schema design
+- Configure connection pools
+- Use query caching when possible
+
+## Troubleshooting
+- Verify database password is active
+- Check branch availability
+- Monitor connection limits
+- Review query logs
+- Validate SSL configuration
+
+## Next steps
+- [Create your first dashboard](/getting-started/create-dashboard)
+- [Write SQL queries](/getting-started/sql-editor)
+- [Learn about security](/essentials/security)

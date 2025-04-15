@@ -3,4 +3,56 @@ title: 'PostgreSQL'
 description: 'Connect your PostgreSQL database to Basedash'
 ---
 
-You can connect directly to your PostgreSQL database to visualize data from your product, like signups and customers.
+Connect your PostgreSQL database to Basedash to visualize and analyze your application data.
+
+## Prerequisites
+- A PostgreSQL database (version 10 or higher)
+- Database credentials with read access
+- Database host and port information
+- If using SSL: SSL certificate information
+- If using SSH tunnel: SSH credentials and host information
+
+## Connection methods
+
+### Direct connection
+1. From your Basedash dashboard, click "Add Data Source"
+2. Select "PostgreSQL" as your database type
+3. Enter your connection details:
+   - Host (e.g., `localhost` or `your-db.host.com`)
+   - Port (default: 5432)
+   - Database name
+   - Username
+   - Password
+   - SSL mode (if required)
+4. Click "Test Connection" to verify
+5. Save your connection
+
+### SSH tunnel
+For enhanced security when your database is in a private network:
+1. Follow the direct connection steps above
+2. Enable "Connect via SSH" option
+3. Add our IP (`24.199.77.73`) to your allowlist
+4. Provide SSH connection details:
+   - SSH host
+   - SSH username
+   - Authentication method (password or key)
+5. Test and save the connection
+
+## Best practices
+- Use a read-only database user for Basedash
+- Enable SSL for secure connections
+- Consider using an SSH tunnel for databases in private networks
+- Regularly rotate database credentials
+- Monitor query performance and set appropriate limits
+
+## Troubleshooting
+- Ensure your database user has SELECT permissions on required schemas
+- Check if your database host allows external connections
+- Verify firewall rules allow connections from Basedash IP
+- For SSL issues, verify certificate configuration
+- For connection issues, check database logs for error messages
+
+## Next steps
+- [Create your first dashboard](/getting-started/create-dashboard)
+- [Write SQL queries](/getting-started/sql-editor)
+- [Learn about security](/essentials/security)
