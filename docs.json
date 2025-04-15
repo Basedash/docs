@@ -37,7 +37,6 @@
           {
             "group": "Databases",
             "pages": [
-              "data-sources/clickhouse",
               "data-sources/mysql",
               "data-sources/planetscale",
               "data-sources/postgres",
@@ -46,7 +45,11 @@
           },
           {
             "group": "Warehouses",
-            "pages": ["data-sources/bigquery", "data-sources/snowflake"]
+            "pages": [
+              "data-sources/bigquery",
+              "data-sources/clickhouse",
+              "data-sources/snowflake"
+            ]
           }
         ]
       }
