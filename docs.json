@@ -18,7 +18,13 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["introduction"]
+            "pages": [
+              "getting-started/introduction",
+              "getting-started/connect-data",
+              "getting-started/create-dashboard",
+              "getting-started/sql-editor",
+              "getting-started/invite-team"
+            ]
           },
           {
             "group": "Essentials",
@@ -75,20 +81,6 @@
       "x": "https://x.com/Basedash",
       "github": "https://github.com/Basedash",
       "linkedin": "https://linkedin.com/company/Basedash"
-    }
-  },
-  "fonts": {
-    "body": {
-      "family": "InterVariable",
-      "source": "/public/fonts/inter/InterVariable.woff2",
-      "format": "woff2",
-      "weight": 400
-    },
-    "heading": {
-      "family": "InterVariable",
-      "source": "/public/fonts/inter/InterVariable.woff2",
-      "format": "woff2",
-      "weight": 600
     }
   },
   "styling": {

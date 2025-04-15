@@ -1,0 +1,57 @@
+---
+title: 'Connect your data'
+description: 'Connect your data sources to Basedash'
+icon: 'database'
+---
+
+Basedash supports a wide range of data sources, making it easy to connect and visualize your data. You can connect directly to SQL databases or data warehouses.
+
+## Supported data sources
+
+### SQL databases
+- PostgreSQL
+- MySQL
+- PlanetScale
+- Cloud Spanner
+
+### Data warehouses
+- BigQuery
+- Snowflake
+- ClickHouse
+
+## Connection methods
+
+### Direct connection
+1. From your Basedash dashboard, click on "Add Data Source"
+2. Select your database type
+3. Enter your connection details:
+   - Host
+   - Port
+   - Database name
+   - Username
+   - Password
+4. Click "Test Connection" to verify
+5. Save your connection
+
+### SSH tunnel
+For enhanced security, you can connect through SSH:
+1. Follow the direct connection steps
+2. Enable "Connect via SSH" option
+3. Add our IP (`24.199.77.73`) to your allowlist
+4. Provide SSH credentials
+5. Test and save the connection
+
+### Security
+All connections are encrypted and secure. Basedash:
+- Uses HTTPS/TLS for all connections
+- Encrypts credentials with AES-256
+- Only requires read access to your data
+- Is SOC 2 Type II compliant
+
+For more details about security, check out our [security documentation](/essentials/security).
+
+## Next steps
+Once connected, you can:
+- [Create your first dashboard](/getting-started/create-dashboard)
+- [Write SQL queries](/getting-started/sql-editor)
+- [Invite team members](/getting-started/invite-team)

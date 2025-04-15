@@ -9,6 +9,15 @@ When adding a new page, make sure to create the .mdx file and also add the page 
 
 # Testing
 
-You can run the dev server using `npx mintlify dev` (if it's not already running). This starts the local dev server at localhost:3000.
+You can run the dev server using `mintlify dev` (if it's not already running). This starts the local dev server at localhost:3000.
+
 
 You can use the playwright MCP server to test the docs site locally.
+
+# Style guide
+
+Pages typically should not include an h1 at the start of the content since they already use the title from the frontmatter as an h1.
+
+Use sentence case everywhere, never title case. This includes for page names, titles, headers, etc. Example:
+Good: "Connect your data"
+Bad: "Connect Your Data"
