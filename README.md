@@ -1,32 +1,72 @@
-# Mintlify Starter Kit
+# Basedash Documentation
 
-Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
+This repository contains the documentation for Basedash, our AI-native business intelligence platform. This guide will help you get set up and make changes to the documentation.
 
-- Guide pages
-- Navigation
-- Customizations
-- API Reference pages
-- Use of popular components
+## Initial Setup
 
-### Development
+1. **Install Required Software**
+   - Install [Git](https://git-scm.com/downloads) if you don't have it
+   - Install [Node.js](https://nodejs.org/) (which includes npm)
+   - Install [Cursor](https://cursor.sh/) - this is the AI-powered editor we use
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the documentation changes locally. To install, use the following command
+2. **Clone the Repository**
+   Open Terminal and run these commands:
+   ```bash
+   cd Documents  # or wherever you want to store the project
+   git clone https://github.com/Basedash/docs.git
+   cd docs
+   ```
 
-```
-npm i -g mintlify
-```
+3. **Install Dependencies**
+   ```bash
+   npm i -g mintlify  # Install Mintlify CLI globally
+   ```
 
-Run the following command at the root of your documentation (where docs.json is)
+## Making Changes
 
-```
-mintlify dev
-```
+You'll need to follow these steps every time you want to make a change.
 
-### Publishing Changes
+1. **Get Latest Changes**
+   Before making any changes, always get the latest updates:
+   ```bash
+   git pull origin main
+   ```
 
-Install our Github App to auto propagate changes from your repo to your deployment. Changes will be deployed to production automatically after pushing to the default branch. Find the link to install on your dashboard. 
+2. **Using Cursor**
+   - Open Cursor
+   - Choose "Open Folder" and select the `docs` folder
+   - Press ⌘I to activate the AI assistant
+   - Type your request in plain English, and the AI will help you make changes
 
-#### Troubleshooting
+3. **Testing Your Changes**
+   To preview your changes locally, run:
+   ```bash
+   mintlify dev
+   ```
+   This will start a local server at http://localhost:3000 where you can preview the changes.
 
-- Mintlify dev isn't running - Run `mintlify install` it'll re-install dependencies.
-- Page loads as a 404 - Make sure you are running in a folder with `docs.json`
+4. **Saving Your Changes**
+   After making changes, run:
+   ```bash
+   git add .
+   git commit -m "Describe your changes briefly here"
+   git push origin main
+   ```
+
+## Troubleshooting
+
+- If `mintlify dev` isn't working:
+  - Run `mintlify install` to reinstall dependencies
+- If a page shows as 404:
+  - Make sure you're in the correct folder with `docs.json`
+
+## Publishing
+
+Changes will automatically be deployed to production after pushing to the main branch.
+
+## Need Help?
+
+If you get stuck at any point:
+1. Use the Cursor AI to ask for help
+2. Reach out to the development team on Slack
+3. Check the [Mintlify documentation](https://mintlify.com/docs)
