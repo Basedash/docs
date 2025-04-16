@@ -1,0 +1,37 @@
+---
+title: 'Supabase'
+description: 'Connect your Supabase database to Basedash'
+---
+
+Supabase is built on top of Postgres, so connecting your Supabase database to Basedash is straightforward. You'll need your database connection details from your Supabase project settings.
+
+## Prerequisites
+
+- A Supabase project
+- Database connection credentials from your project settings
+
+## Connection details
+
+1. Go to your Supabase project dashboard
+2. Navigate to Project Settings > Database
+3. Under "Connection info", you'll find your database credentials
+4. Use these details to connect:
+   - Host: `[your-project-id].supabase.co`
+   - Port: `5432`
+   - Database name: `postgres`
+   - Username: Your database username
+   - Password: Your database password
+
+## Security
+
+- Basedash encrypts all database credentials and connection information
+- All queries are executed through secure, encrypted connections
+- You can create a read-only user in Supabase for added security
+
+## Next steps
+
+After connecting your Supabase database, you can:
+- Create charts and dashboards
+- Query your data using natural language
+- Set up automated reports
+- Share insights with your team
