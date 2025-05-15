@@ -31,7 +31,8 @@
               "features/charts",
               "features/tables",
               "features/sql-editor",
-              "features/chat"
+              "features/chat",
+              "features/sso"
             ]
           },
           {

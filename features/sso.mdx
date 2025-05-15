@@ -1,0 +1,37 @@
+---
+title: 'Domains & SSO'
+description: "Add your own domains to allow access to Basedash with SSO and auto join"
+icon: 'globe'
+---
+
+> These features are only available on our **Enterprise plan**
+
+You can log in or have new members sign up to Basedash using single sign-on (SSO). You will first need to add a domain and verify it before you can configure SSO for your organization.
+
+## Domains
+
+To add a domain, navigate to your organization settings from the command menu, and select the "Domains" option. From there, you can add a domain and proceed with verifying it by adding a TXT record in your domain provider's interface.
+
+<img
+  className="block"
+  src="/images/domain-configuration.png"
+  alt="Domain configuration"
+/>
+
+### TXT record verification
+
+We provide both a TXT subdomain and a TXT value that you must add to your domain provider's interface. Then, you can click the option in Basedash to check the domain's verification status.
+
+Once your domain passes the verification check, you will be able to enable domain-related features such as auto-join and SSO.
+
+### Auto join
+
+Once your domain is verified, you can enable auto-join. This allows any user who signs up or logs in with an email at your verified domain to automatically have access to your organization.
+
+### SSO
+
+Once your domain is verified, you can enable SSO. After SSO is enabled, you can add your SSO provider's XML metadata, which we use to configure the connection with your SSO provider. We provide an ACS URL that you will need to enter on your SSO provider's side to complete the setup.
+
+If you encounter any difficulties, please contact us for more details.
+
+Once SSO is properly configured, users will only be able to log in and sign up with emails at your verified domain using your SSO provider's login flow.

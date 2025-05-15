@@ -19,7 +19,7 @@ This repository contains the documentation for Basedash, our AI-native business 
 
 3. **Install Dependencies**
    ```bash
-   npm i -g mintlify  # Install Mintlify CLI globally
+   pnpm add -g mint  # Install Mintlify CLI globally
    ```
 
 ## Making Changes
@@ -41,7 +41,7 @@ You'll need to follow these steps every time you want to make a change.
 3. **Testing Your Changes**
    To preview your changes locally, run:
    ```bash
-   mintlify dev
+   mint dev
    ```
    This will start a local server at http://localhost:3000 where you can preview the changes.
 
@@ -55,8 +55,8 @@ You'll need to follow these steps every time you want to make a change.
 
 ## Troubleshooting
 
-- If `mintlify dev` isn't working:
-  - Run `mintlify install` to reinstall dependencies
+- If `mint dev` isn't working:
+  - Run `mint install` to reinstall dependencies
 - If a page shows as 404:
   - Make sure you're in the correct folder with `docs.json`
 
