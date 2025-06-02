@@ -4,13 +4,52 @@ description: 'Keeping your data secure'
 icon: 'lock'
 ---
 
-Basedash takes security and data privacy seriously.
+Basedash takes security and data privacy seriously. We've implemented comprehensive security measures to protect your data throughout every step of the process.
 
-- Basedash is SOC 2 Type II compliant. You can request our latest report by emailing us at [support@basedash.com](mailto:support@basedash.com).
-- All Basedash servers are located in San Francisco, California.
-- Basedash only requires read access to your data sources, so you can connect using read-only credentials.
-- Basedash doesn’t send any of your response data to third-party AI providers. We only share metadata about your data source, like the table and column names available to query.
-- HTTPS is required on all connections, data in-transit is encrypted with TLS. Our database data is encrypted at-rest with LUKS and credentials that we save to the database (such as database passwords and SSH keys) are additionally encrypted with AES-256.
-- By default, Basedash caches query results to improve performance and reduce strain on your database. The cached data is fully encrypted and all cached data gets permanently deleted after 1 day. You can request for us to disable data caching for your organization by emailing us at [support@basedash.com](mailto:support@basedash.com).
-- All database credentials are encrypted and stored in a way that Basedash employees cannot access them.
-- Basedash supports connecting to databases through SSH. This allows you to connect to databases contained within private networks that are accessible only to the Basedash servers. You can set this up by whitelisting the Basedash server IP: `24.199.77.73`
+## Compliance and certifications
+
+Basedash is SOC 2 Type II compliant, demonstrating our commitment to maintaining the highest standards of security, availability, and confidentiality. This independent audit validates our security controls and processes. You can request our latest SOC 2 report by emailing us at [support@basedash.com](mailto:support@basedash.com).
+
+All Basedash servers are located in San Francisco, California, ensuring your data remains within secure, well-regulated infrastructure. For customers using non-SQL data sources, the dedicated data warehouses we provision are also hosted in the same San Francisco location.
+
+We work with third-party security researchers to conduct regular penetration testing, ensuring our security measures remain robust against evolving threats.
+
+## Connecting your data
+
+Basedash offers two primary methods for connecting your data, each designed with security as a top priority.
+
+For **SQL databases**, Basedash connects directly to your database and only requires read access to your data sources. This means you can connect using read-only database credentials, ensuring that Basedash cannot modify, delete, or write any data to your databases. We simply form a connection and query your database directly when you need data.
+
+For databases within private networks, Basedash supports SSH connections for direct database access. This allows you to securely connect to databases that aren't directly accessible from the internet by routing the connection through an SSH tunnel. To set this up, simply whitelist the Basedash server IP address: `24.199.77.73`.
+
+For **non-SQL data sources**, we use Fivetran as a syncing mechanism to replicate your data into a secure data warehouse that we spin up specifically for your organization. This gives you a dedicated warehouse containing a copy of your data that you fully control—you can connect other tools to it or manage the data outside of Basedash as needed.
+
+## Access controls and user management
+
+Basedash provides comprehensive access controls to ensure the right people have access to the right data. On our enterprise plan, we support SAML SSO integration, allowing you to manage user authentication through your existing identity provider.
+
+Within your organization, you can create groups and assign fine-grained access permissions to individual dashboards. For example, you could create a dashboard that only your support team can access, while maintaining separate dashboards exclusively for your engineering team. This granular permission system ensures sensitive business data is only visible to the appropriate stakeholders.
+
+## Audit logging and monitoring
+
+Basedash maintains comprehensive audit logs that track user activity and data access patterns. These logs provide visibility into who accessed what data and when, supporting both security monitoring and compliance requirements for your organization.
+
+## AI data usage and privacy
+
+To enable AI-powered chart creation and data analysis, Basedash sends metadata about your data sources and results from SQL queries to AI providers. This includes information like table and column names, as well as query results, which allows the AI to understand your data structure and build meaningful visualizations.
+
+Importantly, your data is not used for training purposes by either Basedash or AI model providers. The data sent to AI providers is used solely to generate charts, answer questions, and provide insights about your specific datasets, ensuring your business information remains private and is not incorporated into broader AI training datasets.
+
+## Data encryption
+
+Security is maintained at every layer through comprehensive encryption. All connections to Basedash require HTTPS, and data in-transit is encrypted using TLS protocols. Your database data is encrypted at-rest using LUKS encryption, providing an additional layer of protection for stored information.
+
+Database credentials and SSH keys that you provide are encrypted using AES-256 encryption before being stored, ensuring that even if someone gained access to our systems, your credentials would remain protected.
+
+## Data retention and deletion
+
+To improve performance and reduce strain on your databases, Basedash caches query results by default. All cached data is fully encrypted and automatically deleted after 1 day, ensuring your data doesn't persist longer than necessary.
+
+If your organization has specific requirements around data caching, you can request to have caching disabled entirely by emailing us at [support@basedash.com](mailto:support@basedash.com).
+
+For data deletion, users can delete their account and associated data directly through the Basedash application. Alternatively, you can contact our support team at [support@basedash.com](mailto:support@basedash.com) to request data deletion on your behalf. We ensure complete removal of your data from our systems upon request.
