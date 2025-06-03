@@ -731,6 +731,42 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Startup metrics",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "startup-metrics/introduction",
+              "startup-metrics/metrics-by-stage"
+            ]
+          },
+          {
+            "group": "Core metrics",
+            "pages": [
+              "startup-metrics/product-metrics",
+              "startup-metrics/growth-metrics",
+              "startup-metrics/revenue-metrics",
+              "startup-metrics/unit-economics"
+            ]
+          },
+          {
+            "group": "Advanced metrics",
+            "pages": [
+              "startup-metrics/retention-churn",
+              "startup-metrics/sales-marketing",
+              "startup-metrics/operational-metrics"
+            ]
+          },
+          {
+            "group": "Implementation",
+            "pages": [
+              "startup-metrics/tracking-implementation",
+              "startup-metrics/communicating-metrics"
+            ]
+          }
+        ]
       }
     ],
     "global": {
