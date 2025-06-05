@@ -7,12 +7,60 @@ description: 'Connect your Google Drive data to Basedash'
 
 Google Drive is available as a data source via Basedash Warehouse. This allows you to sync your Google Drive data into a centralized warehouse managed by Basedash.
 
+## Key Features
+
+Google Drive connector is particularly powerful for working with multiple Google Sheets:
+
+- Connect entire folders of Google Sheets at once
+- All sheets in a folder are automatically treated as a schema
+- No need to create named ranges or reformat tables
+- Maintains the original structure and relationships between sheets
+- Ideal for complex datasets spread across multiple sheets (e.g., survey data, multi-sheet reports)
+
+> **Note**: If you only need to connect a single Google Sheet, you may want to use the [Google Sheets connector](/data-sources/connectors/google_sheets) instead.
+
+## Common Use Cases
+
+The Google Drive connector is particularly useful for the following scenarios:
+
+### Survey and Research Data
+- Connect multiple survey response sheets
+- Maintain separate sheets for different survey waves or demographics
+- Keep raw data and processed results in the same schema
+- Example: SODB survey data with multiple response sheets
+
+### Financial and Business Reporting
+- Connect budget sheets across different departments
+- Maintain separate sheets for different time periods (monthly, quarterly, yearly)
+- Keep supporting documentation and calculations in the same schema
+- Example: Annual budget with separate sheets for revenue, expenses, and forecasts
+
+### Project Management
+- Connect project tracking sheets across different teams
+- Maintain separate sheets for different project phases
+- Keep resource allocation and timeline data in the same schema
+- Example: Project portfolio with separate sheets for tasks, resources, and milestones
+
+### Data Analysis and Research
+- Connect multiple data collection sheets
+- Maintain separate sheets for different data sources or time periods
+- Keep raw data and analysis results in the same schema
+- Example: Research project with separate sheets for different experiments or data sources
+
 ## Setup
 
 1. In Basedash, open the command menu (⌘K) and open "Data sources"
 2. Select "Add data source"
 3. Search for "Google Drive"
 4. Select Google Drive and follow the setup flow through Fivetran
+5. Choose the folder containing your Google Sheets to connect them all at once
+
+## Best Practices
+
+- Organize related sheets in a dedicated folder for easier management
+- Ensure consistent column naming across sheets for better schema integration
+- Use the folder structure to maintain logical grouping of related data
+- **Important**: Only include sheets in the folder that are meant to be part of the same schema. Other files or unrelated sheets should be kept in separate folders to avoid unnecessary data syncing and potential schema conflicts.
 
 ## Documentation
 
