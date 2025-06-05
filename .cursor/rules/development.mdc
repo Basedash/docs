@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
 This docs codebase uses Mintlify.
@@ -10,7 +10,6 @@ When adding a new page, make sure to create the .mdx file and also add the page 
 # Testing
 
 You can run the dev server using `mintlify dev` (if it's not already running). This starts the local dev server at localhost:3000.
-
 
 You can use the playwright MCP server to test the docs site locally.
 
@@ -23,3 +22,7 @@ Good: "Connect your data"
 Bad: "Connect Your Data"
 
 Icons use Font Awesome. For example, 'comments', 'database', 'book-open'.
+
+# Data sources
+
+We have a page for each of the data sources we support in Basedash in `/data-sources/connectors`. You can manually edit the markdown files here, but you also need to update [ignored-connectors.js](mdc:scripts/ignored-connectors.js) so that the script to generate connector pages doesn't overwrite your changes.
