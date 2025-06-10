@@ -5,15 +5,23 @@ description: 'Connect your PlanetScale database to Basedash'
 
 Connect your PlanetScale database to Basedash to visualize and analyze your application data.
 
-## Prerequisites
-- A PlanetScale account and database
-- Database branch name
-- Database password (generated from PlanetScale dashboard)
-- Connection string or individual credentials
+## Connection URI (recommended)
 
-## Connection methods
+The easiest way to connect is by using the connection string (URI) method. In Basedash, press <kbd>Command</kbd> + <kbd>K</kbd> and paste your connection string to start the connection flow immediately.
 
-### Direct connection
+Example:
+```
+mysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE]?sslmode=require
+```
+
+> **Note:** The password is not always visible in your database dashboard. Make sure you have access to it—this may be stored in a password manager like [1Password](https://1password.com/) or [LastPass](https://www.lastpass.com/), or you may need to contact a teammate who has the credentials.
+
+> **Tip:** Labels and connection methods may differ depending on your hosting provider (GCP, AWS, DigitalOcean, etc.). Always check your provider's documentation for the latest info.
+
+## Manual connection details
+
+If you prefer to enter credentials manually, use the following details:
+
 1. From your Basedash dashboard, click "Add Data Source"
 2. Select "PlanetScale" as your database type
 3. Enter your connection details:

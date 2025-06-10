@@ -799,6 +799,16 @@
     }
   },
   "styling": {
-    "codeblocks": "dark"
+    "codeblocks": "dark",
+    "button": {
+      "dark": {
+        "background": "#FFFFFF",
+        "text": "#000000"
+      },
+      "light": {
+        "background": "#000000",
+        "text": "#FFFFFF"
+      }
+    }
   }
 }

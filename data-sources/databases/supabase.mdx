@@ -5,22 +5,35 @@ description: 'Connect your Supabase database to Basedash'
 
 Supabase is built on top of Postgres, so connecting your Supabase database to Basedash is straightforward. You'll need your database connection details from your Supabase project settings.
 
-## Prerequisites
+## Connection URI (recommended)
 
-- A Supabase project
-- Database connection credentials from your project settings
+The easiest way to connect is by using the connection string (URI) method. In Basedash, press <kbd>Command</kbd> + <kbd>K</kbd> and paste your connection string to start the connection flow immediately.
 
-## Connection details
+Example (Transaction Pooler):
+```
+postgresql://postgres:[YOUR-PASSWORD]@<project-id>.supabase.co:6543/postgres
+```
 
-1. Go to your Supabase project dashboard
-2. Navigate to Project Settings > Database
-3. Under "Connection info", you'll find your database credentials
-4. Use these details to connect:
+> **Note:** The password is not visible in the Supabase dashboard. Make sure you have access to it—this may be stored in a password manager like [1Password](https://1password.com/) or [LastPass](https://www.lastpass.com/), or you may need to contact a teammate who has the credentials.
+
+> **Tip:** Labels and connection methods may differ depending on your hosting provider (GCP, AWS, DigitalOcean, etc.). Always check your provider's documentation for the latest info.
+
+After clicking the ["Connect" button in your Supabase project dashboard](https://supabase.com/dashboard/), you'll see options for Direct connection, Transaction pooler, and Session pooler. Always use the Transaction Pooler (port 6543) for best performance and compatibility with Basedash.
+
+## Manual connection details
+
+If you prefer to enter credentials manually, use the following details (from the Transaction Pooler section):
+
+1. Go to your [Supabase project dashboard](https://supabase.com/dashboard/)
+2. Click on the "Connect" button in the header
+3. In the Transaction Pooler section, use these details:
    - Host: `[your-project-id].supabase.co`
-   - Port: `5432`
+   - Port: `6543` (Transaction Pooler port)
    - Database name: `postgres`
    - Username: Your database username
    - Password: Your database password
+
+> **Important**: Always use the Transaction Pooler connection method (port 6543) instead of direct connection (port 5432). The Transaction Pooler provides better connection management and performance for your database queries.
 
 ## Security
 

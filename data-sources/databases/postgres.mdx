@@ -5,16 +5,23 @@ description: 'Connect your PostgreSQL database to Basedash'
 
 Connect your PostgreSQL database to Basedash to visualize and analyze your application data.
 
-## Prerequisites
-- A PostgreSQL database (version 10 or higher)
-- Database credentials with read access
-- Database host and port information
-- If using SSL: SSL certificate information
-- If using SSH tunnel: SSH credentials and host information
+## Connection URI (recommended)
 
-## Connection methods
+The easiest way to connect is by using the connection string (URI) method. In Basedash, press <kbd>Command</kbd> + <kbd>K</kbd> and paste your connection string to start the connection flow immediately.
 
-### Direct connection
+Example:
+```
+postgresql://[USERNAME]:[PASSWORD]@[HOST]:5432/[DATABASE]
+```
+
+> **Note:** The password is not always visible in your database dashboard. Make sure you have access to it—this may be stored in a password manager like [1Password](https://1password.com/) or [LastPass](https://www.lastpass.com/), or you may need to contact a teammate who has the credentials.
+
+> **Tip:** Labels and connection methods may differ depending on your hosting provider (GCP, AWS, DigitalOcean, etc.). Always check your provider's documentation for the latest info.
+
+## Manual connection details
+
+If you prefer to enter credentials manually, use the following details:
+
 1. From your Basedash dashboard, click "Add Data Source"
 2. Select "PostgreSQL" as your database type
 3. Enter your connection details:
@@ -29,7 +36,7 @@ Connect your PostgreSQL database to Basedash to visualize and analyze your appli
 
 ### SSH tunnel
 For enhanced security when your database is in a private network:
-1. Follow the direct connection steps above
+1. Follow the manual connection steps above
 2. Enable "Connect via SSH" option
 3. Add our IP (`24.199.77.73`) to your allowlist
 4. Provide SSH connection details:
