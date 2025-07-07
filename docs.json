@@ -21,24 +21,23 @@
             "pages": [
               "getting-started/introduction",
               "getting-started/connect-data",
-              "getting-started/invite-team",
-              "getting-started/faq"
+              "getting-started/invite-team"
             ]
           },
           {
             "group": "Features",
             "pages": [
+              "features/chat",
               "features/dashboards",
               "features/charts",
               "features/tables",
               "features/sql-editor",
-              "features/chat",
               "features/sso"
             ]
           },
           {
             "group": "Essentials",
-            "pages": ["essentials/security"]
+            "pages": ["essentials/security", "essentials/faq"]
           }
         ]
       },
