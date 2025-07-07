@@ -28,6 +28,7 @@
             "group": "Features",
             "pages": [
               "features/chat",
+              "features/reports",
               "features/dashboards",
               "features/charts",
               "features/tables",
@@ -780,7 +781,7 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
+        "label": "Contact us",
         "href": "mailto:support@basedash.com"
       }
     ],
