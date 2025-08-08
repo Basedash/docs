@@ -45,3 +45,17 @@ Your service account needs the following IAM roles:
 - Check if datasets are accessible
 - Monitor query quotas and limits
 - Review [BigQuery audit logs for errors](https://console.cloud.google.com/logs/query?src=Basedash)
+
+## Next steps: Add custom context
+
+You can add custom context to help the AI better understand your data structure and business logic. Consider adding context at the dataset or schema level if you notice the AI struggling to locate or understand specific data.
+
+### Automatic metadata import
+Basedash automatically imports table and column descriptions that are already set up in your BigQuery instance. If you have existing metadata in BigQuery, it will be available in Basedash without additional configuration.
+
+### When to add context
+- **Complex transformed data**: When the AI needs help understanding data transformation logic
+- **Business-specific metrics**: If calculated fields or KPIs need additional explanation
+- **Unclear naming conventions**: When table or column names don't clearly indicate their purpose
+
+For detailed guidance, see our [custom context documentation](/features/custom-context).

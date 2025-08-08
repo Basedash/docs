@@ -1,0 +1,112 @@
+---
+title: 'Custom context'
+description: 'Add custom context to improve AI understanding of your organization and data'
+icon: 'book-open'
+---
+
+Custom context allows you to enhance AI understanding by providing additional information about your organization, data sources, schemas, tables, and columns. This helps the AI generate more accurate and relevant responses when creating charts, reports, or answering questions in chat.
+
+## How AI interprets your data
+
+Basedash performs automatic pre-processing when you connect your data sources to understand the structure of your schemas, tables, and columns. The AI can analyze data types, relationships, and basic metadata to generate queries and visualizations.
+
+However, custom context provides the **business intelligence** that goes beyond the technical structure. It helps the AI understand:
+
+- How your organization operates and what metrics matter most
+- What your data actually represents in business terms
+- Internal terminology and KPIs specific to your company
+- The context and meaning behind complex data structures
+
+This additional layer of understanding enables the AI to generate more relevant, business-focused insights rather than just technical queries.
+
+## How it works
+
+Custom context is automatically considered by the AI whenever you create charts, chat, or reports in Basedash. Organization-wide context applies to every conversation within your organization, while schema and column-level context is used when that specific data is referenced by the AI.
+
+## Accessing custom context
+
+### Organization-wide context
+
+You can access organization-wide custom context through the command bar:
+
+1. Press **Command + K** to open the command bar
+2. Type "custom context" and select the option
+3. Enter your organization-specific information
+
+![Command bar with custom context option](/images/commandbar-context.png)
+
+### Context in chat
+
+You can also add context directly in the chat interface:
+
+1. Look for the **"add context"** button (plus icon) in the bottom-left of the chat input
+2. Click to add relevant context for your current conversation
+
+![Chat interface with add context button](/images/context-inchat.png)
+
+### Data source context
+
+To add context for specific data sources, schemas, tables, or columns:
+
+1. Navigate to **Data sources** by:
+   - Clicking the workspace dropdown in the top-left corner and selecting "Data sources"
+   - Or pressing **Command + K** and typing "data sources"
+2. Select any data source or schema
+3. Look for the **"add description"** option
+
+![Data sources page with add description option](/images/context-datasource.png)
+
+## Best practices
+
+### Start with organization context
+
+We recommend beginning with organization-wide custom context as one of your first setup steps. This provides the AI with fundamental understanding of your business, terminology, and key metrics.
+
+### When to add schema and column context
+
+Only add schema and column-level context when the names or existing descriptions aren't sufficient for the AI to understand the data. This is particularly helpful for:
+
+- **Complex JSON columns**: Add context to explain what data is stored within JSON structures
+- **Unclear schema names**: Provide context about what type of data is stored and how it's used
+- **Custom data structures**: Explain any non-standard data formats or relationships
+
+### Define internal terminology
+
+Use custom context to define:
+
+- **Internal KPIs**: Specific metrics that only your organization understands
+- **User terminology**: How you refer to different user types (e.g., "signups," "active users," "premium customers")
+- **Business jargon**: Company-specific terms and definitions
+- **Metric definitions**: Custom calculations or business logic for specific metrics
+
+Once defined, the AI will understand and use your terminology consistently across all interactions.
+
+## Getting started
+
+We recommend adding custom context as part of your initial Basedash setup. This ensures the AI has the right context from the beginning, leading to more accurate and relevant responses.
+
+For step-by-step guidance, see our [getting started guide](/getting-started/connect-data) which includes custom context setup as part of the recommended workflow.
+
+## Examples
+
+### Organization context
+```
+Our company is a SaaS platform for e-commerce businesses. 
+We refer to our customers as "merchants" and their customers as "shoppers."
+"MRR" refers to Monthly Recurring Revenue from subscription plans.
+"Churn" means when a merchant cancels their subscription.
+```
+
+### Schema context
+```
+The "analytics" schema contains event tracking data from our platform.
+The "billing" schema contains subscription and payment information.
+The "support" schema contains customer support ticket data.
+```
+
+### Column context
+```
+The "metadata" JSON column contains user preferences and settings.
+The "status" column uses values: "active", "suspended", "cancelled".
+The "created_at" timestamp is in UTC timezone.
+```
