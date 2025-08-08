@@ -1,0 +1,234 @@
+---
+title: 'Embedding charts'
+description: 'Embed your Basedash charts and dashboards into external applications'
+icon: 'code'
+---
+
+Embedding allows you to integrate your Basedash charts and dashboards directly into external applications, websites, and internal tools. This enables you to share data insights seamlessly across your organization without requiring users to access the Basedash platform directly.
+
+## How embedding works
+
+Embedding allows you to take any dashboard created in Basedash and add it to your own app wrapper. To embed a dashboard:
+
+1. Click the **Share** button in the top right corner of your dashboard
+2. Basedash provides you with the iframe code to copy
+3. Paste the embed code into your application
+
+Embedded dashboards maintain their interactivity, including filters and variables, allowing users to explore data directly within your applications.
+
+### Getting embed codes
+
+#### Individual charts
+Embed specific charts with their own filters and controls:
+
+```
+<iframe src="https://app.basedash.com/embed/chart/abc123" 
+        width="100%" 
+        height="400px" 
+        frameborder="0">
+</iframe>
+```
+
+#### Full dashboards
+Embed entire dashboards with all charts and shared filters:
+
+```
+<iframe src="https://app.basedash.com/embed/dashboard/xyz789" 
+        width="100%" 
+        height="600px" 
+        frameborder="0">
+</iframe>
+```
+
+## Use cases
+
+### Customer-facing dashboards
+Embed charts into customer portals to show:
+- Account performance metrics
+- Usage statistics
+- Billing information
+- Custom analytics
+
+### Internal tools
+Integrate charts into internal applications:
+- CRM systems
+- Project management tools
+- Executive dashboards
+- Team collaboration platforms
+
+### Marketing websites
+Display public-facing metrics:
+- Company performance indicators
+- Product usage statistics
+- Customer success metrics
+- Industry benchmarks
+
+### Documentation sites
+Embed charts into documentation to show:
+- API usage examples
+- Performance benchmarks
+- Feature adoption rates
+- System health metrics
+
+## Embedding with filters
+
+### Variable injection
+You can inject variables into the dashboard in your embedded application:
+
+```
+<iframe src="https://app.basedash.com/embed/dashboard/xyz789?user_id=12345&date_range=last_30_days" 
+        width="100%" 
+        height="600px" 
+        frameborder="0">
+</iframe>
+```
+
+### Filter visibility control
+Control what users can see and modify:
+- **Allow user interaction**: Let users change filters and explore data
+- **Disable user visibility**: Hide filters to show only specific data slices
+- **Preset values**: Lock filters to specific values for consistent views
+
+### Dynamic filtering
+Update embedded charts programmatically:
+- Change filters via JavaScript
+- Respond to user interactions
+- Sync with parent application state
+- Real-time data updates
+
+## Security and access control
+
+### Secure data isolation
+When a dashboard is embedded in an application, filters are encoded in Base64 so that users can't inspect the page and see other users' data. This is a custom implementation that we help with.
+
+### Authentication
+Embedded charts respect your Basedash access controls:
+- User authentication required
+- Role-based permissions
+- Data access restrictions
+- Session management
+
+### Customer data isolation
+Perfect for showing users dashboards of their own data without allowing them to see anything else:
+- User-specific dashboards
+- Customer portals
+- Account-specific analytics
+- Personalized views
+
+### Public embeds
+Create public embeds for non-sensitive data:
+- Marketing materials
+- Public dashboards
+- Demo content
+- Educational resources
+
+### Private embeds
+Secure embeds for sensitive data:
+- Customer-specific data
+- Internal metrics
+- Financial information
+- Proprietary analytics
+
+## Technical implementation
+
+### Basic embed code
+```html
+<iframe 
+  src="https://app.basedash.com/embed/dashboard/YOUR_DASHBOARD_ID"
+  width="100%" 
+  height="600px" 
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+```
+
+### Responsive embedding
+```html
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe 
+    src="https://app.basedash.com/embed/dashboard/YOUR_DASHBOARD_ID"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
+```
+
+### JavaScript integration
+```javascript
+// Update embedded dashboard filters
+function updateDashboardFilters(dashboardId, filters) {
+  const iframe = document.getElementById('basedash-dashboard');
+  const url = new URL(iframe.src);
+  
+  Object.keys(filters).forEach(key => {
+    url.searchParams.set(key, filters[key]);
+  });
+  
+  iframe.src = url.toString();
+}
+
+// Listen for dashboard events
+window.addEventListener('message', function(event) {
+  if (event.origin === 'https://app.basedash.com') {
+    console.log('Dashboard event:', event.data);
+  }
+});
+```
+
+### Custom styling
+Basedash allows you to choose what theme you want and customize basic styling options for your embedded dashboards.
+
+## Best practices
+
+### Responsive design
+- Use responsive iframe containers
+- Test on different screen sizes
+- Ensure mobile compatibility
+- Maintain aspect ratios
+
+### Performance optimization
+- Lazy load embedded charts
+- Cache embed codes
+- Minimize iframe updates
+- Use appropriate chart sizes
+
+### User experience
+- Provide loading states
+- Handle error scenarios
+- Maintain consistent styling
+- Ensure accessibility
+
+### Security considerations
+- Validate embed URLs
+- Sanitize filter parameters
+- Monitor embed usage
+- Implement rate limiting
+
+### Custom embedding
+For more information about custom embedding, including advanced security features and styling options, please contact us.
+
+## Chart types for embedding
+
+### Interactive charts
+- **Line charts**: Time series with date filters
+- **Bar charts**: Category comparisons with entity filters
+- **Funnel charts**: Journey analysis with time filters
+- **Activity charts**: Daily patterns with date ranges
+
+### Data displays
+- **Tables**: Detailed data with sorting and filtering
+- **Number displays**: Key metrics with time filters
+- **Detail views**: Entity information with selection filters
+- **Text components**: Formatted content with context filters
+
+### Specialized visualizations
+- **Map visualizations**: Geographic data with region filters
+- **Image displays**: Visual content with entity filters
+
+## Related features
+
+- [Filters and variables](/features/filters-and-variables) - Control embedded chart data
+- [Dashboards](/features/dashboards) - Organize charts for embedding
+- [Chart types](/features/chart-types/introduction) - Choose the right charts for embedding
+- [Custom context](/features/custom-context) - Improve AI understanding for embedded charts

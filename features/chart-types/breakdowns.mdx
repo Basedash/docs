@@ -1,0 +1,241 @@
+---
+title: 'Breakdowns'
+description: 'Slice data into multiple series with breakdowns'
+icon: 'layer-group'
+---
+
+Breakdowns allow you to slice your data into multiple series, creating more detailed and comparative visualizations. This feature works across line charts, horizontal bar charts, and timebar charts, automatically grouping your data by different dimensions.
+
+## How breakdowns work
+
+Breakdowns take your main metric and split it into multiple series based on a categorical field. This creates more granular insights by showing how different segments contribute to the overall data.
+
+### Supported chart types
+
+#### Line charts
+Breakdowns create individual lines over time, allowing you to compare trends across different categories:
+- Each category becomes a separate line
+- Lines are color-coded for easy identification
+- Perfect for comparing trends across segments
+
+#### Horizontal bar charts
+Breakdowns create stacked bars showing the composition of each category:
+- Each bar is divided into segments
+- Segments represent different breakdown categories
+- Shows both total values and composition
+
+#### Timebar charts
+Breakdowns group data for each time period, showing daily or period-based breakdowns:
+- Each time period shows grouped data
+- Multiple series within each time period
+- Perfect for seeing how segments change over time
+
+## When to use breakdowns
+
+### Perfect for:
+- **Comparative analysis**: See how different segments perform
+- **Composition insights**: Understand what makes up your totals
+- **Trend comparison**: Compare how segments change over time
+- **Segment analysis**: Deep dive into specific categories
+- **Performance comparison**: See which segments are performing best
+
+### Not ideal for:
+- **Simple totals**: Use regular charts for single metrics
+- **Too many categories**: Can become cluttered with 10+ breakdowns
+- **Unrelated data**: Categories should be logically related
+- **Very small datasets**: May not provide meaningful insights
+
+## Prompt examples
+
+### User analytics
+```
+Show me user signups broken down by email domain
+```
+
+```
+Display user activity broken down by user type
+```
+
+```
+Create a chart of user engagement broken down by subscription plan
+```
+
+### Website analytics
+```
+Show me website visitors broken down by page
+```
+
+```
+Display conversion rates broken down by traffic source
+```
+
+```
+Create a chart of page load times broken down by device type
+```
+
+### Sales and revenue
+```
+Show me sales broken down by product category
+```
+
+```
+Display revenue broken down by customer segment
+```
+
+```
+Create a chart of order values broken down by region
+```
+
+### Marketing performance
+```
+Show me campaign performance broken down by channel
+```
+
+```
+Display lead generation broken down by source
+```
+
+```
+Create a chart of conversion rates broken down by landing page
+```
+
+### Operational metrics
+```
+Show me support tickets broken down by priority
+```
+
+```
+Display system performance broken down by component
+```
+
+```
+Create a chart of resource usage broken down by department
+```
+
+## Breakdown syntax
+
+### Basic breakdown
+```
+[metric] broken down by [category]
+```
+
+### Examples:
+- "Revenue broken down by product"
+- "Users broken down by country"
+- "Orders broken down by status"
+
+### Advanced breakdowns
+```
+[metric] over time broken down by [category]
+```
+
+### Examples:
+- "Sales over time broken down by region"
+- "Signups over time broken down by source"
+- "Activity over time broken down by type"
+
+## Best practices
+
+### Category selection
+- **Meaningful categories**: Choose categories that provide business value
+- **Reasonable number**: Aim for 3-8 breakdown categories for clarity
+- **Consistent naming**: Use clear, consistent category names
+- **Logical grouping**: Ensure categories are logically related
+
+### Data preparation
+- **Clean categories**: Handle null or missing category values
+- **Consistent formatting**: Use consistent category naming
+- **Appropriate aggregation**: Choose the right aggregation method
+- **Handle outliers**: Consider how to handle extreme values
+
+### Visual design
+- **Color coding**: Use distinct colors for each breakdown
+- **Clear legends**: Include clear legends for breakdown categories
+- **Consistent styling**: Maintain consistent visual style
+- **Accessibility**: Ensure colors are distinguishable
+
+## Common use cases
+
+### Business intelligence
+- Revenue analysis by product line
+- Customer behavior by segment
+- Performance metrics by team
+- Regional performance comparisons
+
+### Marketing analytics
+- Campaign performance by channel
+- Lead quality by source
+- Conversion rates by landing page
+- Customer acquisition by demographic
+
+### Product analytics
+- Feature usage by user type
+- Engagement by platform
+- Retention by cohort
+- Performance by device
+
+### Operational metrics
+- Support volume by category
+- System performance by component
+- Resource utilization by department
+- Process efficiency by team
+
+## Chart type considerations
+
+### Line charts with breakdowns
+- **Best for**: Time-based trend comparisons
+- **Example**: "Revenue over time broken down by product category"
+- **Result**: Multiple lines showing how each product category's revenue changes over time
+
+### Horizontal bar charts with breakdowns
+- **Best for**: Categorical composition analysis
+- **Example**: "Total sales broken down by region"
+- **Result**: Stacked bars showing how each region contributes to total sales
+
+### Timebar charts with breakdowns
+- **Best for**: Time-based composition analysis
+- **Example**: "Daily signups broken down by source"
+- **Result**: Grouped bars for each day showing signup composition by source
+
+## Advanced breakdown techniques
+
+### Multiple breakdowns
+You can combine breakdowns with other filters:
+```
+Show me revenue over time broken down by product category for premium customers
+```
+
+### Comparative breakdowns
+Compare breakdowns across different time periods:
+```
+Show me this month's sales broken down by region compared to last month
+```
+
+### Conditional breakdowns
+Use breakdowns with specific conditions:
+```
+Show me user activity broken down by type for active users only
+```
+
+## Common pitfalls
+
+### Avoid these mistakes:
+1. **Too many categories**: Keep breakdowns to 3-8 categories for clarity
+2. **Unclear categories**: Use descriptive, consistent category names
+3. **Irrelevant breakdowns**: Choose categories that provide business value
+4. **Poor color choices**: Ensure breakdown colors are distinguishable
+5. **Missing context**: Provide context for what the breakdowns represent
+
+### Technical considerations:
+- **Data quality**: Ensure category data is clean and consistent
+- **Performance**: Large datasets with many breakdowns may be slower
+- **Clarity**: Too many breakdowns can make charts hard to read
+- **Interpretation**: Help users understand what the breakdowns show
+
+## Related features
+
+- **[Filters and variables](/features/filters-and-variables)**: Combine breakdowns with dynamic filters
+- **[Line charts](/features/chart-types/line-charts)**: Use breakdowns for trend comparisons
+- **[Horizontal bar charts](/features/chart-types/horizontal-bar-charts)**: Use breakdowns for composition analysis
+- **[Timebar charts](/features/chart-types/timebar-charts)**: Use breakdowns for time-based grouping
+
