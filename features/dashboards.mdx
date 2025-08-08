@@ -8,9 +8,9 @@ Basedash dashboards help you organize and share your data visualizations in one 
 
 ## Creating a new dashboard
 
-1. Click "New Dashboard" from your Basedash workspace
-2. Give your dashboard a name and description
-3. Click "Create"
+1. Click "+ Dashboard" from your Basedash workspace
+2. Give your dashboard a name
+3. Start creating charts using AI
 
 ## Managing your dashboard
 
@@ -26,18 +26,59 @@ Basedash dashboards help you organize and share your data visualizations in one 
 - Filter by specific dimensions
 - Apply filters to multiple charts
 
-### Sharing and collaboration
-- Share dashboards with team members
-- Set viewing permissions
-- Export to PDF or image formats
-- Add comments and annotations
-
 ### Auto-refresh
-- Set automatic refresh intervals
-- Keep your data up-to-date
-- Choose from various refresh frequencies
+By default, dashboards refresh every 5 minutes to keep your data up-to-date. You can change the refresh interval to fit your needs.
+
+## Sharing and collaboration
+
+You can share the dashboards you create with your team members in Basedash, or with the public. You have full control over who can view and edit the dashboard.
+
+<img
+  className="block mx-auto"
+  src="/images/dashboard-sharing.png"
+  alt="Dashboard sharing menu"
+  width="300"
+/>
+
+### Permission levels
+
+Here are the different access levels you can assign to groups on your dashboard:
+
+- Full access: Ability to do anything on a dashboard, including changing access levels.
+- Edit access: Ability to edit dashboard properties or charts on a dashboard. You cannot change access levels.
+- View access: You can only view charts on a dashboard.
+- No access: Cannot view a dashboard.
+
+By default, when you create a new dashboard, everyone will have full access. The dashboard creator will always have full access to a dashboard.
+
+### Restricted access
+
+If you don't want to give everyone access to a dashboard, you can select the "Restricted" option which lets you specify access for groups on a dashboard.
+
+<img
+  className="block mx-auto"
+  src="/images/dashboard-org-access.png"
+  alt="Dashboard org access"
+  width="300"
+/>
+
+Admins can create groups and manage group members from the command menu.
+
+### Public dashboards
+
+You can share dashboards outside of Basedash by enabling "Publish to web" in the dashboard share menu. This will create a public URL that you can share with anyone to view the dashboard. The public link does not require a Basedash account to view, and only allows viewing data, not editing.
+
+You can control the color theme of the public dashboard, and enterprise users can optionally hide Basedash branding.
+
+### Embedding dashboards
+
+You can embed dashboards in your own website or app by using the public URL. This will allow you to share the dashboard with your audience, wherever they are.
+
+We also support controlling filter values when embedding dashboards. This allows you to share a dashboard with your audience, and control the data that is shown for each user. Contact us for more information on how to set this up.
 
 ## Best practices
+
+We have a full guide on tracking [startup metrics](/startup-metrics/introduction).
 
 1. **Dashboard organization**
    - Start with high-level metrics

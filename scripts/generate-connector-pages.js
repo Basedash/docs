@@ -1,6 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 
+// Import the list of connectors to ignore (not overwrite)
+const ignoredConnectors = require("./ignored-connectors");
+
 // Read and parse the connectors data
 const rawData = fs.readFileSync(
   path.join(__dirname, "fivetran-connectors-response.json"),
@@ -37,22 +40,33 @@ connectorsData.forEach((connector) => {
   const filename = `${connector.id}.mdx`;
   const filePath = path.join(connectorsDir, filename);
 
-  // Replace template variables
-  let content = template
-    .replace(/{{name}}/g, connector.name)
-    .replace(
-      /{{docs_link}}/g,
-      connector.link_to_docs || "https://fivetran.com/docs"
-    )
-    .replace(
-      /{{status}}/g,
-      connector.service_status === "general_availability"
-        ? "Generally Available"
-        : "Beta"
-    );
+  // Check if this connector should be ignored (not overwritten)
+  const shouldIgnore =
+    ignoredConnectors.includes(connector.id) && fs.existsSync(filePath);
 
-  // Write the file
-  fs.writeFileSync(filePath, content);
+  if (shouldIgnore) {
+    console.log(
+      `Skipping ${connector.name} (${connector.id}) - file exists and is in ignore list`
+    );
+  } else {
+    // Replace template variables
+    let content = template
+      .replace(/{{name}}/g, connector.name)
+      .replace(
+        /{{docs_link}}/g,
+        connector.link_to_docs || "https://fivetran.com/docs"
+      )
+      .replace(
+        /{{status}}/g,
+        connector.service_status === "general_availability"
+          ? "Generally Available"
+          : "Beta"
+      );
+
+    // Write the file
+    fs.writeFileSync(filePath, content);
+    console.log(`Generated page for ${connector.name}`);
+  }
 
   // Add to pages list
   connectorPages.push(`data-sources/connectors/${connector.id}`);
