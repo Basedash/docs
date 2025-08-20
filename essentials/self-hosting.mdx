@@ -1,0 +1,218 @@
+---
+title: 'Self-hosting'
+description: 'Deploy Basedash on your own infrastructure with complete control'
+icon: 'server'
+---
+
+> **Early access preview**: Self-hosting is currently in early access. This documentation will be expanded as more users gain access to this feature.
+
+Self-hosting allows you to deploy Basedash on your own infrastructure, giving you complete control over your data, security policies, and deployment environment. This option is ideal for organizations with strict compliance requirements, air-gapped environments, or those who prefer to manage their own infrastructure.
+
+## Overview
+
+When you self-host Basedash, you maintain full control over:
+- Data storage and location
+- Network security and access controls
+- Deployment infrastructure
+- Updates and maintenance schedules
+- AI model interactions and data retention policies
+
+## Security and compliance
+
+Self-hosting Basedash gives you total control over even the tightest security certifications and regulations. When you self-host, you can achieve compliance with various international and industry-specific security standards:
+
+### Compliance standards available with self-hosting
+
+**ISO 27001 (Information Security Management)**
+- **Scope**: Comprehensive information security management system
+- **Requirements**: Risk assessment, security policies, access controls, incident management
+- **Benefits**: Internationally recognized standard, systematic approach to security
+- **Implementation**: Your organization controls the entire security framework
+
+**SOC 2 Type II (Service Organization Control)**
+- **Scope**: Security, availability, processing integrity, confidentiality, and privacy
+- **Requirements**: Continuous monitoring, regular audits, documented controls
+- **Benefits**: Trusted by enterprise customers, demonstrates security maturity
+- **Implementation**: Your internal audit team can conduct assessments
+
+**HIPAA (Health Insurance Portability and Accountability Act)**
+- **Scope**: Healthcare data privacy and security
+- **Requirements**: Administrative, physical, and technical safeguards
+- **Benefits**: Required for healthcare organizations, protects patient data
+- **Implementation**: Complete control over data handling and storage
+
+**GDPR (General Data Protection Regulation)**
+- **Scope**: EU data protection and privacy
+- **Requirements**: Data minimization, consent management, breach notification
+- **Benefits**: EU compliance, enhanced customer trust
+- **Implementation**: Data sovereignty and regional deployment control
+
+**PCI-DSS (Payment Card Industry Data Security Standard)**
+- **Scope**: Payment card data security
+- **Requirements**: Network security, access control, monitoring, testing
+- **Benefits**: Required for payment processing, protects financial data
+- **Implementation**: Isolated network environments, custom security controls
+
+**Air-gapped environments**
+- **Scope**: Complete network isolation
+- **Requirements**: Physical separation, no internet connectivity
+- **Benefits**: Maximum security, regulatory compliance
+- **Implementation**: Physical media transfers, isolated infrastructure
+
+**Custom AI keys** - Bring your own AI models and control data flow
+
+> **Important**: While self-hosting provides the infrastructure and tools to support these compliance standards, the actual implementation, maintenance, and ongoing compliance is your organization's responsibility. Basedash can assist with deployment and configuration, but you must ensure your security controls meet the specific requirements of each standard.
+
+For more information about our security practices, see our [security documentation](/essentials/security).
+
+## Deployment options
+
+Basedash uses [Distr](https://distr.sh/docs/getting-started/what-is-distr/), an enterprise software distribution platform, to manage self-hosted deployments. This provides multiple deployment methods to fit your infrastructure needs:
+
+### Agent deployment (recommended)
+The fastest and most managed approach using our agent-based deployment system:
+
+- **Managed setup** - Basedash team handles initial deployment and configuration
+- **Automatic updates** - Receive updates through our customer dashboard
+- **Customer dashboard** - Control versions and deployment schedules
+- **Light logging** - Optional logging for debugging and support
+- **Deployment health monitoring** - We can monitor deployment health and offer support
+
+### Docker deployment
+Standard container deployment for organizations with existing Docker infrastructure:
+
+- Basedash team provides Docker containers and compose files
+- Full control over container management
+- Manual update process
+- Integration with existing Docker workflows
+
+### Kubernetes deployment
+Native Kubernetes deployment for organizations with existing K8s infrastructure:
+
+- Basedash team provides Helm charts for your cluster
+- Integrate with existing Kubernetes tooling
+- Scale with your infrastructure needs
+
+### Air-gapped deployment
+For environments with strict security requirements that demand physical or logical isolation from public networks:
+
+- **IP whitelisting** - For environments that can allow limited outbound connections
+- **Self-managed registry** - Physical transfers via USB or secure media for fully isolated environments
+- **Encrypted updates** - Updates packaged, encrypted, and physically transferred
+- **Ideal for**: Defense, finance, and critical infrastructure organizations
+
+## Infrastructure support
+
+You can deploy Basedash on any infrastructure that supports Docker or Kubernetes:
+
+- **Cloud providers**: AWS, Azure, Google Cloud, DigitalOcean
+- **On-premises**: Your own data centers and servers
+- **Hybrid**: Combination of cloud and on-premises resources
+- **Regional deployment** - Deploy to any region, country, or infrastructure you need
+
+## Data warehouse integration
+
+**TODO**: Engineering team to add specific data warehouse connection details and migration guides.
+
+Self-hosted customers typically bring their own data warehouses rather than using our managed warehouse solution. This approach:
+
+- Maintains complete data sovereignty
+- Avoids complex Fivetran configurations in self-hosted environments
+- Integrates with your existing data infrastructure
+- Supports all major data warehouse providers
+
+For customers migrating from cloud to self-hosted, we provide white-glove assistance to set up new warehouse connections.
+
+For more information about supported data sources and connection methods, see our [data sources documentation](/data-sources/introduction).
+
+## AI model control
+
+**TODO**: AI/ML team to add specific model switching configuration and performance benchmarks.
+
+With Basedash Self-Hosted, you can control how our application interacts with AI models and services:
+
+- **Bring your own AI keys** - Use your own API keys and models
+- **Model switching** - Switch between different AI providers (e.g., OpenAI, Gemini)
+- **Custom retention policies** - Control data retention and training terms
+- **Vendor compliance** - Meet specific AI model vendor requirements
+
+### Custom AI model considerations
+
+**Important**: When using custom AI models, be aware of the following:
+
+- **Internal benchmarks not validated** - Basedash maintains internal benchmarks for SQL legibility and performance with our standard AI models
+- **Custom models not tested** - Custom AI models are not tested against these benchmarks
+- **Performance may vary** - SQL generation quality and performance may differ from our standard models
+- **Update compatibility** - Custom models may not be tested with new Basedash releases and updates
+
+**TODO**: AI/ML team to add specific benchmark metrics and testing procedures for custom models.
+
+## Authentication and access control
+
+**TODO**: Engineering team to add SSO configuration details and supported providers.
+
+- **SSO integration** - Connect to your existing identity providers (see our [SSO documentation](/features/sso) for details)
+- **Custom auth providers** - We can add support for specific providers as needed
+- **Multi-organization support** - Deploy multiple workspaces or organizations
+- **Granular permissions** - Maintain the same access control features as cloud
+
+## Update management and version control
+
+**TODO**: Operations team to add specific update procedures and version locking details.
+
+- **Customer dashboard** - Control when and how updates are applied
+- **Version locking** - Lock to specific versions for training and compliance
+- **Update scheduling** - Set your own update cadence (e.g., monthly releases)
+- **Training support** - We can help update training documentation for major releases
+
+## Getting started
+
+**Important**: Self-hosting setup requires assistance from the Basedash team. You cannot deploy Basedash on your own infrastructure without our involvement.
+
+### Prerequisites
+- Infrastructure that supports Docker or Kubernetes
+- Access to container registries (or air-gapped setup for isolated environments)
+- Network access to your data sources
+- Contact with Basedash team for setup assistance
+
+### Setup process
+1. **Contact us** - Reach out to discuss your self-hosting requirements
+2. **Infrastructure review** - We'll work with you to understand your setup
+3. **Deployment planning** - Choose the deployment method that fits your needs
+4. **Setup assistance** - Our team will help deploy and configure Basedash
+5. **Handoff** - You'll receive access to the customer dashboard for ongoing management
+
+### What we provide
+- Container images and manifests
+- Helm charts for Kubernetes deployments
+- Configuration examples and documentation
+- Customer dashboard access
+- Ongoing support and updates
+
+## Configuration and customization
+
+**TODO**: DevOps team to add configuration options, environment variables, and customization details.
+
+- Environment configuration
+- Database setup and configuration
+- Authentication and authorization setup
+- Custom integrations and API endpoints
+- Monitoring and logging configuration
+
+## Support and maintenance
+
+**TODO**: Support team to add self-hosting specific support processes and escalation paths.
+
+- **Customer dashboard** - Monitor deployment health and manage updates
+- **Light logging** - Optional logging for debugging and support
+- **White-glove assistance** - Help with initial setup and migrations
+- **Ongoing support** - Support for self-hosted deployments
+- **Deployment health monitoring** - We can monitor your deployment health and offer proactive support
+
+## Request access
+
+Self-hosting is currently available to select customers. To request access or learn more about this option, please contact us at [support@basedash.com](mailto:support@basedash.com).
+
+For general pricing information, visit our [pricing page](https://basedash.com/pricing). Self-hosting pricing and contract details are available upon request.
+
+Discounts are available for non-profits and YC-backed companies.
