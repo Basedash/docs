@@ -1,0 +1,10 @@
+{
+  "name": "basedash-docs",
+  "version": "1.0.0",
+  "description": "Basedash documentation site",
+  "scripts": {
+    "generate-todos": "node scripts/generate-todos.js",
+    "dev": "mintlify dev"
+  },
+  "private": true
+}
