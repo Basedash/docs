@@ -52,11 +52,15 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": ["data-sources/introduction"]
+            "pages": [
+              "data-sources/introduction",
+              "data-sources/data-visibility"
+            ]
           },
           {
             "group": "Data warehouses",
             "pages": [
+              "data-sources/warehouses/basedash-warehouse",
               "data-sources/warehouses/bigquery",
               "data-sources/warehouses/clickhouse",
               "data-sources/warehouses/snowflake"
@@ -792,7 +796,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
+      "label": "Log in",
       "href": "https://charts.basedash.com"
     }
   },
@@ -811,8 +815,8 @@
         "text": "#000000"
       },
       "light": {
-        "background": "#000000",
-        "text": "#FFFFFF"
+        "background": "#FFFFFF",
+        "text": "#000000"
       }
     }
   }

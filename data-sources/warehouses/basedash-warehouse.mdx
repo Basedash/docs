@@ -1,0 +1,232 @@
+---
+title: 'Basedash Warehouse'
+description: 'Our fully-managed Postgres data warehouse for seamless data integration'
+---
+
+Basedash Warehouse is our fully-managed [PostgreSQL](/data-sources/databases/postgres) data warehouse that provides a turnkey solution for data integration and analytics. Built on enterprise-grade infrastructure, it eliminates the complexity of managing your own data warehouse while providing the performance and reliability you need.
+
+## What is Basedash Warehouse?
+
+Basedash Warehouse is a cloud-hosted [PostgreSQL](/data-sources/databases/postgres) database that we manage entirely for you. It serves as a centralized data repository where you can consolidate data from multiple sources, enabling unified analytics and reporting across your entire organization.
+
+### Key benefits
+
+- **Zero infrastructure management** - We handle all database administration, backups, scaling, and maintenance
+- **Instant setup** - Get started in minutes without any technical configuration
+- **Enterprise-grade reliability** - Built on proven [PostgreSQL](/data-sources/databases/postgres) with automatic failover and disaster recovery
+- **Seamless integration** - Native support for 600+ data sources through [Fivetran](/data-sources/connectors/fivetran_log)
+- **Built-in security** - SOC 2 compliance, encryption at rest and in transit, and regular security audits
+
+## How it works
+
+### 1. Data ingestion
+Data flows into Basedash Warehouse through [Fivetran](/data-sources/connectors/fivetran_log) connectors:
+
+- **600+ business applications** - Automated data pipelines from marketing platforms, CRM systems, e-commerce platforms, and more
+- **Database syncing** - Sync data from your existing databases into the warehouse
+- **Incremental updates** - Only new or changed data is processed
+
+### 2. Data processing
+Once in the warehouse, your data is:
+
+- **Automatically structured** - Tables and schemas are created based on source data
+- **Incrementally updated** - Only new or changed data is processed
+- **Validated** - Data quality checks ensure accuracy and completeness
+- **Transformed** - Built-in ETL capabilities for data cleaning and enrichment
+- **Soft deleted** - Data is maintained with soft deletion, preserving Fivetran data integrity
+
+### 3. Analytics and insights
+With your data centralized, you can:
+
+- **Query across all sources** - Join data from different systems seamlessly
+- **Build unified [dashboards](/features/dashboards)** - Create comprehensive views of your business
+- **Leverage AI-powered insights** - Use natural language to explore your data
+- **Share insights** - Collaborate with team members on [reports](/features/reports) and [dashboards](/features/dashboards)
+
+## Data sources and connectors
+
+### [Fivetran](/data-sources/connectors/fivetran_log) integration
+Basedash Warehouse integrates seamlessly with [Fivetran](/data-sources/connectors/fivetran_log), providing access to:
+
+- **Marketing platforms** - [Google Ads](/data-sources/connectors/google_ads), [Facebook Ads](/data-sources/connectors/facebook_ads), [LinkedIn Ads](/data-sources/connectors/linkedin_ads), and more
+- **CRM systems** - [Salesforce](/data-sources/connectors/salesforce), [HubSpot](/data-sources/connectors/hubspot), [Pipedrive](/data-sources/connectors/pipedrive), and others
+- **E-commerce platforms** - [Shopify](/data-sources/connectors/shopify), [WooCommerce](/data-sources/connectors/woocommerce), [BigCommerce](/data-sources/connectors/big_commerce)
+- **Financial systems** - [QuickBooks](/data-sources/connectors/quickbooks), [Stripe](/data-sources/connectors/stripe), [PayPal](/data-sources/connectors/paypal), and accounting tools
+- **HR and productivity** - [BambooHR](/data-sources/connectors/bamboohr), [Asana](/data-sources/connectors/asana), [Monday.com](/data-sources/connectors/monday), and team tools
+- **Analytics platforms** - [Google Analytics 4](/data-sources/connectors/google_analytics_4), [Mixpanel](/data-sources/connectors/mixpanel), [Amplitude](/data-sources/connectors/amplitude), and more
+
+### Database syncing
+You can also sync data from your existing databases into Basedash Warehouse:
+
+- **[MySQL](/data-sources/databases/mysql)** - Sync your MySQL database data
+- **[PostgreSQL](/data-sources/databases/postgres)** - Sync your PostgreSQL database data
+- **[SQL Server](/data-sources/connectors/sql_server)** - Sync your SQL Server database data
+- **Other databases** - Many other database types are supported through Fivetran
+
+## Performance and scalability
+
+### Infrastructure
+Basedash Warehouse runs on enterprise-grade infrastructure:
+
+- **High-performance storage** - SSD-backed storage with automatic scaling
+- **Optimized [PostgreSQL](/data-sources/databases/postgres)** - Latest stable version with performance tuning
+- **Connection pooling** - Efficient connection management for concurrent users
+- **Automatic backups** - Daily backups with point-in-time recovery
+- **Global availability** - Multi-region deployment options
+
+### Performance features
+- **Query optimization** - Automatic query planning and execution optimization
+- **Indexing** - Smart index creation based on query patterns
+- **Caching** - Intelligent result caching for frequently accessed data
+- **Parallel processing** - Multi-core query execution for complex operations
+
+## Security and compliance
+
+### Data protection
+- **Encryption at rest** - All data encrypted using AES-256 encryption
+- **Encryption in transit** - TLS 1.3 encryption for all data transfers
+- **Access controls** - Role-based access control with fine-grained permissions
+- **Audit logging** - Comprehensive logging of all data access and modifications
+
+### Compliance
+- **SOC 2 Type II** - Annual security and compliance audits
+- **GDPR compliance** - Data protection and privacy controls
+- **Data residency** - Control over where your data is stored
+- **Regular security updates** - Ongoing security patches and improvements
+
+## Getting started
+
+### Automatic warehouse provisioning
+When you add any data source that requires Basedash Warehouse, we automatically provision a warehouse for you. There's no manual setup required - the warehouse is created and configured automatically.
+
+### 1. Add your first data source
+1. From your Basedash dashboard, click "Add Data Source"
+2. Choose from available [Fivetran connectors](/data-sources/connectors) or database syncing options
+3. Configure authentication and sync settings
+4. Start your first data sync
+
+The warehouse will be automatically created and configured during this process.
+
+### 2. Begin analyzing
+1. Wait for initial data sync to complete
+2. Use the [chat interface](/features/chat) to explore your data
+3. Create your first [charts and dashboards](/features/charts)
+4. Set up automated [reports](/features/reports)
+
+## Best practices
+
+### Data organization
+- **Use descriptive naming** - Clear table and column names improve AI understanding
+- **Organize by business domain** - Group related tables in logical schemas
+- **Document data sources** - Add descriptions for tables and important columns
+- **Set up data lineage** - Track how data flows through your systems
+
+### Performance optimization
+- **Monitor sync schedules** - Balance data freshness with system performance
+- **Review query patterns** - Identify and optimize frequently used queries
+- **Use appropriate data types** - Choose efficient data types for your use cases
+- **Regular maintenance** - Monitor storage usage and query performance
+
+### Security
+- **Principle of least privilege** - Grant only necessary access to users
+- **Regular access reviews** - Periodically review and update permissions
+- **Monitor usage** - Keep track of data access and modifications
+- **Backup verification** - Regularly test backup and recovery procedures
+- **Credential management** - All workspaces have access to their own warehouse credentials for authentication with external services
+
+## Troubleshooting
+
+### Common issues
+
+**Slow data sync**
+- Check source system performance
+- Verify network connectivity
+- Review sync frequency settings
+- Monitor warehouse resource usage
+
+**Connection errors**
+- Verify authentication credentials
+- Check network firewall settings
+- Ensure source system availability
+- Review connector configuration
+
+**Data quality issues**
+- Validate source data integrity
+- Check transformation logic
+- Review error logs and alerts
+- Verify data type mappings
+
+### Getting help
+- **Documentation** - Comprehensive guides and tutorials
+- **Community support** - User forums and discussion groups
+- **Technical support** - Direct assistance from our team
+- **Status page** - Real-time system status and updates
+
+## Pricing and limits
+
+### Included features
+- **Unlimited storage** - Scale as your data grows
+- **Unlimited users** - Add team members without additional costs
+- **Standard connectors** - Access to all [Fivetran](/data-sources/connectors/fivetran_log) connectors
+- **Basic support** - Email and chat support during business hours
+
+### Enterprise options
+- **Dedicated infrastructure** - Isolated resources for high-performance needs
+- **Custom connectors** - Development of specialized data integrations
+- **Advanced security** - Additional compliance and security features
+- **Priority support** - 24/7 support with dedicated account management
+
+## Data management and deletion
+
+### Data retention and deletion
+Basedash Warehouse follows soft deletion practices to maintain data integrity:
+
+- **Soft deletion** - When data sources are removed, data is marked as deleted but preserved in the warehouse
+- **Fivetran data integrity** - This ensures that Fivetran can maintain proper sync history and data lineage
+- **Automatic cleanup** - Removed data sources are automatically deleted after 30 days
+- **Manual deletion** - You can request immediate deletion of data sources if needed
+- **Global context filtering** - The AI automatically filters out deleted data from Fivetran when processing queries, ensuring you only see active, relevant data
+
+### Data source removal
+When you remove a data source from Basedash:
+
+1. **Immediate effect** - The data source is marked as inactive and stops syncing new data
+2. **Data preservation** - Existing data remains in the warehouse for 30 days
+3. **Automatic deletion** - After 30 days, the data source and its data are automatically removed
+4. **Manual override** - Contact support to request immediate deletion if required
+
+### Credential access and control
+All workspaces have full access to their warehouse credentials:
+
+- **Self-service access** - View and manage your warehouse connection details
+- **External service integration** - Use credentials to connect other tools and services to your warehouse
+- **Authentication control** - Manage who can access your warehouse data
+- **Credential rotation** - Update credentials as needed for security
+
+### AI data filtering
+Basedash's AI automatically handles deleted data from Fivetran:
+
+- **Automatic filtering** - When you query your data, the AI automatically excludes records marked as deleted in Fivetran
+- **Global context awareness** - The AI understands Fivetran's deletion patterns and applies appropriate filters
+- **Seamless experience** - You don't need to manually filter out deleted data - it's handled automatically
+- **Data consistency** - Ensures your queries and charts only show active, relevant data
+
+## Next steps
+
+Once your Basedash Warehouse is set up, you can:
+
+- **Explore your data** - Use natural language to query your warehouse
+- **Build [dashboards](/features/dashboards)** - Create visualizations and [reports](/features/reports)
+- **Set up alerts** - Monitor key metrics and get notified of changes
+- **Share insights** - Collaborate with your team on data analysis
+- **Automate reporting** - Schedule regular [reports](/features/reports) and updates
+
+For detailed guidance on using your warehouse effectively, see our [custom context documentation](/features/custom-context) and [chart creation guides](/features/charts).
+
+## Related documentation
+
+- **[Getting started with data connections](/getting-started/connect-data)** - Learn how to connect your first data source
+- **[FAQ](/essentials/faq)** - Common questions about data sources and warehouse setup
+- **[Security overview](/essentials/security)** - Detailed security and compliance information
+- **[Fivetran connectors](/data-sources/connectors)** - Browse all available data source connectors
+- **[Database syncing](/data-sources/databases)** - Learn about syncing your existing databases
