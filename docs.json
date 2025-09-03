@@ -43,7 +43,7 @@
           },
           {
             "group": "Essentials",
-            "pages": ["essentials/security", "essentials/self-hosting", "essentials/faq"]
+            "pages": ["essentials/pricing", "essentials/security", "essentials/self-hosting", "essentials/faq"]
           }
         ]
       },
