@@ -20,7 +20,7 @@ Basedash automatically creates filters when you use certain language patterns in
 
 ## Filter types
 
-Basedash supports six different filter types that you can use to create dynamic, interactive dashboards. Each type serves a specific purpose and provides different functionality.
+Basedash supports multiple variable types you can use to create dynamic, interactive dashboards. Each type serves a specific purpose and provides different functionality.
 
 ### Record filters
 
@@ -157,18 +157,10 @@ Show me users who meet custom criteria defined in SQL
 
 ## Built-in filters
 
-Basedash provides three built-in filters that are automatically available on all dashboards:
+Basedash provides built-in time controls when your SQL uses the time variables. These appear at the dashboard level and apply across charts that reference them:
 
-### Start date
-A date picker that allows users to select the beginning of a time range for analysis.
-
-### End date
-A date picker that allows users to select the end of a time range for analysis.
-
-### Time interval
-A dropdown that provides preset time intervals (e.g., daily, weekly, monthly) for consistent time-based analysis.
-
-These built-in filters are automatically created when you reference time-based analysis in your prompts and can be used across multiple charts on the same dashboard.
+- **Date range**: Predefined ranges such as `LAST_30_DAYS`, `THIS_MONTH`, or a custom range
+- **Time interval**: Aggregation interval such as `DAY`, `WEEK`, `MONTH`, `YEAR`
 
 {/* TODO: Add screenshot of built-in filters showing start date, end date, and time interval controls on a dashboard */}
 
@@ -298,7 +290,7 @@ Show me this organization's performance metrics
 ## Accessing and managing filters
 
 ### Variables tab in code editor
-You can view and manage all filters for a dashboard by going to the **Variables** tab within the full-screen code editor. This shows all filters with their current values and allows you to modify filter configurations.
+You can view and manage all variables for a dashboard by going to the **Variables** tab within the full-screen code editor. This shows variables with their current values and allows you to modify configurations.
 
 {/* TODO: Add screenshot of Variables tab in code editor showing all filters with their values */}
 
@@ -325,10 +317,10 @@ The AI will automatically understand which filters are applicable and update the
 ## Advanced features
 
 ### Cross-chart filtering
-Filters can affect multiple charts on the same dashboard, creating cohesive analysis experiences.
+Variables can affect multiple charts on the same dashboard, creating cohesive analysis experiences.
 
 ### Dynamic variables
-Filters can be used in calculated columns and external links:
+Variables can be used in calculated columns and external links:
 
 ```
 Create a Stripe link for this user's customer ID
@@ -342,3 +334,4 @@ Filters can be linked together, where one filter's selection affects the options
 - [Embedding charts](/features/embedding) - Embed filtered charts in external applications
 - [Dashboards](/features/dashboards) - Organize charts with shared filters
 - [Custom context](/features/custom-context) - Add business context to improve AI understanding
+- **URL parameters**: On internal dashboards, variables use the `var_` prefix. On public dashboards (shared links), variables use the `evar_` prefix and are URL-encoded. System parameters include `dateRange`, `groupByInterval`, `customDateFrom`, and `customDateTo`.

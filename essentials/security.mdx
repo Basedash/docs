@@ -26,9 +26,9 @@ Basedash offers two primary methods for connecting your data, each designed with
 
 For **SQL databases**, Basedash connects directly to your database and only requires read access to your data sources. This means you can connect using read-only database credentials, ensuring that Basedash cannot modify, delete, or write any data to your databases. We simply form a connection and query your database directly when you need data.
 
-For databases within private networks, Basedash supports SSH connections for direct database access. This allows you to securely connect to databases that aren't directly accessible from the internet by routing the connection through an SSH tunnel. To set this up, simply whitelist the Basedash server IP address: `24.199.77.73`.
+For databases within private networks, Basedash supports SSH connections for direct database access. This allows you to securely connect to databases that aren't directly accessible from the internet by routing the connection through an SSH tunnel. To set this up, whitelist the Basedash IP address: `24.199.77.73`.
 
-For **non-SQL data sources**, we use Fivetran as a syncing mechanism to replicate your data into a secure data warehouse that we spin up specifically for your organization. This gives you a dedicated warehouse containing a copy of your data that you fully control—you can connect other tools to it or manage the data outside of Basedash as needed.
+For **non-SQL data sources**, we use Fivetran as a syncing mechanism to replicate your data into a secure data warehouse. This gives you a warehouse containing a copy of your data that you control—you can connect other tools to it or manage the data outside of Basedash as needed.
 
 ## Access controls and user management
 

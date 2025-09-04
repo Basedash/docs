@@ -11,32 +11,21 @@ Embedding allows you to integrate your Basedash charts and dashboards directly i
 Embedding allows you to take any dashboard created in Basedash and add it to your own app wrapper. To embed a dashboard:
 
 1. Click the **Share** button in the top right corner of your dashboard
-2. Basedash provides you with the iframe code to copy
-3. Paste the embed code into your application
+2. Enable "Embedding"
+3. Basedash provides you with the iframe code to copy
+4. Paste the embed code into your application
 
 Embedded dashboards maintain their interactivity, including filters and variables, allowing users to explore data directly within your applications.
 
 ### Getting embed codes
 
-#### Individual charts
-Embed specific charts with their own filters and controls:
+Embeds use public dashboard links with the `/shared/{id}` path. Copy the code from the share menu:
 
-```
-<iframe src="https://app.basedash.com/embed/chart/abc123" 
-        width="100%" 
-        height="400px" 
-        frameborder="0">
-</iframe>
-```
-
-#### Full dashboards
-Embed entire dashboards with all charts and shared filters:
-
-```
-<iframe src="https://app.basedash.com/embed/dashboard/xyz789" 
-        width="100%" 
-        height="600px" 
-        frameborder="0">
+```html
+<iframe src="https://charts.basedash.com/shared/xyz789"
+	width="100%"
+	height="600px"
+	frameborder="0">
 </iframe>
 ```
 
@@ -73,15 +62,19 @@ Embed charts into documentation to show:
 ## Embedding with filters
 
 ### Variable injection
-You can inject variables into the dashboard in your embedded application:
+You can pass variables via query parameters. On public dashboards, variables use the `evar_` prefix and values use Base64 encoding:
 
-```
-<iframe src="https://app.basedash.com/embed/dashboard/xyz789?user_id=12345&date_range=last_30_days" 
-        width="100%" 
-        height="600px" 
-        frameborder="0">
+```html
+<iframe src="https://charts.basedash.com/shared/xyz789?evar_user_id=12345&dateRange=LAST_30_DAYS&groupByInterval=DAY"
+	width="100%"
+	height="600px"
+	frameborder="0">
 </iframe>
 ```
+
+Notes:
+- Use `evar_{syntax}={value}` for public dashboards
+- Built-in variables: `dateRange`, `groupByInterval`, `customDateFrom`, `customDateTo`
 
 ### Filter visibility control
 Control what users can see and modify:
@@ -99,7 +92,7 @@ Update embedded charts programmatically:
 ## Security and access control
 
 ### Secure data isolation
-When a dashboard is embedded in an application, filters are encoded in Base64 so that users can't inspect the page and see other users' data. This is a custom implementation that we help with.
+When a dashboard is embedded in an application, public variable values are URL-encoded with the `evar_` prefix to avoid leaking labels and to simplify link sharing. For advanced isolation needs, contact us.
 
 ### Authentication
 Embedded charts respect your Basedash access controls:
@@ -133,51 +126,26 @@ Secure embeds for sensitive data:
 
 ### Basic embed code
 ```html
-<iframe 
-  src="https://app.basedash.com/embed/dashboard/YOUR_DASHBOARD_ID"
-  width="100%" 
-  height="600px" 
-  frameborder="0"
-  allowfullscreen>
+<iframe
+	src="https://charts.basedash.com/shared/YOUR_DASHBOARD_ID"
+	width="100%"
+	height="600px"
+	frameborder="0"
+	allowfullscreen>
 </iframe>
 ```
 
 ### Responsive embedding
 ```html
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe 
-    src="https://app.basedash.com/embed/dashboard/YOUR_DASHBOARD_ID"
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-    frameborder="0"
-    allowfullscreen>
-  </iframe>
+	<iframe
+		src="https://charts.basedash.com/shared/YOUR_DASHBOARD_ID"
+		style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0"
+		allowfullscreen>
+	</iframe>
 </div>
 ```
-
-### JavaScript integration
-```javascript
-// Update embedded dashboard filters
-function updateDashboardFilters(dashboardId, filters) {
-  const iframe = document.getElementById('basedash-dashboard');
-  const url = new URL(iframe.src);
-  
-  Object.keys(filters).forEach(key => {
-    url.searchParams.set(key, filters[key]);
-  });
-  
-  iframe.src = url.toString();
-}
-
-// Listen for dashboard events
-window.addEventListener('message', function(event) {
-  if (event.origin === 'https://app.basedash.com') {
-    console.log('Dashboard event:', event.data);
-  }
-});
-```
-
-### Custom styling
-Basedash allows you to choose what theme you want and customize basic styling options for your embedded dashboards.
 
 ## Best practices
 
@@ -219,7 +187,7 @@ For more information about custom embedding, including advanced security feature
 ### Data displays
 - **Tables**: Detailed data with sorting and filtering
 - **Number displays**: Key metrics with time filters
-- **Detail views**: Entity information with selection filters
+- **Detail**: Entity information with selection filters
 - **Text components**: Formatted content with context filters
 
 ### Specialized visualizations
