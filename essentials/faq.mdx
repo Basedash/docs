@@ -59,6 +59,80 @@ You can share dashboards by:
 - Sharing direct links to [dashboards](/features/dashboards)
 - Exporting to various formats
 
+## Data Management
+
+### How do I restore archived or deleted charts?
+Recently deleted charts can be restored by going to the charts main page and selecting the "All charts" dropdown. At the very bottom of that list there is an option for "Recently deleted" charts. Charts are permanently deleted after 30 days.
+
+![Recently deleted charts](/screenshots/Recently-deleted-charts.png)
+
+Right click on any chart in that list to restore to a dashboard, or open the chart and click on the main restore button in the top right corner.
+
+### How do I restore archived or deleted dashboards?
+Recently deleted dashboards can be restored by going to the main dashboards page and selecting the "Recently deleted" option in the top header. Dashboards are permanently deleted after 30 days.
+
+![Recently deleted dashboards](/screenshots/Recently-deleted-dashboards.png)
+
+Restore a dashboard by right clicking on it and selecting "restore" or opening the dashboard and selecting the restore button.
+
+### Can I restore deleted chats?
+No, deleted chats cannot be restored. Once a chat is deleted, it's permanently removed from the system.
+
+### How do I export data from my queries?
+You can export data from your queries in several ways:
+
+**From charts:**
+- Right-click on any chart and select "Export" to choose between CSV or JSON formats
+- Open a chart, go to the "Response" tab, and click the export button in the bottom right corner of the footer
+
+![Export chart data](/screenshots/export-chart-rightclick.png)
+
+![Export from chart page](/screenshots/export-data-chartpage.png)
+
+**From data tables:**
+- Go to the Data page and select the export button in the footer of the data tables
+
+**From dashboards:**
+- Click the overflow menu (three dots) next to the dashboard name in the header
+- Select "Export to PDF" to export the entire dashboard
+
+![Export dashboard to PDF](/screenshots/export-dashboard-pdf.png)
+
+**Important notes:**
+- Data is exported in raw format and may not support the same formatting as seen inside Basedash
+- We export raw response data, so formatting like currency symbols or date formatting may not be preserved
+- Export options include CSV, JSON, and PDF formats depending on the context
+
+### Can I upload my own CSVs of data?
+Direct upload of CSVs into Basedash is currently not possible, but Basedash can connect to file storage services like [Google Drive](/data-sources/connectors/google_drive), [Dropbox](/data-sources/connectors/dropbox), [Google Sheets](/data-sources/connectors/google_sheets), [OneDrive](/data-sources/connectors/one_drive), and [Azure Blob Storage](/data-sources/connectors/azure_blob_storage). If a CSV is in the folder you connect, it will be shown and used as a table within Basedash under that connection.
+
+### Is Basedash read-only or can it edit data?
+Basedash is read-only by default. For SQL databases, Basedash only requires read access to your data sources, ensuring that it cannot modify, delete, or write any data to your databases. We simply form a connection and query your database directly when you need data. For non-SQL data sources, we use Fivetran to replicate your data into a secure data warehouse that you fully control.
+
+### How can I restrict access to data?
+Basedash provides comprehensive access controls to ensure the right people have access to the right data. You can create groups and assign fine-grained access permissions to individual dashboards. For example, you could create a dashboard that only your support team can access, while maintaining separate dashboards exclusively for your engineering team. This granular permission system ensures sensitive business data is only visible to the appropriate stakeholders.
+
+On our enterprise plan, we also support SAML SSO integration, allowing you to manage user authentication through your existing identity provider.
+
+### How can I be confident that the data in chats isn't hallucinated?
+LLMs can hallucinate data, but Basedash runs every query and checks the underlying data multiple times to ensure that the data in a chat response is valid and the numbers are not hallucinated. We also run comprehensive evaluations internally with every new AI model release to check error rates.
+
+Our AI agent has a built-in clarification model to check for more information when there are gaps in prompts. Additionally, the AI in Basedash has context of every chart and dashboard that has been created, so when possible it will reuse existing charts to get the highest chance of good results.
+
+### How do I create a variable/filter?
+Basedash automatically creates filters when you use certain language patterns in your prompts. For example:
+
+- **Entity references**: "Show me details for a user" → Creates a user selector
+- **Time references**: "Revenue over time" → Creates date range filters  
+- **Text searches**: "Customers named John" → Creates text filters
+- **Numeric thresholds**: "Orders over $100" → Creates number filters
+- **Boolean conditions**: "Only active users" → Creates boolean filters
+- **Category selections**: "Sales by region" → Creates list filters
+
+Basedash supports six different filter types: record filters, text filters, number filters, boolean filters, list filters, and SQL filters. You can view and manage all filters for a dashboard by going to the **Variables** tab within the full-screen code editor.
+
+For detailed information about creating and managing filters, see our [filters and variables documentation](/features/filters-and-variables).
+
 ## Support
 
 ### How can I get help?
