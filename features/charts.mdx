@@ -4,12 +4,12 @@ description: 'Create AI-powered charts and visualizations in Basedash'
 icon: 'chart-pie'
 ---
 
-Basedash makes it easy to create beautiful, interactive charts using natural language. Our AI understands your data structure and helps you create the perfect visualizations for your needs.
+Basedash makes it easy to create beautiful, interactive charts using natural language. Our AI understands your data and helps you choose the right visualization automatically.
 
 ## Creating charts
 
 ### Using natural language
-1. Click "Add Chart" on your dashboard or create a standalone chart
+1. Click "Add chart" on a dashboard or create a standalone chart
 2. Describe what you want to see, for example:
    - "Show me daily user signups over the last 30 days"
    - "Display revenue by product category as a pie chart"
@@ -19,21 +19,61 @@ Basedash makes it easy to create beautiful, interactive charts using natural lan
    - Choose the best visualization type
    - Apply suitable formatting and styling
 
-### Chart types
-Basedash supports a variety of chart types:
-- Line charts for time series data
-- Bar charts for comparisons
-- Pie charts for proportions
-- Tables for detailed data
-- Funnel charts for conversion paths
-- And more
+## How AI chooses chart types
+
+- **Data type analysis**: Detects dates, numbers, and categories
+- **Query intent**: Understands trends, comparisons, proportions, and conversions
+- **Data volume**: Considers number of points and categories
+- **Best practices**: Applies visualization best practices automatically
+- **SQL generation**: Creates the SQL needed to fetch your data
+
+## Chart types
+
+### Data visualization charts
+- [Line charts](/features/chart-types/line-charts) – Trends and patterns over time
+- [Timebar charts](/features/chart-types/timebar-charts) – Time-based bar visualizations
+- [Horizontal bar charts](/features/chart-types/horizontal-bar-charts) – Non-time categorical comparisons
+- [Pie charts](/features/chart-types/pie-charts) – Proportions and parts of a whole
+- [Funnel charts](/features/chart-types/funnel-charts) – Conversion analysis and flow
+
+### Data display components
+- [Tables](/features/chart-types/tables) – Detailed tabular data display
+- [Number displays](/features/chart-types/number-displays) – Single metric values
+- [Text components](/features/chart-types/text-components) – Text and narrative content
+- [Detail charts](/features/chart-types/detail-views) – Detailed information panels
+
+### Specialized visualizations
+- [Activity charts](/features/chart-types/activity-charts) – Activity patterns and heatmaps
+- [Map visualizations](/features/chart-types/map-visualizations) – Geographic data display
+- [Image charts](/features/chart-types/image) – Image content presentation
+
+## Requesting specific chart types
+
+- "Show me monthly revenue as a line chart"
+- "Create a pie chart of sales by region"
+- "Display customer satisfaction scores as a horizontal bar chart"
+- "Show conversion rates in a funnel chart"
+- "Display total revenue as a number"
+- "Show me user activity patterns as an activity chart"
+
+## Adding breakdowns
+
+Use the "broken down by" syntax to create multiple series:
+
+- "Show me user signups broken down by email domain"
+- "Display sales broken down by product category"
+- "Create a chart of visitors broken down by page"
+- "Show me revenue over time broken down by region"
+
+See [breakdowns](/features/chart-types/breakdowns) for examples and best practices.
 
 ## Customizing charts
 
 ### Visual customization
 - Adjust axis labels and ranges
+- Change colors and themes
 - Modify chart titles and descriptions
-- Modify data formatting
+- Configure legends and formatting (currency, percentages, etc.)
 
 ### Data customization
 - Edit the underlying SQL query
@@ -43,18 +83,27 @@ Basedash supports a variety of chart types:
 - Sort and limit results
 
 ### Advanced SQL editing
-While AI handles most query needs, you can also manually edit the SQL query powering any chart. This gives you complete control over your data analysis. For complex queries or advanced SQL features, check out our [SQL editor](/features/sql-editor) for a full-featured SQL development environment.
+AI handles most query needs, but you can always edit the SQL powering any chart for full control. For complex queries, use the [SQL editor](/features/sql-editor).
 
 ## Best practices
 
-1. **Choose the right visualization**
-   - Use line charts for trends over time
-   - Bar charts for comparing categories
-   - Pie charts for showing composition
-   - Tables for detailed records
+### Choose based on your goal
+- **Trends over time**: Line charts, timebar charts
+- **Comparisons**: Horizontal bar charts
+- **Proportions**: Pie charts
+- **Conversions**: Funnel charts
+- **Single metrics**: Number displays
+- **Activity patterns**: Activity charts
+- **Geographic data**: Map visualizations
 
-2. **Design for clarity**
-   - Keep charts simple and focused
-   - Use clear, descriptive titles
-   - Add context with descriptions
-   - Choose appropriate time ranges
+### Consider your data
+- **Small datasets** (< 10 categories): Pie charts work well
+- **Large datasets** (> 20 categories): Horizontal bar charts are better
+- **Time series**: Use line charts for continuous trends
+- **Categorical data**: Use horizontal bar charts
+
+### Design for clarity
+- Keep charts simple and focused
+- Use clear, descriptive titles
+- Add context with descriptions
+- Choose appropriate time ranges

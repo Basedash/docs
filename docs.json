@@ -31,7 +31,6 @@
               "features/reports",
               "features/dashboards",
               "features/charts",
-              "features/chart-types/introduction",
               "features/chart-types/breakdowns",
               "features/filters-and-variables",
               "features/embedding",
@@ -43,7 +42,12 @@
           },
           {
             "group": "Essentials",
-            "pages": ["essentials/pricing", "essentials/security", "essentials/self-hosting", "essentials/faq"]
+            "pages": [
+              "essentials/pricing",
+              "essentials/security",
+              "essentials/self-hosting",
+              "essentials/faq"
+            ]
           }
         ]
       },
