@@ -43,10 +43,10 @@
           {
             "group": "Essentials",
             "pages": [
+              "essentials/faq",
               "essentials/pricing",
               "essentials/security",
-              "essentials/self-hosting",
-              "essentials/faq"
+              "essentials/self-hosting"
             ]
           }
         ]
