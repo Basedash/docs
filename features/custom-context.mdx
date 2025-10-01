@@ -4,7 +4,17 @@ description: 'Add custom context to improve AI understanding of your organizatio
 icon: 'book-open'
 ---
 
-Custom context allows you to enhance AI understanding by providing additional information about your organization, data sources, schemas, tables, and columns. This helps the AI generate more accurate and relevant responses when creating charts, reports, or answering questions in chat.
+AI context allows you to enhance AI understanding by providing additional information about your organization, data sources, schemas, tables, and columns. This helps the AI generate more accurate and relevant responses when creating charts, reports, or answering questions in chat.
+
+## Automatic AI context
+
+Basedash automatically provides the AI with comprehensive context about your data sources, including:
+
+- **Data source structure**: Table names, column names, and data types from all connected databases and warehouses
+- **Table and column descriptions**: Any existing comments or descriptions from your source databases (PostgreSQL and Snowflake comments, BigQuery descriptions)
+- **Semantic layer context**: If you use a semantic layer like dbt, Basedash includes any documentation, descriptions, and metadata defined in your dbt models
+
+This automatic context ensures the AI has a foundational understanding of your data structure without requiring any manual setup.
 
 ## How AI interprets your data
 
