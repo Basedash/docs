@@ -1,0 +1,22 @@
+---
+title: 'Automated product changelog'
+description: 'Generate changelogs from merged GitHub pull requests'
+---
+
+Automatically generate product changelogs based on recently merged GitHub pull requests. This report saves time and keeps stakeholders informed about product updates and improvements.
+
+```
+Generate a product changelog for the past week based on merged GitHub pull requests:
+
+1. Scan all PRs merged to the main branch in the past 7 days
+2. Categorize changes into: New Features, Improvements, Bug Fixes, and Technical Updates
+3. For each change, provide:
+   - A user-friendly description (rewrite technical PR titles for clarity)
+   - The PR number and link
+   - The team member who implemented it
+4. Exclude internal/infrastructure changes that don't affect users
+5. Highlight any breaking changes or important updates that require user action
+6. Include a summary section at the top with the total number of changes by category
+
+Format the changelog in a clean, readable style suitable for sharing with customers or posting to a changelog page.
+```
