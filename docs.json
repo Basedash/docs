@@ -747,6 +747,50 @@
         ]
       },
       {
+        "tab": "Prompt library",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "prompt-library/introduction"
+            ]
+          },
+          {
+            "group": "Chat",
+            "pages": [
+              "prompt-library/chat/weekly-signups",
+              "prompt-library/chat/top-customers",
+              "prompt-library/chat/inactive-customers",
+              "prompt-library/chat/cohort-retention",
+              "prompt-library/chat/product-performance",
+              "prompt-library/chat/icp-analysis"
+            ]
+          },
+          {
+            "group": "Charts",
+            "pages": [
+              "prompt-library/charts/signups-over-time",
+              "prompt-library/charts/revenue-by-product",
+              "prompt-library/charts/conversion-funnel",
+              "prompt-library/charts/mrr-growth",
+              "prompt-library/charts/top-pages",
+              "prompt-library/charts/regional-sales"
+            ]
+          },
+          {
+            "group": "Reports",
+            "pages": [
+              "prompt-library/reports/weekly-status",
+              "prompt-library/reports/daily-signups",
+              "prompt-library/reports/automated-changelog",
+              "prompt-library/reports/sales-performance",
+              "prompt-library/reports/customer-health",
+              "prompt-library/reports/product-metrics"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Startup metrics",
         "groups": [
           {
