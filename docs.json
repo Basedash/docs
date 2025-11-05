@@ -37,7 +37,8 @@
               "features/tables",
               "features/sql-editor",
               "features/sso",
-              "features/custom-context"
+              "features/custom-context",
+              "features/row-level-security"
             ]
           },
           {

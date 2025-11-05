@@ -1,0 +1,153 @@
+---
+title: 'Row level security'
+description: 'Control data access at the row level for multi-tenant applications'
+icon: 'shield-halved'
+---
+
+Row level security (RLS) allows you to control which rows of data users can access in your database. This is particularly useful for multi-tenant applications where different users should only see their own data, or for team-based access where users should only access data relevant to their department or role.
+
+<Info>
+Row level security is currently only supported for **Postgres databases**. If you need RLS support for other database dialects, please [contact us](mailto:support@basedash.com) to discuss your use case.
+</Info>
+
+## How it works
+
+When a user in your Basedash workspace runs a query, Basedash automatically sets a session variable called `basedash.groups` that contains all the groups the user belongs to (comma-separated). You can then create policies on your Postgres database that reference this session variable to restrict which rows are returned.
+
+Here's the basic flow:
+
+1. You assign users to groups in Basedash (e.g., "Engineering", "Sales", "Support")
+2. You create row-level security policies on your database tables
+3. When a user runs a query, Basedash sets the `basedash.groups` session variable
+4. Your database policies automatically filter the results based on the user's groups
+
+The key advantage of this approach is that you maintain full control over your security policies at the database level, while Basedash simply provides the user context needed to enforce those policies.
+
+## Setting up RLS in Basedash
+
+To enable row level security for a data source:
+
+1. Open the command menu (Cmd+K or Ctrl+K)
+2. Navigate to your data source settings
+3. Select "Row Level Security"
+4. Enable RLS for the data source
+5. View the available group IDs that you can reference in your policies
+
+Once enabled, Basedash will set the `basedash.groups` session variable every time a query is executed against that data source.
+
+## Creating policies on your database
+
+After enabling RLS in Basedash, you need to create policies directly on your Postgres database. These policies define which rows users can access based on their group membership.
+
+<Warning>
+When you enable row level security on a table in Postgres, it will **deny all access by default** until you create policies that explicitly grant access. Make sure to create the appropriate policies immediately after enabling RLS to avoid disrupting access to your data.
+</Warning>
+
+### Basic example
+
+Here's a simple example for an `orders` table where you want to restrict access based on a `department` column:
+
+```sql
+-- Enable RLS on the table
+ALTER TABLE orders ENABLE ROW LEVEL SECURITY;
+
+-- Create a policy for SELECT operations
+CREATE POLICY orders_group_policy ON orders
+  FOR SELECT
+  USING (
+    current_setting('basedash.groups', true) IS NULL
+    OR ',' || current_setting('basedash.groups', true) || ','
+      LIKE '%,' || department || ',%'
+  );
+```
+
+This policy allows:
+- Normal access when `basedash.groups` is not set (so your existing applications continue to work)
+- Filtered access when the session variable is set (Basedash queries)
+
+### Multiple group membership
+
+The policy pattern uses comma-separated values, so it automatically handles users who belong to multiple groups. For example, if a user belongs to both "Engineering" and "Support" groups, the `basedash.groups` variable will be set to `"Engineering,Support"`, and the policy will match rows where the department is either "Engineering" or "Support".
+
+### Permissive policies for external systems
+
+If you want to allow all operations from external systems (those not using Basedash), you can create permissive policies:
+
+```sql
+-- Allow external systems full access for INSERT, UPDATE, DELETE
+CREATE POLICY orders_external_insert ON orders
+  FOR INSERT
+  WITH CHECK (current_setting('basedash.groups', true) IS NULL);
+
+CREATE POLICY orders_external_update ON orders
+  FOR UPDATE
+  USING (current_setting('basedash.groups', true) IS NULL);
+
+CREATE POLICY orders_external_delete ON orders
+  FOR DELETE
+  USING (current_setting('basedash.groups', true) IS NULL);
+```
+
+## Basedash Warehouse
+
+If you're using Basedash Warehouse (our managed Postgres warehouse for Fivetran connections), you can create policies using the warehouse credentials.
+
+To access your Basedash Warehouse credentials:
+
+1. Open the command menu (Cmd+K or Ctrl+K)
+2. Type "Basedash Warehouse"
+3. Select "View credentials"
+4. Use these credentials to connect to your warehouse and create policies
+
+Note that you must have at least one Fivetran connection set up through Basedash Warehouse for this option to be available.
+
+Once you have the credentials, you can connect to your warehouse using any Postgres client (like `psql`, pgAdmin, or TablePlus) and run the `CREATE POLICY` statements directly.
+
+## Important considerations
+
+### Database support
+
+Row level security is currently supported for **Postgres databases only**. Support for other database systems may be added in the future. If you need RLS support for other database dialects, please [contact us](mailto:support@basedash.com) and let us know about your use case.
+
+### Admin access outside Basedash
+
+Admin users who have access to your database credentials (including Basedash Warehouse credentials) can connect to the database directly and query data without RLS restrictions. The policies only apply when the `basedash.groups` session variable is set, which only happens during Basedash queries.
+
+If you need to ensure that all access to your database goes through RLS policies, you should use dedicated database users for external access and create policies that apply to those users as well.
+
+### Compatibility with existing applications
+
+The policy pattern shown above uses a NULL check (`current_setting('basedash.groups', true) IS NULL`) to ensure that your existing applications and services that query the database directly will continue to work normally without any restrictions. Only queries that come through Basedash (which set the session variable) will have the RLS policies applied.
+
+### Performance
+
+Row level security policies are evaluated for every query, so complex policies can impact query performance. Keep policies simple and ensure that any columns referenced in the policies are properly indexed.
+
+## Limitations
+
+### Slackbot integration
+
+Currently, row level security does not apply to queries executed through the Basedash Slackbot. When users run queries via Slack, the `basedash.groups` session variable is not set, which means RLS policies will not filter the results appropriately.
+
+This limitation exists because Slack users are not currently mapped to Basedash users and their associated groups. As a result:
+
+- Slackbot queries will return unfiltered results (as if `basedash.groups` is NULL)
+- Users may see data that would normally be restricted by their group membership
+- RLS policies designed to restrict data access will not be enforced for Slack interactions
+
+We're working on connecting Slack users to Basedash users in a future update, which will allow us to properly identify group memberships and apply RLS policies to Slackbot queries. Until then, be aware that Slackbot queries bypass row level security restrictions.
+
+If data access control is critical for your use case, consider limiting Slackbot access or disabling it until proper RLS support is available.
+
+## Best practices
+
+1. **Start simple** - Begin with policies on a single table and test thoroughly before expanding to your entire database
+
+2. **Use consistent column names** - If you're using RLS across multiple tables, use consistent column names (like `department` or `team_id`) to make policy management easier
+
+3. **Test with different user groups** - Create test users in different groups and verify that they can only access the appropriate data
+
+4. **Document your policies** - Keep track of which tables have RLS enabled and what the policies do, especially as your database schema grows
+
+5. **Monitor query performance** - Watch for any performance degradation after enabling RLS, and optimize policies or add indexes as needed
+
