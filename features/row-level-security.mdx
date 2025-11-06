@@ -14,6 +14,10 @@ Row level security is currently only supported for **Postgres databases**. If yo
 
 When a user in your Basedash workspace runs a query, Basedash automatically sets a session variable called `basedash.groups` that contains all the groups the user belongs to (comma-separated). You can then create policies on your Postgres database that reference this session variable to restrict which rows are returned.
 
+<Info>
+We will always set up the `basedash.groups` session variable for Postgres databases. It will be an empty string if the user making the query doesn't belong to any groups.
+</Info>
+
 Here's the basic flow:
 
 1. You assign users to groups in Basedash (e.g., "Engineering", "Sales", "Support")
@@ -25,19 +29,18 @@ The key advantage of this approach is that you maintain full control over your s
 
 ## Setting up RLS in Basedash
 
-To enable row level security for a data source:
+Whenever a query is executed against a Postgres database, Basedash automatically sets the `basedash.groups` session variable with the user's group memberships.
+
+To view the available groups that will be passed in the session variable:
 
 1. Open the command menu (Cmd+K or Ctrl+K)
 2. Navigate to your data source settings
 3. Select "Row Level Security"
-4. Enable RLS for the data source
-5. View the available group IDs that you can reference in your policies
-
-Once enabled, Basedash will set the `basedash.groups` session variable every time a query is executed against that data source.
+4. View the available group names that you can reference in your policies
 
 ## Creating policies on your database
 
-After enabling RLS in Basedash, you need to create policies directly on your Postgres database. These policies define which rows users can access based on their group membership.
+To control data access, you need to create RLS policies directly on your Postgres database. These policies define which rows users can access based on their group membership.
 
 <Warning>
 When you enable row level security on a table in Postgres, it will **deny all access by default** until you create policies that explicitly grant access. Make sure to create the appropriate policies immediately after enabling RLS to avoid disrupting access to your data.
