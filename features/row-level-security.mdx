@@ -106,6 +106,43 @@ Note that you must have at least one Fivetran connection set up through Basedash
 
 Once you have the credentials, you can connect to your warehouse using any Postgres client (like `psql`, pgAdmin, or TablePlus) and run the `CREATE POLICY` statements directly.
 
+## RLS with chat
+
+Row level security automatically applies to all queries in Basedash, including those generated through the AI chat interface. When users ask questions about their data in chat, the AI-generated SQL queries will respect your RLS policies, ensuring users only see data they're authorized to access.
+
+![RLS in chat](/images/rls-chat.png)
+
+This means your team members can freely explore and ask questions about data through natural language, while your database policies ensure they stay within their authorized scope.
+
+
+## RLS with reports
+
+When scheduled reports are executed, the `basedash.groups` session variable is set using the groups associated with the user who created the report. RLS policies are applied based on the report creator's group memberships.
+
+However, there is currently a limitation where any user with access to a report can modify its prompt or context. This creates a potential loophole where users could modify a report created by someone with broader access to query data they wouldn't normally have access to. We are working on a solution to address this issue.
+
+Until this is resolved, be aware that:
+
+- Report queries use the creator's group memberships
+- Users who can edit reports may be able to access data outside their own group permissions
+- RLS policies are enforced, but based on the report creator's access rather than the report viewer's access
+
+We are working on a way to limit who can edit report context once a report is created to remove this limitation.
+
+## RLS with slack integration
+
+When queries are executed through the Basedash Slackbot, we attempt to match the Slack user to their Basedash user account. If the match is successful, the `basedash.groups` session variable is set with the user's group memberships, and RLS policies are applied normally.
+
+However, only the user who installed the Slack integration in Basedash can have their account linked to Slack. This means:
+
+- **For the installing user**: When they trigger queries through the Slackbot, the `basedash.groups` session variable is set with their group memberships, and RLS policies are applied based on their access
+- **For all other Slack users**: When they trigger the Basedash bot, they are not linked to any Basedash account, so:
+  - The `basedash.groups` session variable will be set to an empty string
+  - Tables with RLS policies that require group membership will return no rows
+  - They will not be able to access any group-restricted data through Slack
+
+We are looking to be able to reliably link all slack users to with Basedash users.
+
 ## Important considerations
 
 ### Database support
@@ -126,21 +163,6 @@ The policy pattern shown above uses a NULL check (`current_setting('basedash.gro
 
 Row level security policies are evaluated for every query, so complex policies can impact query performance. Keep policies simple and ensure that any columns referenced in the policies are properly indexed.
 
-## Limitations
-
-### Slackbot integration
-
-Currently, row level security does not apply to queries executed through the Basedash Slackbot. When users run queries via Slack, the `basedash.groups` session variable is not set, which means RLS policies will not filter the results appropriately.
-
-This limitation exists because Slack users are not currently mapped to Basedash users and their associated groups. As a result:
-
-- Slackbot queries will return unfiltered results (as if `basedash.groups` is NULL)
-- Users may see data that would normally be restricted by their group membership
-- RLS policies designed to restrict data access will not be enforced for Slack interactions
-
-We're working on connecting Slack users to Basedash users in a future update, which will allow us to properly identify group memberships and apply RLS policies to Slackbot queries. Until then, be aware that Slackbot queries bypass row level security restrictions.
-
-If data access control is critical for your use case, consider limiting Slackbot access or disabling it until proper RLS support is available.
 
 ## Best practices
 
