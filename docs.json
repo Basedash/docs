@@ -46,8 +46,15 @@
             "pages": [
               "essentials/faq",
               "essentials/pricing",
-              "essentials/security",
-              "essentials/self-hosting"
+              "essentials/security"
+            ]
+          },
+          {
+            "group": "Self hosted",
+            "pages": [
+              "self-hosted/overview",
+              "self-hosted/deploy",
+              "self-hosted/configure"
             ]
           }
         ]
