@@ -119,29 +119,16 @@ This means your team members can freely explore and ask questions about data thr
 
 When scheduled reports are executed, the `basedash.groups` session variable is set using the groups associated with the user who created the report. RLS policies are applied based on the report creator's group memberships.
 
-However, there is currently a limitation where any user with access to a report can modify its prompt or context. This creates a potential loophole where users could modify a report created by someone with broader access to query data they wouldn't normally have access to. We are working on a solution to address this issue.
-
-Until this is resolved, be aware that:
-
-- Report queries use the creator's group memberships
-- Users who can edit reports may be able to access data outside their own group permissions
-- RLS policies are enforced, but based on the report creator's access rather than the report viewer's access
-
-We are working on a way to limit who can edit report context once a report is created to remove this limitation.
+To maintain security, only the report creator can modify the report's prompt/instructions. This ensures that users cannot modify reports created by someone with broader access to query data they wouldn't normally have access to. Other users with access to the report can view it and receive scheduled deliveries, but cannot modify its configuration.
 
 ## RLS with slack integration
 
-When queries are executed through the Basedash Slackbot, we attempt to match the Slack user to their Basedash user account. If the match is successful, the `basedash.groups` session variable is set with the user's group memberships, and RLS policies are applied normally.
+When queries are executed through the Basedash Slackbot, we attempt to match the Slack user to their Basedash user account. 
 
-However, only the user who installed the Slack integration in Basedash can have their account linked to Slack. This means:
+- **If a match is found**: The `basedash.groups` session variable is set with the user's group memberships, and RLS policies are applied based on their access
+- **If no match is found**: The `basedash.groups` session variable will be set to an empty string, and tables with RLS policies that require group membership will return no rows
 
-- **For the installing user**: When they trigger queries through the Slackbot, the `basedash.groups` session variable is set with their group memberships, and RLS policies are applied based on their access
-- **For all other Slack users**: When they trigger the Basedash bot, they are not linked to any Basedash account, so:
-  - The `basedash.groups` session variable will be set to an empty string
-  - Tables with RLS policies that require group membership will return no rows
-  - They will not be able to access any group-restricted data through Slack
-
-We are looking to be able to reliably link all slack users to with Basedash users.
+This ensures that Slack users who are also Basedash users can access data according to their group permissions, while unmatched Slack users cannot access any group-restricted data.
 
 ## Important considerations
 
