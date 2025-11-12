@@ -81,6 +81,10 @@ Pull container images directly from the Distr registry and deploy using your own
    docker compose up -d
    ```
 
+   <Tip>
+   On initial deployment, run without `-d` to inspect logs in real-time. Configuration errors may prevent the app from running. See the [Configure](/self-hosted/configure) section for setup details.
+   </Tip>
+
 **Updates**: Pull new image versions from the registry when you're ready to update:
 ```bash
 docker compose pull
