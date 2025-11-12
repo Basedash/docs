@@ -72,7 +72,7 @@ Pull container images directly from the Distr registry and deploy using your own
 2. Generate a Personal Access Token (PAT)
 3. Authenticate to the Distr registry:
    ```bash
-   docker login registry.distr.sh -u <your-username> -p <your-pat>
+   echo "YOUR-ACCESS-TOKEN" | docker login registry.distr.sh --password-stdin -u -
    ```
 4. Download the provided docker-compose file or author your own
 5. Pull and run Basedash:
@@ -80,6 +80,10 @@ Pull container images directly from the Distr registry and deploy using your own
    docker compose pull
    docker compose up -d
    ```
+
+   <Tip>
+   On initial deployment, run without `-d` to inspect logs in real-time. Configuration errors may prevent the app from running. See the [Configure](/self-hosted/configure) section for setup details.
+   </Tip>
 
 **Updates**: Pull new image versions from the registry when you're ready to update:
 ```bash
