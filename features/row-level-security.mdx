@@ -106,6 +106,20 @@ Note that you must have at least one Fivetran connection set up through Basedash
 
 Once you have the credentials, you can connect to your warehouse using any Postgres client (like `psql`, pgAdmin, or TablePlus) and run the `CREATE POLICY` statements directly.
 
+### Forcing row level security
+
+When using Basedash Warehouse, you'll need to force row level security on your tables to ensure that RLS policies are properly applied:
+
+```sql
+ALTER TABLE public."User" FORCE ROW LEVEL SECURITY;
+```
+
+This is necessary because the Postgres user used to query and create tables in Basedash Warehouse is the same one. By default, Postgres allows table creators to bypass RLS policies and query all rows in their tables. The `FORCE ROW LEVEL SECURITY` command ensures that RLS policies are enforced even for the table owner, so your security policies will be properly applied to all queries running through Basedash.
+
+<Warning>
+When forcing row level security, make sure to create policies that allow INSERT, UPDATE, and DELETE operations for data synchronization. Without these policies, Fivetran and other external systems won't be able to sync data into your warehouse. See the [Permissive policies for external systems](#permissive-policies-for-external-systems) section for examples of how to create these policies.
+</Warning>
+
 ## RLS with chat
 
 Row level security automatically applies to all queries in Basedash, including those generated through the AI chat interface. When users ask questions about their data in chat, the AI-generated SQL queries will respect your RLS policies, ensuring users only see data they're authorized to access.
