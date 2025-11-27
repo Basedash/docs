@@ -1,0 +1,85 @@
+---
+title: 'Slack integration'
+description: 'Ask questions about your data and share insights directly in Slack'
+icon: 'slack'
+---
+
+<img src="/images/slack-example.png" alt="Slack thread with Basedash agent" style={{ maxWidth: '100%', width: '20rem', borderRadius: '0.5rem', margin: '0 auto' }} />
+
+Basedash integrates with Slack to bring AI-powered data analysis directly into your team's workflow. You can ask questions about your data using `@Basedash`, share charts to channels, and receive automated report notifications—all without leaving Slack.
+
+## Getting started
+
+To connect Slack to your Basedash workspace by opening the command menu (⌘k -> Settings) and selecting "Install Slack bot". A popup will open to request permissions. Once the bot is authorized, you should receive a welcome message from the Bot in Slack and be able to use the Slack integration.
+
+## Ask questions with @Basedash
+
+<img src="/images/slack-chat.png" alt="Basedash answering a data question in Slack chat" style={{ maxWidth: '100%', width: '20rem', borderRadius: '0.5rem', margin: '1.5rem auto' }} />
+
+Mention `@Basedash` in any channel or direct message to ask questions about your data in natural language. The AI will query your connected databases and respond with the answer directly in Slack.
+
+<Note>If your organization uses [row-level security](/features/row-level-security#rls-with-slack-integration), it applies to all Slack queries based on the user's Basedash account.</Note>
+
+### Example questions
+
+- "@Basedash how many users signed up this week?"
+- "@Basedash show me our top 10 customers by revenue"
+- "@Basedash what's our conversion rate for the last month?"
+- "@Basedash compare sales this quarter vs last quarter"
+
+### Thread conversations
+
+Ask follow-up questions in a thread to refine your results or dig deeper into the data. Basedash maintains context throughout the thread, so you can have a natural conversation about your metrics without repeating yourself.
+
+For example:
+- Start with: "@Basedash show me monthly revenue for this year"
+- Follow up with: "@Basedash break that down by region"
+- Then: "@Basedash which region has the highest growth rate?"
+
+### Two-way message sync
+
+<img src="/images/slack-chat-sync.png" alt="Slack and Basedash two-way synced chat messages" style={{ maxWidth: '100%', width: '20rem', borderRadius: '0.5rem', margin: '1.5rem auto' }} />
+
+Chats started in Slack are synced to Basedash. If you start a conversation in Slack, you can continue it in Basedash—and any responses will appear back in the Slack thread. This makes it easy to switch between platforms without losing context.
+
+### Image support
+
+You can attach images to your messages when asking questions. This is useful for sharing screenshots of charts or data that you want Basedash to analyze or reference.
+
+### User matching
+
+Basedash automatically matches Slack users to their Basedash accounts using email addresses. This enables features like row-level security to work correctly, ensuring users only see data they have permission to access—even when asking questions in Slack.
+
+## Share charts to Slack
+
+<img src="/images/slack-chart.png" alt="Sharing a chart from Basedash to Slack" style={{ maxWidth: '100%', borderRadius: '0.5rem', margin: '1.5rem 0' }} />
+
+Share any chart from Basedash directly to a Slack channel. This is perfect for sharing insights during team discussions or highlighting important metrics in relevant channels.
+
+To share a chart:
+
+1. Open the chart you want to share in Basedash
+2. Use the share menu to select Slack
+3. Choose the channel and optionally add a note
+4. Click share to post the chart
+
+The chart will be shared as an image in the selected channel, along with a link back to Basedash for more details.
+
+## Report notifications
+
+[Reports](/features/reports) can be configured to send notifications to Slack channels when they're generated. This keeps your team informed about scheduled reports without requiring them to check Basedash manually.
+
+To enable Slack notifications for a report:
+
+1. Open the report settings panel
+2. In the "Slack alerts" section, connect Slack if you haven't already
+3. Select the channel where you want notifications sent
+
+When the report runs on its schedule, a notification will be posted to the selected channel with a link to view the full report.
+
+<Note>To send reports to private channels, you'll need to invite the bot to the channel first by typing `/invite @Basedash` in that channel.</Note>
+
+## Multiple data sources
+
+If your organization has multiple data sources connected, Basedash automatically determines the most relevant one based on context. For ongoing thread conversations, it maintains the same data source throughout the thread for consistency.
+

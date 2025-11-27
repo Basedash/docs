@@ -36,6 +36,7 @@
               "features/embedding",
               "features/tables",
               "features/sql-editor",
+              "features/slack",
               "features/sso",
               "features/custom-context",
               "features/row-level-security"
