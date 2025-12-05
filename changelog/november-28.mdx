@@ -1,6 +1,6 @@
 ---
 title: "November 28th"
-description: "Two-way Slack chat sync, dashboard tabs and ultrawide layouts, chart goal lines and grouped bars, plus security hardening and more reliable scheduled reports."
+description: "Two-way Slack chat sync, dashboard tabs and ultrawide layouts, chart goal lines and grouped bars, and more reliable scheduled reports."
 ---
 
 Two-way Slack chat sync, richer mentions and onboarding, new dashboard tabs and ultrawide layouts, chart goal lines and grouped bars, plus security hardening and more reliable scheduled reports.
@@ -29,12 +29,6 @@ Charts gained several new visualization options. Line and scatter charts now sup
 
 The line chart type itself has been generalized to handle both time‑series and categorical data. It now automatically switches between time‑based and categorical modes and comes with updated copy and examples that make it clearer when to use each. The data source picker in the command menu also gained a split‑view details pane with human‑readable descriptions of each connector, making it easier to understand what each database or warehouse option is best suited for before you connect.
 
-## Security and authentication hardening
-
-We tightened several security surfaces. File uploads are now restricted to safe types, closing off the ability to upload potentially dangerous executables or scripts. Avatar URLs and organization/user text fields are sanitized and validated so that malicious HTML or untrusted external image URLs can't be stored and rendered back in the UI.
-
-Authentication flows are safer and more privacy‑preserving. Login responses no longer reveal whether an email address exists in the system, which prevents username enumeration attacks, and we improved handling of race conditions and error states around user creation and sign‑up edge cases. These changes make the product more resilient without changing the day‑to-day sign‑in experience for legitimate users.
-
 ## Reporting and scheduled reports
 
 Reports and scheduled messages are more reliable. We fixed an issue where reports could remain stuck in a "Generating" state even after completing, and we now block new scheduled report runs when a report is already in progress for the same report in the last 24 hours. This prevents duplicate Slack posts for the same scheduled report and keeps report statuses aligned with reality.
@@ -46,7 +40,6 @@ Slack report notifications have been upgraded with clearer formatting and a "Vie
 - Replaced the thinking-steps popover in the chat sidebar with a single collapsible section, making it easier to scan and then tuck away intermediate reasoning.
 - Fixed a bug where the loading bar could appear jittery in Safari, providing smoother visual feedback while pages and queries load.
 - Corrected the "View documentation" command menu item in the desktop app so it opens docs in your default web browser instead of a new app window.
-- Surface backend errors more clearly by showing a toast whenever a change fails in the background, instead of silently reverting.
 - Improved performance and reliability when connecting to very large databases by reworking how schema metadata is loaded and cached.
 - Stopped introspecting tables from ignored schemas so database connections feel cleaner and faster, with less noise in the table list.
 - Improved stability around Postgres and Databricks connections, reducing the chance of errors when connections are opened and closed.
