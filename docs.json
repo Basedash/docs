@@ -51,7 +51,7 @@
             ]
           },
           {
-            "group": "Self hosted",
+            "group": "Self-hosting",
             "pages": [
               "self-hosted/overview",
               "self-hosted/deploy",
