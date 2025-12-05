@@ -790,6 +790,17 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Changelog",
+            "pages": [
+              "changelog/december-2024"
+            ]
+          }
+        ]
       }
     ],
     "global": {
