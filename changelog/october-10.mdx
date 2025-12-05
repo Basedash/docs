@@ -1,0 +1,19 @@
+---
+title: "October 10th"
+description: "Archive reports with a 'Recently deleted' view, dashed lines for partial data in time series charts, and faster AI chat with database schema caching."
+---
+
+Archive reports with a "Recently deleted" view. Time series charts now use dashed visuals for partial periods. AI chat is faster with database schema caching.
+
+## Archive reports with a "Recently deleted" view
+
+You can now archive reports. Archived items are moved to a "Recently deleted" section, helping you keep workspaces tidy without losing context. This follows the same archiving model we use for dashboards and charts for a consistent cleanup workflow.
+
+## Clearer partial data in time series charts
+
+Time series charts now use dashed lines and bars to indicate partial periods (for example, the current day or month). This makes it obvious when a data point is still in progress and helps prevent misreads of incomplete data. We also shipped a small performance improvement when rendering these partial series.
+
+## Faster AI chat with database schema caching
+
+We added a database schema cache so we no longer re-fetch large schema metadata every time you start a chat. In local tests, this shaved about 1–2 seconds off responses on cache hits, with bigger gains on larger databases, while also reducing load on the database.
+
