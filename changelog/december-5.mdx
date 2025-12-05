@@ -1,0 +1,39 @@
+---
+title: "December 5th"
+description: "New chart copy/export options, more consistent colors and currency labels, and a smoother Slack, chat, and onboarding experience."
+---
+
+New chart copy/export options, more consistent colors and currency labels, and a smoother Slack, chat, and onboarding experience. Plus security hardening and stability fixes across reports, embeds, and real-time sync.
+
+## Richer chart export and copy options
+
+You can now copy or export data from both chart tables and AI-generated markdown tables in a clean, markdown-friendly format. This makes it much easier to move structured results from Basedash into docs, Slack, tickets, or other tools without manual reformatting.
+
+We also expanded the "copy" options so they're available both from the chart card menu and from the table footer. Whether you want to grab a whole result set or a small slice of records, the copy actions are now consistent and easy to find across tables and charts.
+
+## More consistent and legible charts
+
+Chart colors are now deterministic and consistent across the app. Categories get stable, predictable colors from a centralized palette, and single-series charts now use a neutral default color instead of cycling through brighter accents. Legend labels, metrics, and chart segments all stay in sync so what you see in the legend always matches what you see in the visualization.
+
+We also fixed several issues around financial charts. Multi-letter currencies such as CHF now display correctly in tooltips and along chart axes without being cut off, and we pass the right currency information through to vertical bar charts. Legend entries are chosen in a stable order before being limited, so labels remain predictable even on busy dashboards.
+
+## Better Slack and chat experience
+
+Slack messages now look much closer to how they appear in Slack itself. Mentions are rendered as readable names instead of raw ID strings, and emoji shortcodes like `:wave:` are converted into proper emojis before they're shown in Basedash. Avatars in Slack chats now support consistent hover cards, giving you clearer context about who's participating in a conversation.
+
+Chat reliability has also improved. We fixed an issue where reports could briefly jump from a "generating" state back to an empty view before returning to "generating," and we now refetch chat messages if generation stopped while you navigated away and then came back. Timeouts and reconnect behavior around chat syncing were tuned so slow or flaky connections are less likely to interrupt an ongoing conversation.
+
+## Onboarding and navigation improvements
+
+The onboarding flow now includes an organization switcher for users who belong to multiple workspaces. If you start onboarding in one organization and then get added to another, you can switch to the correct workspace directly from the onboarding experience instead of getting stuck in the wrong one.
+
+We also polished smaller visual and navigation details. Uploaded avatar images in onboarding now preserve their aspect ratio instead of appearing squished, and dashboard cards on the main dashboards view behave more like traditional tiles—more of the card surface is clickable, making it easier to jump into the dashboard you want.
+
+## Fixes and improvements
+
+- Reduced duplicate Slack responses by fixing a background job configuration issue that could schedule the same Slack reply more than once.
+- Smoothed out live reconnection behavior and adjusted chat sync timeouts to make real-time updates more resilient under slow or intermittent network conditions.
+- Added protection against clickjacking by blocking untrusted sites from embedding the app in iframes, while still allowing shared dashboards to be embedded where expected.
+- Tightened browser security headers and routing so we can safely iterate on security policies and reporting without breaking static assets or desktop client integrations.
+- Addressed several backend error and shutdown paths (including uncaught exceptions and unhandled rejections) to reduce the chance of transient failures during deploys or restarts.
+- Improved handling of database and SSH connection errors, making connection issues easier to diagnose without affecting normal day-to-day use.
