@@ -53,9 +53,9 @@
           {
             "group": "Self-hosting",
             "pages": [
-              "self-hosted/overview",
-              "self-hosted/deploy",
-              "self-hosted/configure"
+              "self-hosting/overview",
+              "self-hosting/deploy",
+              "self-hosting/configure"
             ]
           }
         ]
