@@ -1,0 +1,48 @@
+---
+title: "November 28th"
+description: "Two-way Slack chat sync, dashboard tabs and ultrawide layouts, chart goal lines and grouped bars, and more reliable scheduled reports."
+---
+
+Two-way Slack chat sync, richer mentions and onboarding, new dashboard tabs and ultrawide layouts, chart goal lines and grouped bars, plus security hardening and more reliable scheduled reports.
+
+## Slack chat: two-way sync and richer messages
+
+Slack-connected chats are now truly two-way. Messages you write in Basedash are posted back into the linked Slack thread, and Slack mentions render as readable @names with rich tooltips showing profile details. When a Basedash member has no avatar, we fall back to their Slack avatar and also sync missing avatars into Basedash so conversations feel more personal and recognizable.
+
+We've also polished the first response from the bot with a "View in Basedash" button, made long answers and reports robust against Slack's 3,000‑character limit, and stopped raw Slack IDs from leaking into chat titles. Under the hood, message parsing and markdown handling are more forgiving, so chats are less likely to get stuck or fail to send because of formatting quirks or unusual Slack payloads.
+
+## Slack setup, permissions, and onboarding
+
+Slack setup and troubleshooting are much clearer. The Slack integration view in the command menu now has a dedicated details pane showing workspace status, missing permissions, and clear actions like "Reconnect workspace" or "Update permissions," plus a sidebar callout whenever the app needs to be updated. This makes it easier to understand at a glance whether your workspace is fully connected and up to date.
+
+When permissions are missing, we add emoji reactions to show that a message is being processed, surface one-time guidance inside Slack with direct links back to the correct settings in Basedash, and avoid spamming duplicate warnings. New installs receive a short onboarding DM and a one-time tip the first time someone invokes the bot. Sharing charts now uses the bot installation for the whole workspace rather than per-user auth, so fewer people need to connect Slack before they can share charts.
+
+## Dashboard layout upgrades: tabs, headers, ultrawide
+
+Dashboards now support tabs, making it much easier to organize complex workspaces into logical sections (for example, "Overview," "Product," "Growth"). You can move charts between tabs, with safeguards to avoid no-ops when you target the current tab, and you can add headers and freeform text blocks to explain what a dashboard or group of charts is for. This makes dashboards better suited to storytelling and team handoffs, not just raw monitoring.
+
+For dense monitoring setups, an ultrawide dashboard mode lets you take advantage of wider screens, with follow‑up fixes to keep layouts looking correct across widths. Trial‑ending callouts have also been restyled to match the new Slack integration callouts, so important subscription and integration status messages feel consistent throughout the app.
+
+## Charting enhancements: goal lines, grouped bars, flexible line charts
+
+Charts gained several new visualization options. Line and scatter charts now support goal lines, letting you overlay a horizontal target value so it's easy to see whether metrics are above or below a threshold. Bar charts have a new grouped mode alongside stacked bars, so you can compare series side‑by‑side when that reads better than stacking.
+
+The line chart type itself has been generalized to handle both time‑series and categorical data. It now automatically switches between time‑based and categorical modes and comes with updated copy and examples that make it clearer when to use each. The data source picker in the command menu also gained a split‑view details pane with human‑readable descriptions of each connector, making it easier to understand what each database or warehouse option is best suited for before you connect.
+
+## Reporting and scheduled reports
+
+Reports and scheduled messages are more reliable. We fixed an issue where reports could remain stuck in a "Generating" state even after completing, and we now block new scheduled report runs when a report is already in progress for the same report in the last 24 hours. This prevents duplicate Slack posts for the same scheduled report and keeps report statuses aligned with reality.
+
+Slack report notifications have been upgraded with clearer formatting and a "View in Basedash" button, and they now split very long content across multiple Slack blocks instead of failing when hitting Slack's length limits. Together with the broader Slack messaging improvements, this makes automated reports easier to read directly in Slack while still providing a smooth path back into the app to explore details.
+
+## Fixes and improvements
+
+- Replaced the thinking-steps popover in the chat sidebar with a single collapsible section, making it easier to scan and then tuck away intermediate reasoning.
+- Fixed a bug where the loading bar could appear jittery in Safari, providing smoother visual feedback while pages and queries load.
+- Corrected the "View documentation" command menu item in the desktop app so it opens docs in your default web browser instead of a new app window.
+- Improved performance and reliability when connecting to very large databases by reworking how schema metadata is loaded and cached.
+- Stopped introspecting tables from ignored schemas so database connections feel cleaner and faster, with less noise in the table list.
+- Improved stability around Postgres and Databricks connections, reducing the chance of errors when connections are opened and closed.
+- Reduced flickering during AI chart creation by avoiding chat message refetches while there are pending mutations for the chart or chat.
+- Updated the Slack integration badge styling to use the latest success color tokens, aligning it with the rest of the design system.
+- Chat titles generated from Slack messages are now cleaned up so they no longer include raw Slack user ID strings.
