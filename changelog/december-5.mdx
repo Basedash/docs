@@ -31,9 +31,4 @@ We also polished smaller visual and navigation details. Uploaded avatar images i
 
 ## Fixes and improvements
 
-- Reduced duplicate Slack responses by fixing a background job configuration issue that could schedule the same Slack reply more than once.
-- Smoothed out live reconnection behavior and adjusted chat sync timeouts to make real-time updates more resilient under slow or intermittent network conditions.
-- Added protection against clickjacking by blocking untrusted sites from embedding the app in iframes, while still allowing shared dashboards to be embedded where expected.
-- Tightened browser security headers and routing so we can safely iterate on security policies and reporting without breaking static assets or desktop client integrations.
-- Addressed several backend error and shutdown paths (including uncaught exceptions and unhandled rejections) to reduce the chance of transient failures during deploys or restarts.
-- Improved handling of database and SSH connection errors, making connection issues easier to diagnose without affecting normal day-to-day use.
+- Reduced duplicate Slack responses.
