@@ -28,7 +28,7 @@
             "group": "Features",
             "pages": [
               "features/chat",
-              "features/reports",
+              "features/autopilot",
               "features/dashboards",
               "features/charts",
               "features/chart-types/breakdowns",
