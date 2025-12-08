@@ -209,6 +209,21 @@ SMTP_FROM_EMAIL=noreply@your-domain.com
 - **AWS SES**: email-smtp.us-east-1.amazonaws.com:587
 - **Gmail**: smtp.gmail.com:587 (requires app password)
 
+### Amazon SES configuration
+
+Configure Amazon Simple Email Service (SES) directly:
+
+```bash
+EMAIL_PROVIDER=ses
+
+SES_ACCESS_KEY_ID=your-access-key-id
+SES_SECRET_ACCESS_KEY=your-secret-access-key
+SES_REGION=us-east-2
+SES_FROM_EMAIL=noreply@your-domain.com
+```
+
+Ensure your SES account is out of sandbox mode for production use, and that the `SES_FROM_EMAIL` address is verified in your SES configuration.
+
 ### Email features
 
 With email configured, users can:
