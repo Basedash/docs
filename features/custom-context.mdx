@@ -31,56 +31,41 @@ This additional layer of understanding enables the AI to generate more relevant,
 
 ## How it works
 
-Custom context is automatically considered by the AI whenever you create charts, chat, or reports in Basedash. Organization-wide context applies to every conversation within your organization, while schema and column-level context is used when that specific data is referenced by the AI.
+Custom context is automatically considered by the AI whenever you create charts, chat, or reports in Basedash. Global context applies to every conversation within your organization, while schema and column-level context is used when that specific data is referenced by the AI.
 
 ## Accessing custom context
 
-### Organization-wide context
+### Global context
 
-You can access organization-wide custom context through the command bar:
+Global context applies to all AI interactions in the organization. You can access global context through the organization dropdown in the top-left corner.
 
-1. Press **Command + K** to open the command bar
-2. Type "custom context" and select the option
-3. Enter your organization-specific information
-
-![Command bar with custom context option](/images/commandbar-context.png)
+![Organization dropdown with global context option](/images/context-global.png)
 
 ### Context in chat
 
-You can also add context directly in the chat interface:
-
-1. Look for the **"add context"** button (plus icon) in the bottom-left of the chat input
-2. Click to add relevant context for your current conversation
+You can also add context directly from the chat interface. Look for the **"Global context"** button (asterisk icon) in the top-left of the chat input.
 
 ![Chat interface with add context button](/images/context-inchat.png)
 
 ### Data source context
 
-To add context for specific data sources, schemas, tables, or columns:
+You can also add context tied to a specific data source, schema, table, or column.
 
-1. Navigate to **Data sources** by:
-   - Clicking the workspace dropdown in the top-left corner and selecting "Data sources"
-   - Or pressing **Command + K** and typing "data sources"
-2. Select any data source or schema
-3. Look for the **"add description"** option
+1. Navigate to the **Data** page
+2. Right-click on a data source, schema, table, or column
+3. Select **"Edit AI context"**
 
-![Data sources page with add description option](/images/context-datasource.png)
+![Data page with edit AI context option](/images/context-datasource.png)
 
 ## Best practices
 
-### Start with organization context
+### Start with global context
 
-We recommend beginning with organization-wide custom context as one of your first setup steps. This provides the AI with fundamental understanding of your business, terminology, and key metrics.
-
-### When to add schema and column context
-
-Only add schema and column-level context when the names or existing descriptions aren't sufficient for the AI to understand the data. This is particularly helpful for:
-
-- **Complex JSON columns**: Add context to explain what data is stored within JSON structures
-- **Unclear schema names**: Provide context about what type of data is stored and how it's used
-- **Custom data structures**: Explain any non-standard data formats or relationships
+We recommend beginning with global context as one of your first setup steps. This provides the AI with fundamental understanding of your business, terminology, and key metrics.
 
 ### Define internal terminology
+
+Global context is a great place to define internal terminology. This helps the AI understand your business, terminology, and key metrics.
 
 Use custom context to define:
 
@@ -101,7 +86,7 @@ For step-by-step guidance, see our [getting started guide](/getting-started/conn
 
 ### Organization context
 ```
-Our company is a SaaS platform for e-commerce businesses. 
+Our company is a SaaS platform for e-commerce businesses.
 We refer to our customers as "merchants" and their customers as "shoppers."
 "MRR" refers to Monthly Recurring Revenue from subscription plans.
 "Churn" means when a merchant cancels their subscription.
