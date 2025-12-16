@@ -797,18 +797,19 @@
           {
             "group": "Changelog",
             "pages": [
-              "changelog/december-5",
-              "changelog/november-28",
-              "changelog/october-10",
-              "changelog/october-3",
-              "changelog/september-26",
-              "changelog/september-19",
-              "changelog/september-12",
-              "changelog/september-5",
-              "changelog/august-29",
-              "changelog/august-15",
-              "changelog/august-8",
-              "changelog/august-1"
+              "changelog/2025-12-12",
+              "changelog/2025-12-05",
+              "changelog/2025-11-28",
+              "changelog/2025-10-10",
+              "changelog/2025-10-03",
+              "changelog/2025-09-26",
+              "changelog/2025-09-19",
+              "changelog/2025-09-12",
+              "changelog/2025-09-05",
+              "changelog/2025-08-29",
+              "changelog/2025-08-15",
+              "changelog/2025-08-08",
+              "changelog/2025-08-01"
             ]
           }
         ]
