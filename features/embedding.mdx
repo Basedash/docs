@@ -1,202 +1,113 @@
 ---
-title: 'Embedding charts'
-description: 'Embed your Basedash charts and dashboards into external applications'
+title: 'Embedding'
+description: 'Embed dashboards or the full Basedash app into your product'
 icon: 'code'
 ---
 
-Embedding allows you to integrate your Basedash charts and dashboards directly into external applications, websites, and internal tools. This enables you to share data insights seamlessly across your organization without requiring users to access the Basedash platform directly.
+Basedash supports two types of embedding:
 
-## How embedding works
+- **Dashboard embedding**: Embed a dashboard as a read-only, interactive view in an iframe.
+- **Full app embedding**: Embed the full Basedash app (dashboards + chat) inside your product with JWT SSO.
 
-Embedding allows you to take any dashboard created in Basedash and add it to your own app wrapper. To embed a dashboard:
+## Dashboard embedding
 
-1. Click the **Share** button in the top right corner of your dashboard
-2. Enable "Embedding"
-3. Basedash provides you with the iframe code to copy
-4. Paste the embed code into your application
+Dashboard embedding is best when you want to show a specific dashboard inside another app.
 
-Embedded dashboards maintain their interactivity, including filters and variables, allowing users to explore data directly within your applications.
+### Create an embed
 
-### Getting embed codes
+1. Open the dashboard in Basedash
+2. Click **Share** in the dashboard header
+3. Enable the **Embedding** toggle
+4. Copy the iframe snippet (or copy the plain URL)
 
-Embeds use public dashboard links with the `/shared/{id}` path. Copy the code from the share menu:
+Embeds use a share link with the `/shared/{id}` path.
 
-```html
-<iframe src="https://charts.basedash.com/shared/xyz789"
-	width="100%"
-	height="600px"
-	frameborder="0">
-</iframe>
-```
-
-## Use cases
-
-### Customer-facing dashboards
-Embed charts into customer portals to show:
-- Account performance metrics
-- Usage statistics
-- Billing information
-- Custom analytics
-
-### Internal tools
-Integrate charts into internal applications:
-- CRM systems
-- Project management tools
-- Executive dashboards
-- Team collaboration platforms
-
-### Marketing websites
-Display public-facing metrics:
-- Company performance indicators
-- Product usage statistics
-- Customer success metrics
-- Industry benchmarks
-
-### Documentation sites
-Embed charts into documentation to show:
-- API usage examples
-- Performance benchmarks
-- Feature adoption rates
-- System health metrics
-
-## Embedding with filters
-
-### Variable injection
-You can pass variables via query parameters. On public dashboards, variables use the `evar_` prefix and values use Base64 encoding:
-
-```html
-<iframe src="https://charts.basedash.com/shared/xyz789?evar_user_id=12345&dateRange=LAST_30_DAYS&groupByInterval=DAY"
-	width="100%"
-	height="600px"
-	frameborder="0">
-</iframe>
-```
-
-Notes:
-- Use `evar_{syntax}={value}` for public dashboards
-- Built-in variables: `dateRange`, `groupByInterval`, `customDateFrom`, `customDateTo`
-
-### Filter visibility control
-Control what users can see and modify:
-- **Allow user interaction**: Let users change filters and explore data
-- **Disable user visibility**: Hide filters to show only specific data slices
-- **Preset values**: Lock filters to specific values for consistent views
-
-### Dynamic filtering
-Update embedded charts programmatically:
-- Change filters via JavaScript
-- Respond to user interactions
-- Sync with parent application state
-- Real-time data updates
-
-## Security and access control
-
-### Secure data isolation
-When a dashboard is embedded in an application, public variable values are URL-encoded with the `evar_` prefix to avoid leaking labels and to simplify link sharing. For advanced isolation needs, contact us.
-
-### Authentication
-Embedded charts respect your Basedash access controls:
-- User authentication required
-- Role-based permissions
-- Data access restrictions
-- Session management
-
-### Customer data isolation
-Perfect for showing users dashboards of their own data without allowing them to see anything else:
-- User-specific dashboards
-- Customer portals
-- Account-specific analytics
-- Personalized views
-
-### Public embeds
-Create public embeds for non-sensitive data:
-- Marketing materials
-- Public dashboards
-- Demo content
-- Educational resources
-
-### Private embeds
-Secure embeds for sensitive data:
-- Customer-specific data
-- Internal metrics
-- Financial information
-- Proprietary analytics
-
-## Technical implementation
-
-### Basic embed code
 ```html
 <iframe
-	src="https://charts.basedash.com/shared/YOUR_DASHBOARD_ID"
+	src="https://charts.basedash.com/shared/xyz789"
 	width="100%"
-	height="600px"
+	height="600"
 	frameborder="0"
-	allowfullscreen>
-</iframe>
+	allowfullscreen
+></iframe>
 ```
 
-### Responsive embedding
+### Show or hide dashboard filters
+
+In the share dialog, you can configure whether dashboard filters are visible in the embed. This is useful when you want a clean, fixed view (hidden filters) versus an explorable view (shown filters).
+
+### Preset variable values via URL
+
+If your dashboard uses variables, you can preset them via query parameters on the share link.
+
+- Use `evar_{variableSyntax}={base64Value}`
+- Values are Base64 encoded
+- URL-encode the Base64 string (for example, via `encodeURIComponent`)
+- Only variables enabled for public sharing are supported
+
+Example (the value `12345` is Base64 encoded as `MTIzNDU=`):
+
 ```html
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-	<iframe
-		src="https://charts.basedash.com/shared/YOUR_DASHBOARD_ID"
-		style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-		frameborder="0"
-		allowfullscreen>
-	</iframe>
-</div>
+<iframe
+	src="https://charts.basedash.com/shared/xyz789?evar_user_id=MTIzNDU="
+	width="100%"
+	height="600"
+	frameborder="0"
+></iframe>
 ```
 
-## Best practices
+## Full app embedding
 
-### Responsive design
-- Use responsive iframe containers
-- Test on different screen sizes
-- Ensure mobile compatibility
-- Maintain aspect ratios
+Full app embedding is for customer portals where you want users to access Basedash inside your product, including building dashboards and chatting with the Basedash agent against their own data.
 
-### Performance optimization
-- Lazy load embedded charts
-- Cache embed codes
-- Minimize iframe updates
-- Use appropriate chart sizes
+Full app embedding uses JWT-based SSO inside an iframe:
 
-### User experience
-- Provide loading states
-- Handle error scenarios
-- Maintain consistent styling
-- Ensure accessibility
+1. Your backend generates a short-lived JWT for the current end user
+2. The iframe loads a Basedash SSO URL (`/api/sso/jwt?jwt=...`)
+3. Basedash validates the token, creates a session, and redirects into your organization
 
-### Security considerations
-- Validate embed URLs
-- Sanitize filter parameters
-- Monitor embed usage
-- Implement rate limiting
+### JWT SSO iframe URL
 
-### Custom embedding
-For more information about custom embedding, including advanced security features and styling options, please contact us.
+```html
+<iframe
+	src="https://charts.basedash.com/api/sso/jwt?jwt=YOUR_JWT"
+	width="100%"
+	height="800"
+	frameborder="0"
+></iframe>
+```
 
-## Chart types for embedding
+### JWT claims
 
-### Interactive charts
-- **Line charts**: Time series with date filters
-- **Bar charts**: Category comparisons with entity filters
-- **Funnel charts**: Journey analysis with time filters
-- **Activity charts**: Daily patterns with date ranges
+Your JWT must include:
 
-### Data displays
-- **Tables**: Detailed data with sorting and filtering
-- **Number displays**: Key metrics with time filters
-- **Detail**: Entity information with selection filters
-- **Text components**: Formatted content with context filters
+- **email**: The user’s email
+- **orgId**: Your Basedash organization id
+- **exp**: Expiration timestamp (keep tokens short-lived)
+- **iat**: Issued-at timestamp
 
-### Specialized visualizations
-- **Map visualizations**: Geographic data with region filters
-- **Image displays**: Visual content with entity filters
+Optional claims:
 
-## Related features
+- **firstName**
+- **lastName**
+- **role**: `ADMIN` or `MEMBER` (used when creating a new member; defaults to `MEMBER`)
 
-- [Filters and variables](/features/filters-and-variables) - Control embedded chart data
-- [Dashboards](/features/dashboards) - Organize charts for embedding
-- [Chart types](/features/chart-types/introduction) - Choose the right charts for embedding
-- [Custom context](/features/custom-context) - Improve AI understanding for embedded charts
+The token should be signed with your organization’s embed JWT secret (typically using `HS256`).
+
+### Allowed embed origins
+
+If your organization has an allowed origins list configured, Basedash will reject embeds that load from any other origin. Make sure the embedding page’s origin is included, and avoid using a referrer policy that strips the `Referer` header.
+
+### Troubleshooting
+
+If the iframe shows an error page, the most common causes are:
+
+- **Missing JWT parameter**: your iframe URL is missing `?jwt=...`
+- **Embedding not enabled**: embedding isn’t enabled for your organization
+- **Origin not allowed**: add your site’s origin to the allowed origins list
+
+## Related pages
+
+- [Filters and variables](/features/filters-and-variables)
+- [Dashboards](/features/dashboards)
+- [Chat](/features/chat)
