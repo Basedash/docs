@@ -58,56 +58,277 @@ Example (the value `12345` is Base64 encoded as `MTIzNDU=`):
 
 ## Full app embedding
 
-Full app embedding is for customer portals where you want users to access Basedash inside your product, including building dashboards and chatting with the Basedash agent against their own data.
+Full app embedding lets you embed the entire Basedash experience inside your product. Your users can view dashboards, build new charts, and chat with the AI assistant—all without leaving your application.
 
-Full app embedding uses JWT-based SSO inside an iframe:
+This is ideal for customer portals, partner dashboards, or any scenario where you want to give users a complete BI experience powered by their own data.
 
-1. Your backend generates a short-lived JWT for the current end user
-2. The iframe loads a Basedash SSO URL (`/api/sso/jwt?jwt=...`)
-3. Basedash validates the token, creates a session, and redirects into your organization
+### How it works
 
-### JWT SSO iframe URL
+Full app embedding uses JWT-based single sign-on (SSO) inside an iframe:
+
+1. **Your server generates a JWT** containing the user's identity and your Basedash organization ID
+2. **The iframe loads the SSO endpoint** (`/api/sso/jwt?jwt=...`) with the token
+3. **Basedash validates the JWT** against your organization's secret
+4. **A session is created** for the user (creating their account if needed)
+5. **The user is redirected** to your organization's home page inside the iframe
+
+```mermaid
+sequenceDiagram
+    participant Frontend as Your Frontend
+    participant Backend as Your Backend
+    participant Basedash
+
+    Frontend->>Backend: Request embed page
+    Backend->>Frontend: Generate JWT for user
+    Frontend->>Basedash: Load iframe: /api/sso/jwt?jwt=XXX
+    Basedash->>Basedash: Verify JWT, create session
+    Basedash->>Frontend: Redirect to org home (in iframe)
+```
+
+### Setup overview
+
+Setting up full app embedding involves these steps:
+
+1. Enable embedding and get your JWT secret
+2. Generate JWTs server-side for your users
+3. Load the iframe with the SSO URL
+
+<Note>
+  Full app embedding requires API access. Contact support@basedash.com to enable the public API for your account.
+</Note>
+
+### Step 1: Enable embedding
+
+Enable embedding for your organization by going to **Settings → Embedding → Enable full app embedding**. Once enabled, you can copy your JWT secret from this page. The JWT secret is used to sign tokens that authenticate users into the embedded app.
+
+<Warning>
+  Store your `embedJwtSecret` securely in your environment variables. Never expose it in client-side code.
+</Warning>
+
+You can also configure allowed origins on this page to restrict which domains can embed your organization.
+
+### Step 2: Generate JWTs server-side
+
+Your backend must generate a signed JWT for each user who accesses the embed. Here are examples in common languages:
+
+<CodeGroup>
+
+```javascript Node.js
+import jwt from 'jsonwebtoken';
+
+function generateBasedashToken(user) {
+  return jwt.sign(
+    {
+      email: user.email,
+      orgId: process.env.BASEDASH_ORG_ID,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: 'MEMBER', // or 'ADMIN'
+    },
+    process.env.BASEDASH_EMBED_JWT_SECRET,
+    { expiresIn: '10m' }
+  );
+}
+
+// Express route example
+app.get('/embed/basedash', (req, res) => {
+  const token = generateBasedashToken(req.user);
+  const embedUrl = `https://charts.basedash.com/api/sso/jwt?jwt=${token}`;
+  
+  res.render('embed', { embedUrl });
+});
+```
+
+```python Python
+import jwt
+import os
+from datetime import datetime, timedelta
+
+def generate_basedash_token(user):
+    payload = {
+        'email': user.email,
+        'orgId': os.environ['BASEDASH_ORG_ID'],
+        'firstName': user.first_name,
+        'lastName': user.last_name,
+        'role': 'MEMBER',
+        'exp': datetime.utcnow() + timedelta(minutes=10),
+        'iat': datetime.utcnow(),
+    }
+    return jwt.encode(
+        payload,
+        os.environ['BASEDASH_EMBED_JWT_SECRET'],
+        algorithm='HS256'
+    )
+
+# Flask route example
+@app.route('/embed/basedash')
+def basedash_embed():
+    token = generate_basedash_token(current_user)
+    embed_url = f'https://charts.basedash.com/api/sso/jwt?jwt={token}'
+    return render_template('embed.html', embed_url=embed_url)
+```
+
+```ruby Ruby
+require 'jwt'
+
+def generate_basedash_token(user)
+  payload = {
+    email: user.email,
+    orgId: ENV['BASEDASH_ORG_ID'],
+    firstName: user.first_name,
+    lastName: user.last_name,
+    role: 'MEMBER',
+    exp: 10.minutes.from_now.to_i,
+    iat: Time.now.to_i
+  }
+  JWT.encode(payload, ENV['BASEDASH_EMBED_JWT_SECRET'], 'HS256')
+end
+
+# Rails controller example
+def basedash_embed
+  token = generate_basedash_token(current_user)
+  @embed_url = "https://charts.basedash.com/api/sso/jwt?jwt=#{token}"
+end
+```
+
+```go Go
+import (
+    "os"
+    "time"
+    "github.com/golang-jwt/jwt/v5"
+)
+
+func generateBasedashToken(user User) (string, error) {
+    claims := jwt.MapClaims{
+        "email":     user.Email,
+        "orgId":     os.Getenv("BASEDASH_ORG_ID"),
+        "firstName": user.FirstName,
+        "lastName":  user.LastName,
+        "role":      "MEMBER",
+        "exp":       time.Now().Add(10 * time.Minute).Unix(),
+        "iat":       time.Now().Unix(),
+    }
+    
+    token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+    return token.SignedString([]byte(os.Getenv("BASEDASH_EMBED_JWT_SECRET")))
+}
+```
+
+</CodeGroup>
+
+### Step 3: Load the iframe
+
+In your frontend, render an iframe pointing to the SSO URL:
 
 ```html
 <iframe
-	src="https://charts.basedash.com/api/sso/jwt?jwt=YOUR_JWT"
-	width="100%"
-	height="800"
-	frameborder="0"
+  src="https://charts.basedash.com/api/sso/jwt?jwt=YOUR_JWT_TOKEN"
+  width="100%"
+  height="800"
+  frameborder="0"
 ></iframe>
 ```
 
-### JWT claims
+### JWT claims reference
 
-Your JWT must include:
+Your JWT must include these claims:
 
-- **email**: The user’s email
-- **orgId**: Your Basedash organization id
-- **exp**: Expiration timestamp (keep tokens short-lived)
-- **iat**: Issued-at timestamp
+| Claim | Type | Required | Description |
+|-------|------|----------|-------------|
+| `email` | string | Yes | The user's email address |
+| `orgId` | string | Yes | Your Basedash organization ID |
+| `exp` | number | Yes | Expiration timestamp (Unix seconds) |
+| `iat` | number | Yes | Issued-at timestamp (Unix seconds) |
+| `firstName` | string | No | User's first name |
+| `lastName` | string | No | User's last name |
+| `role` | string | No | `ADMIN` or `MEMBER` (defaults to `MEMBER`) |
 
-Optional claims:
+<Note>
+  The `role` claim is only used when creating new members. It doesn't change the role of existing members.
+</Note>
 
-- **firstName**
-- **lastName**
-- **role**: `ADMIN` or `MEMBER` (used when creating a new member; defaults to `MEMBER`)
+### Allowed origins
 
-The token should be signed with your organization’s embed JWT secret (typically using `HS256`).
+For security, you can restrict which domains can embed your Basedash organization. Configure this at **Settings → Embedding**
 
-### Allowed embed origins
+If no origins are configured, embeds are allowed from any domain.
 
-If your organization has an allowed origins list configured, Basedash will reject embeds that load from any other origin. Make sure the embedding page’s origin is included, and avoid using a referrer policy that strips the `Referer` header.
+### Security best practices
+
+<AccordionGroup>
+
+<Accordion title="Keep your JWT secret secure">
+Never expose the `embedJwtSecret` in client-side code. Generate JWTs only on your backend.
+</Accordion>
+
+<Accordion title="Use short token expiration">
+JWTs should expire within 10-60 minutes. Users only need a valid token when loading the iframe—once authenticated, they use a Basedash session cookie.
+</Accordion>
+
+<Accordion title="Configure allowed origins">
+Always set `embedAllowedOrigins` in production to prevent unauthorized sites from embedding your organization.
+</Accordion>
+
+<Accordion title="Use read-only database credentials">
+When connecting data sources, use database credentials with read-only permissions to minimize risk.
+</Accordion>
+
+<Accordion title="Validate user access server-side">
+Before generating a JWT, verify that the current user should have access to the embedded analytics.
+</Accordion>
+
+</AccordionGroup>
 
 ### Troubleshooting
 
-If the iframe shows an error page, the most common causes are:
+<AccordionGroup>
 
-- **Missing JWT parameter**: your iframe URL is missing `?jwt=...`
-- **Embedding not enabled**: embedding isn’t enabled for your organization
-- **Origin not allowed**: add your site’s origin to the allowed origins list
+<Accordion title="Missing JWT parameter">
+**Error**: "The embed URL is missing the required JWT token"
+
+Make sure your iframe `src` includes the `?jwt=` query parameter with your signed token.
+</Accordion>
+
+<Accordion title="Embedding not enabled">
+**Error**: "Embedding is not enabled for this organization"
+
+Enable embedding when creating the organization by setting `fullEmbedEnabled: true`, or update an existing organization via the API.
+</Accordion>
+
+<Accordion title="Origin not allowed">
+**Error**: "This embed is not authorized to load from [origin]"
+
+Add your domain to the `embedAllowedOrigins` array. Make sure to include the full origin (e.g., `https://app.example.com`).
+</Accordion>
+
+<Accordion title="Authentication failed (invalid or expired JWT)">
+**Error**: "The JWT token is invalid or has expired"
+
+- Verify you're using the correct `embedJwtSecret` for the organization
+- Check that the JWT hasn't expired (tokens should be short-lived)
+- Ensure you're signing with the HS256 algorithm
+- Verify the clock on your server is accurate (JWT validation allows 30 seconds of clock skew)
+</Accordion>
+
+<Accordion title="Missing Referer header">
+**Error**: "Unable to verify the request origin"
+
+This happens when allowed origins are configured but the browser doesn't send a Referer header. Check that:
+- Your page doesn't have `Referrer-Policy: no-referrer`
+- You're not loading the iframe from a `file://` URL during development
+</Accordion>
+
+<Accordion title="Organization not found">
+**Error**: "The organization ID in your JWT does not match any Basedash organization"
+
+Verify that the `orgId` claim in your JWT matches an existing Basedash organization ID.
+</Accordion>
+
+</AccordionGroup>
 
 ## Related pages
 
+- [API reference](/api-reference/overview)
 - [Filters and variables](/features/filters-and-variables)
 - [Dashboards](/features/dashboards)
 - [Chat](/features/chat)
