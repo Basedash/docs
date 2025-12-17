@@ -1,0 +1,105 @@
+---
+title: "Overview"
+description: "Programmatic access to Basedash features"
+---
+
+Basedash provides a public API for programmatic access to certain features. This page describes how to authenticate and interact with the API.
+
+<Warning>
+  The public API is currently in private beta. Contact us at support@basedash.com to request access. The API is also currently unversioned, and breaking changes will be communicated in advance when possible.
+</Warning>
+
+## Base URL
+
+All API endpoints are available at:
+
+```
+https://app.basedash.com/api/public/
+```
+
+## Authentication
+
+The public API uses API key authentication via Bearer tokens.
+
+### Creating an API key
+
+To create an API key, navigate to your user profile settings by clicking on your avatar in the top-right corner. From there, select the "API keys" option where you can generate a new API key.
+
+<Note>
+  The API keys option is only visible if you're part of the private beta.
+</Note>
+
+When you create an API key, you'll be shown the full key once. Make sure to copy and store it securely, as it cannot be retrieved later.
+
+### API key format
+
+API keys follow the format `bd_key_<secret>`, where `<secret>` is a 32-character cryptographically secure random string.
+
+Example: `bd_key_aBcD1234eFgH5678iJkL9012mNoP`
+
+### Using your API key
+
+Include your API key in the `Authorization` header using the Bearer scheme:
+
+```
+Authorization: Bearer bd_key_your_api_key_here
+```
+
+Example with curl:
+
+```bash
+curl -X POST https://app.basedash.com/api/public/organizations \
+  -H "Authorization: Bearer bd_key_your_api_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "My Organization"}'
+```
+
+## Request format
+
+- All requests with a body should use `Content-Type: application/json`.
+- Request bodies should be valid JSON.
+
+## Response format
+
+All responses use a standardized wrapper format for consistency.
+
+### Successful responses
+
+Successful responses wrap the result in a `data` property:
+
+```json
+{
+  "data": {
+    "id": "org_abc123",
+    "name": "My Organization",
+    "slug": "my-organization",
+    "customAiContext": null,
+    "onboardingStatus": "STARTED"
+  }
+}
+```
+
+The HTTP status code indicates the type of success:
+
+| Status code | Description                                 |
+| ----------- | ------------------------------------------- |
+| 200         | OK - Request succeeded                      |
+| 201         | Created - Resource was successfully created |
+
+### Error responses
+
+Error responses wrap the error details in an `error` property, following a format inspired by [RFC 7807](https://datatracker.ietf.org/doc/html/rfc7807):
+
+```json
+{
+  "error": {
+    "title": "ErrorType",
+    "detail": "A human-readable description of the error"
+  }
+}
+```
+
+| Field          | Type   | Description                                                                      |
+| -------------- | ------ | -------------------------------------------------------------------------------- |
+| `error.title`  | string | A short identifier for the error type (e.g., `ValidationError`, `Unauthorized`) |
+| `error.detail` | string | A human-readable explanation of what went wrong                                  |

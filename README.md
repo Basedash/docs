@@ -64,6 +64,12 @@ You'll need to follow these steps every time you want to make a change.
 
 Changes will automatically be deployed to production after pushing to the main branch.
 
+## Public API documentation
+
+Our public API reference pages are automatically generated from our OpenAPI specification hosted at https://charts.basedash.com/api/public/openapi. Mintlify reads this spec and auto-populates the API endpoint pages, so there's no need to manually create or update individual API pages.
+
+For more details on how this works, see the [Mintlify OpenAPI setup documentation](https://www.mintlify.com/docs/api-playground/openapi-setup#dedicated-api-sections).
+
 ## Need Help?
 
 If you get stuck at any point:

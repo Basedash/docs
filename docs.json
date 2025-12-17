@@ -813,6 +813,22 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "API reference",
+        "groups": [
+          {
+            "group": "Overview",
+            
+            "pages": [
+              "api-reference/overview"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "openapi": "https://charts.basedash.com/api/public/openapi"
+          }
+        ]
       }
     ],
     "global": {
