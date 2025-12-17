@@ -36,26 +36,6 @@ Embeds use a share link with the `/shared/{id}` path.
 
 In the share dialog, you can configure whether dashboard filters are visible in the embed. This is useful when you want a clean, fixed view (hidden filters) versus an explorable view (shown filters).
 
-### Preset variable values via URL
-
-If your dashboard uses variables, you can preset them via query parameters on the share link.
-
-- Use `evar_{variableSyntax}={base64Value}`
-- Values are Base64 encoded
-- URL-encode the Base64 string (for example, via `encodeURIComponent`)
-- Only variables enabled for public sharing are supported
-
-Example (the value `12345` is Base64 encoded as `MTIzNDU=`):
-
-```html
-<iframe
-	src="https://charts.basedash.com/shared/xyz789?evar_user_id=MTIzNDU="
-	width="100%"
-	height="600"
-	frameborder="0"
-></iframe>
-```
-
 ## Full app embedding
 
 Full app embedding lets you embed the entire Basedash experience inside your product. Your users can view dashboards, build new charts, and chat with the AI assistant—all without leaving your application.
