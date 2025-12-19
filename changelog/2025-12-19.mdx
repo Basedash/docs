@@ -1,19 +1,11 @@
 ---
 title: "December 19, 2025"
-description: "Expanded Public API, improved full-app embedding, dashboard tab auto-rotation, and PostHog support."
+description: "PostHog direct data connection, dashboard tab auto-rotation, new Public API, and full-app embedding."
 ---
 
-## Public API: create and manage orgs + data sources
+## PostHog direct data connection
 
-We've expanded the Public API so you can automate more of your Basedash setup and maintenance. You can now create, fetch, and update organizations; upload an organization image; and manage embedding-related org settings via API.
-
-On the data side, the Public API now supports creating, updating, and fetching data sources, plus verifying connection credentials before saving anything—making it much easier to build "test connection" flows into your own tooling. We also added a machine-readable API spec and introduced rate limiting to keep integrations predictable and stable at scale.
-
-## Full-app embedding: safer setup, clearer failures, better iframe support
-
-Embedding setup is now configurable directly in-app, with controls to enable/disable full-app embedding per org and manage allowed embed origins. This makes it much easier for teams to roll out secure embeds without guessing configuration details.
-
-We also made embedded sign-in flows more robust and user-friendly: embeds now enforce origin allowlists more consistently, show clearer in-embed error pages when something goes wrong, and behave more reliably in iframe contexts. For teams provisioning users via JWT SSO, you can now optionally assign a role through the JWT when creating new members.
+PostHog is now available as a direct data source, allowing you to get real-time data right from PostHog—just as you would for any other direct database connection. Query your event-level analytics directly in Basedash without waiting for syncs or ETL pipelines.
 
 ## Dashboards: auto-rotating tabs + a more polished tab UI
 
@@ -21,18 +13,35 @@ Dashboards can now automatically rotate through tabs on a timer—useful for wal
 
 We also refreshed the tabs UI to feel more consistent and clickable, and improved navigation so saving a chart brings you back to the correct dashboard tab.
 
-## Data sources & onboarding: PostHog support + a smoother connection flow
+## Data sources & onboarding: a smoother connection flow
 
-PostHog is now available as a first-class data source, so you can query event-level analytics directly in Basedash. Connecting PostHog is also simpler with a region selector that fits how most teams actually deploy (while still supporting self-hosted setups).
+We streamlined the onboarding/connection flow and reduced confusion around connection health states—so it's clearer when something is truly unhealthy vs. "still syncing."
 
-Separately, we streamlined the onboarding/connection flow and reduced confusion around connection health states—so it's clearer when something is truly unhealthy vs. "still syncing."
+## Introducing the Public API (private beta)
+
+Basedash now has a [Public API](https://docs.basedash.com/api-reference/overview) so you can automate your Basedash setup and maintenance. You can create, fetch, and update organizations; upload an organization image; and manage embedding-related org settings via API.
+
+On the data side, the Public API supports creating, updating, and fetching data sources, plus verifying connection credentials before saving anything—making it much easier to build "test connection" flows into your own tooling. We also added a machine-readable API spec and introduced rate limiting to keep integrations predictable and stable at scale.
+
+<Note>
+The public API is currently in private beta. Contact us at support@basedash.com to request access.
+</Note>
+
+## Full-app embedding: safer setup, clearer failures, better iframe support (private beta)
+
+[Full-app embedding](https://docs.basedash.com/features/embedding) complements our dashboard embedding offering by allowing you to not only embed a single dashboard in an iframe, but embed your whole Basedash app in an iframe—so you can tightly integrate Basedash with your existing products.
+
+Embedding setup is now configurable directly in-app, with controls to enable/disable full-app embedding per org and manage allowed embed origins.
+
+Sign-in is handled via JWT SSO—just get your JWT secret from Basedash, then create JWTs to authenticate users directly into your embedded app. You can also optionally assign a role through the JWT when provisioning new members.
+
+<Note>
+Full-app embedding is currently in private beta. Contact us at support@basedash.com to request access.
+</Note>
 
 ## Fixes and improvements
 
-- Added PostHog as a direct data source you can query.
 - Simplified the data source connection and onboarding experience.
-- Added dashboard tab auto-rotation for hands-free monitoring displays.
-- Refreshed dashboard tab styling and interaction.
 - Improved navigation so saving a chart returns you to the correct dashboard tab.
 - Preserved exact chart queries when adding charts from chat to dashboards (reducing "surprise" changes).
 - Improved report email recipient management (add/remove recipients more easily, including external emails).
@@ -48,4 +57,3 @@ Separately, we streamlined the onboarding/connection flow and reduced confusion 
 - Tightened permissions and reduced accidental overwrites when making bulk dashboard/chart updates.
 - Improved chat UI layout so content doesn't shift and feedback controls stay visible.
 - Reduced visual clutter by auto-collapsing long "context updated" callouts.
-- Removed duplicate "API keys" entries in the profile menu.
