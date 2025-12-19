@@ -48,14 +48,14 @@ Example: `bd_key_aBcD1234eFgH5678iJkL9012mNoP`
 Include your API key in the `Authorization` header using the Bearer scheme:
 
 ```
-Authorization: Bearer bd_key_your_api_key_here
+Authorization: Bearer <basedash_api_key>
 ```
 
 Example with curl:
 
 ```bash
 curl -X POST https://app.basedash.com/api/public/organizations \
-  -H "Authorization: Bearer bd_key_your_api_key_here" \
+  -H "Authorization: Bearer <basedash_api_key>" \
   -H "Content-Type: application/json" \
   -d '{"name": "My Organization"}'
 ```
