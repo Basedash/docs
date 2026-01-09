@@ -1,0 +1,41 @@
+---
+title: "January 9, 2026"
+description: "Dashboard folders with scalable sharing, custom chart colors, powerful table exports, and new Public API endpoints."
+---
+
+## Dashboard folders (with sharing that scales)
+
+You can now organize dashboards into folders, making it much easier to keep workspaces tidy as your dashboard count grows. Folders show up in the sidebar and support quick organization, including drag-and-drop ordering.
+
+Sharing is also smoother: you can grant access at the folder level and have dashboards inherit that access automatically—so you don't have to manage permissions one dashboard at a time when a project expands.
+
+## Custom chart colors (plus a refreshed default palette)
+
+Charts now support color customization so you can match brand palettes, keep colors consistent across dashboards, and make key series stand out intentionally (instead of relying only on the default rotation).
+
+We also refreshed and tuned the default chart colors (in both light and dark themes) and expanded custom-color support to additional chart types, including funnel and scatter charts.
+
+## Export more data from table charts
+
+Exports now work the way you'd expect for table charts: you can export up to 1M rows while preserving your current filters, sorts, and column ordering. This makes it far easier to pull "exactly what I'm looking at" for audits, sharing, and deeper analysis outside Basedash.
+
+## Public API: easier org + data source management
+
+The [Public API](/api-reference/overview) now supports listing organizations and listing data sources within an organization, making it much easier to build admin tooling and automation on top of Basedash.
+
+We also added the ability to delete data sources via API, which helps teams fully manage lifecycle flows (provision → update → clean up) programmatically.
+
+## Fixes and improvements
+
+- Improved the dashboard chat experience with a clear Ask/Edit toggle.
+- Improved dashboard chat loading behavior to feel smoother and more reliable.
+- Improved responsiveness of variable dropdowns while dashboards are still loading.
+- Reduced "stuck" or wasted queries by canceling in-flight work more reliably (including when navigating away).
+- Added local caching for chart query results (with guardrails) to speed up repeat loads.
+- Fixed exporting records file names to be more consistent and correct.
+- Fixed metric cards so negative numbers display correctly.
+- Fixed the chat sidebar "scroll down" button positioning.
+- Improved avatar color assignment so people with similar initials are easier to distinguish.
+- Improved self-hosted setup with a clearer in-app configuration error banner.
+- Fixed self-hosted SMTP emails to correctly use the configured "from" email address.
+- Reduced intermittent 502-style errors to improve overall reliability.
