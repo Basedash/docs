@@ -203,6 +203,76 @@ All workspaces have full access to their warehouse credentials:
 - **Authentication control** - Manage who can access your warehouse data
 - **Credential rotation** - Update credentials as needed for security
 
+## Accessing your warehouse credentials
+
+You can access your Basedash Warehouse credentials directly from the app to connect external tools, run custom queries, or manage your data.
+
+### How to view your credentials
+
+1. Open the command menu (Cmd+K or Ctrl+K)
+2. Type "Basedash Warehouse"
+3. Select "View credentials"
+
+Your credentials include:
+- **Host** - The database server address
+- **Port** - The connection port (typically 5432)
+- **Database** - Your database name
+- **Username** - Your database username
+- **Password** - Your database password
+
+<Note>
+You must have at least one Fivetran connection set up through Basedash Warehouse for this option to be available.
+</Note>
+
+### Connecting with external tools
+
+Use your credentials to connect any PostgreSQL-compatible client:
+
+- **psql** - Command-line PostgreSQL client
+- **pgAdmin** - GUI administration tool
+- **TablePlus** - Database management app
+- **DBeaver** - Universal database tool
+- **DataGrip** - JetBrains database IDE
+
+### Common use cases
+
+**Deleting data**
+
+Connect to your warehouse and run SQL commands to delete specific records:
+
+```sql
+-- Delete specific records from a table
+DELETE FROM schema_name.table_name WHERE condition;
+
+-- Delete all data from a table
+TRUNCATE TABLE schema_name.table_name;
+```
+
+**Running custom queries**
+
+Execute complex queries that aren't supported through the Basedash interface:
+
+```sql
+-- Example: Export data to analyze externally
+SELECT * FROM schema_name.table_name
+WHERE created_at > '2024-01-01';
+```
+
+**Creating database objects**
+
+Set up views, functions, or [row-level security policies](/features/row-level-security):
+
+```sql
+-- Create a view for filtered data access
+CREATE VIEW schema_name.filtered_view AS
+SELECT * FROM schema_name.table_name
+WHERE status = 'active';
+```
+
+<Warning>
+Direct database modifications bypass Basedash's data management features. Use caution when deleting or modifying data directly.
+</Warning>
+
 ### AI data filtering
 Basedash's AI automatically handles deleted data from Fivetran:
 
