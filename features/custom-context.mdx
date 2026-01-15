@@ -1,7 +1,7 @@
 ---
-title: 'AI context'
-description: 'Add custom context to improve AI understanding of your organization and data'
-icon: 'book-open'
+title: "AI context"
+description: "Add custom context to improve AI understanding of your organization and data"
+icon: "book-open"
 ---
 
 AI context allows you to enhance AI understanding by providing additional information about your organization, data sources, schemas, tables, and columns. This helps the AI generate more accurate and relevant responses when creating charts, reports, or answering questions in chat.
@@ -31,7 +31,7 @@ This additional layer of understanding enables the AI to generate more relevant,
 
 ## How it works
 
-Custom context is automatically considered by the AI whenever you create charts, chat, or reports in Basedash. Global context applies to every conversation within your organization, while schema and column-level context is used when that specific data is referenced by the AI.
+Custom context is automatically considered by the AI whenever you create charts, chat, or reports in Basedash. Global context applies to every conversation within your organization. You can also add group context to control how the AI works for different teams. Data source, schema, table, and column-level context is used when that specific data is referenced by the AI.
 
 ## Accessing custom context
 
@@ -40,6 +40,21 @@ Custom context is automatically considered by the AI whenever you create charts,
 Global context applies to all AI interactions in the organization. You can access global context through the organization dropdown in the top-left corner.
 
 ![Organization dropdown with global context option](/images/context-global.png)
+
+### Group context
+
+Group context applies to users in a specific group. This is useful when different teams need the AI to behave differently, such as:
+
+- **Finance**: Define strict metric definitions and preferred accounting terminology
+- **Support**: Explain ticket lifecycle, common issue categories, and internal abbreviations
+- **Sales**: Define pipeline stages and how to interpret deal status fields
+
+To edit group context:
+
+1. Open the command menu
+2. Go to **Groups**
+3. Select a group
+4. Choose **Edit AI context**
 
 ### Context in chat
 
@@ -85,6 +100,7 @@ For step-by-step guidance, see our [getting started guide](/getting-started/conn
 ## Examples
 
 ### Organization context
+
 ```
 Our company is a SaaS platform for e-commerce businesses.
 We refer to our customers as "merchants" and their customers as "shoppers."
@@ -93,13 +109,27 @@ We refer to our customers as "merchants" and their customers as "shoppers."
 ```
 
 ### Schema context
+
 ```
 The "analytics" schema contains event tracking data from our platform.
 The "billing" schema contains subscription and payment information.
 The "support" schema contains customer support ticket data.
 ```
 
+### Group context
+
+```
+This group is the finance team.
+
+Use conservative language in summaries.
+If there is ambiguity in a metric, ask a clarifying question instead of assuming.
+
+"Revenue" means GAAP revenue (not bookings).
+"Churn" should be computed as logo churn unless explicitly asked for revenue churn.
+```
+
 ### Column context
+
 ```
 The "metadata" JSON column contains user preferences and settings.
 The "status" column uses values: "active", "suspended", "cancelled".
