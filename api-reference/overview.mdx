@@ -5,9 +5,10 @@ description: "Programmatic access to Basedash features"
 
 Basedash provides a public API for programmatic access to certain features. This page describes how to authenticate and interact with the API.
 
-<Warning>
-  The public API is currently in private beta. Contact us at support@basedash.com to request access. The API is also currently unversioned, and breaking changes will be communicated in advance when possible.
-</Warning>
+<Note>
+  The API is currently unversioned, and breaking changes will be communicated in
+  advance when possible.
+</Note>
 
 ## Base URL
 
@@ -30,10 +31,6 @@ The public API uses API key authentication via Bearer tokens.
 ### Creating an API key
 
 To create an API key, navigate to your user profile settings by clicking on your avatar in the top-right corner. From there, select the "API keys" option where you can generate a new API key.
-
-<Note>
-  The API keys option is only visible if you're part of the private beta.
-</Note>
 
 When you create an API key, you'll be shown the full key once. Make sure to copy and store it securely, as it cannot be retrieved later.
 
@@ -105,7 +102,7 @@ Error responses wrap the error details in an `error` property, following a forma
 }
 ```
 
-| Field          | Type   | Description                                                                      |
-| -------------- | ------ | -------------------------------------------------------------------------------- |
+| Field          | Type   | Description                                                                     |
+| -------------- | ------ | ------------------------------------------------------------------------------- |
 | `error.title`  | string | A short identifier for the error type (e.g., `ValidationError`, `Unauthorized`) |
-| `error.detail` | string | A human-readable explanation of what went wrong                                  |
+| `error.detail` | string | A human-readable explanation of what went wrong                                 |
