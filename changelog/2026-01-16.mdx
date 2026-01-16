@@ -1,0 +1,33 @@
+---
+title: "January 16, 2026"
+description: "Chart drilldowns, embedding & API keys for everyone, and zero data-retention AI mode."
+---
+
+## Chart drilldowns
+
+Charts now support **drilldowns**—click on a bar, point, or segment and immediately see the underlying records in a table. This makes it much faster to answer "what's driving this?" without rewriting SQL or creating a separate detail chart.
+
+Drilldowns work across common chart types (including bar, line, pie, maps, and more), and Basedash automatically generates the drilldown query so it's available even when charts are created quickly.
+
+## Embedding & API keys available to everyone
+
+Full app embedding and API keys are no longer hidden behind feature gating—all teams can now discover and use them directly from settings.
+
+This makes it easier to roll out Basedash inside your product or internal tooling and build workflows around the platform without needing special enablement.
+
+## Zero data-retention support for AI
+
+Basedash now supports a **stateless / zero data retention** mode for AI where required, enabling teams with stricter privacy or compliance needs to use AI features without retaining conversation state in the same way as standard mode.
+
+## Fixes and improvements
+
+- Fixed the command menu showing incorrect results when typing immediately after opening it.
+- Added automatic client-side retries for temporary 502/503 errors (with a "reconnecting" experience) to reduce disruption during brief outages or deploys.
+- Kept the chat panel open when switching back to Ask mode so the UI doesn't unexpectedly collapse.
+- Added support for custom fiscal calendars so time-based reporting can align with your fiscal year.
+- Added a new progress chart visualization.
+- Improved scatter plots by fixing resizing/legend layout issues and refining dot styling.
+- Fixed the "Yesterday" date range behavior.
+- Improved dashboard editing visuals by fixing separator sizing in edit mode.
+- Improved connector icon loading by serving Fivetran icons via CDN for faster page loads.
+- Improved ClickHouse schema introspection compatibility by using system tables (helpful for more hosted ClickHouse providers).
