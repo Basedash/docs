@@ -1,7 +1,7 @@
 ---
-title: 'Security'
-description: 'Keeping your data secure'
-icon: 'lock'
+title: "Security"
+description: "Keeping your data secure"
+icon: "lock"
 ---
 
 Basedash takes security and data privacy seriously. We've implemented comprehensive security measures to protect your data throughout every step of the process.
@@ -14,9 +14,9 @@ All Basedash servers are located in San Francisco, California, ensuring your dat
 
 ### Self-hosting for enhanced security
 
-For organizations with additional security requirements, we offer [self-hosting](/essentials/self-hosting) as an option. Self-hosting allows you to deploy Basedash on your own infrastructure, giving you complete control over data location, network security, and compliance standards.
+For organizations with additional security requirements, we offer [self-hosting](/self-hosting/overview) as an option. Self-hosting allows you to deploy Basedash on your own infrastructure, giving you complete control over data location, network security, and compliance standards.
 
-When you self-host, you can achieve compliance with various international and industry-specific security standards including ISO 27001, SOC 2 Type II, HIPAA, GDPR, PCI-DSS, and air-gapped environments. See our [self-hosting documentation](/essentials/self-hosting) for detailed information about compliance standards and implementation requirements.
+When you self-host, you can achieve compliance with various international and industry-specific security standards including ISO 27001, SOC 2 Type II, HIPAA, GDPR, PCI-DSS, and air-gapped environments. See our [self-hosting documentation](/self-hosting/overview) for detailed information about compliance standards and implementation requirements.
 
 We work with third-party security researchers to conduct regular penetration testing, ensuring our security measures remain robust against evolving threats.
 
@@ -48,14 +48,12 @@ Importantly, your data is not used for training purposes by either Basedash or A
 
 ## Data encryption
 
-Security is maintained at every layer through comprehensive encryption. All connections to Basedash require HTTPS, and data in-transit is encrypted using TLS protocols. Your database data is encrypted at-rest using LUKS encryption, providing an additional layer of protection for stored information.
+Security is maintained at every layer through comprehensive encryption. All connections to Basedash require HTTPS, and data in transit is encrypted using TLS protocols.
 
 Database credentials and SSH keys that you provide are encrypted using AES-256 encryption before being stored, ensuring that even if someone gained access to our systems, your credentials would remain protected.
 
 ## Data retention and deletion
 
-To improve performance and reduce strain on your databases, Basedash caches query results by default. All cached data is fully encrypted and automatically deleted after 1 day, ensuring your data doesn't persist longer than necessary.
-
-If your organization has specific requirements around data caching, you can request to have caching disabled entirely by emailing us at [support@basedash.com](mailto:support@basedash.com).
+Basedash may cache certain data to improve performance. If your organization has specific data retention requirements, contact us at [support@basedash.com](mailto:support@basedash.com) and we’ll help you evaluate the right configuration.
 
 For data deletion, users can delete their account and associated data directly through the Basedash application. Alternatively, you can contact our support team at [support@basedash.com](mailto:support@basedash.com) to request data deletion on your behalf. We ensure complete removal of your data from our systems upon request.

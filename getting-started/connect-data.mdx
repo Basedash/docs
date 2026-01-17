@@ -1,7 +1,7 @@
 ---
-title: 'Connect your data'
-description: 'Connect your data sources to Basedash'
-icon: 'database'
+title: "Connect your data"
+description: "Connect your data sources to Basedash"
+icon: "database"
 ---
 
 Basedash supports a wide range of data sources, making it easy to connect and visualize your data. You can connect directly to SQL databases or data warehouses.
@@ -9,12 +9,14 @@ Basedash supports a wide range of data sources, making it easy to connect and vi
 ## Supported data sources
 
 ### SQL databases
+
 - [PostgreSQL](/data-sources/databases/postgres)
 - [MySQL](/data-sources/databases/mysql)
 - [PlanetScale](/data-sources/databases/planetscale)
 - [Cloud Spanner](/data-sources/databases/spanner)
 
 ### Data warehouses
+
 - [BigQuery](/data-sources/warehouses/bigquery)
 - [Snowflake](/data-sources/warehouses/snowflake)
 - [ClickHouse](/data-sources/warehouses/clickhouse)
@@ -22,7 +24,8 @@ Basedash supports a wide range of data sources, making it easy to connect and vi
 ## Connection methods
 
 ### Direct connection
-1. From your Basedash dashboard, click on "Add Data Source"
+
+1. From your Basedash dashboard, click on "Add data source"
 2. Select your database type
 3. Enter your connection details:
    - Host
@@ -30,11 +33,13 @@ Basedash supports a wide range of data sources, making it easy to connect and vi
    - Database name
    - Username
    - Password
-4. Click "Test Connection" to verify
+4. Click "Test connection" to verify
 5. Save your connection
 
 ### SSH tunnel
+
 For enhanced security, you can connect through SSH:
+
 1. Follow the direct connection steps
 2. Enable "Connect via SSH" option
 3. Add our IP (`24.199.77.73`) to your allowlist
@@ -42,7 +47,9 @@ For enhanced security, you can connect through SSH:
 5. Test and save the connection
 
 ### Security
+
 All connections are encrypted and secure. Basedash:
+
 - Uses HTTPS/TLS for all connections
 - Encrypts credentials with AES-256
 - Only requires read access to your data
@@ -52,13 +59,14 @@ For more details about security, check out our [security documentation](/essenti
 
 ## Self-hosting option
 
-For organizations that need complete control over their data infrastructure or have specific compliance requirements, we offer [self-hosting](/essentials/self-hosting) as an alternative to our cloud service. Self-hosted deployments allow you to deploy Basedash on your own infrastructure while maintaining all the same data connection capabilities.
+For organizations that need complete control over their data infrastructure or have specific compliance requirements, we offer [self-hosting](/self-hosting/overview) as an alternative to our cloud service. Self-hosted deployments allow you to deploy Basedash on your own infrastructure while maintaining all the same data connection capabilities.
 
 ## Next steps: Add custom context
 
 After connecting your data, we recommend setting up custom context to help the AI better understand your organization and data. This improves the accuracy of charts, reports, and chat responses.
 
 ### Quick setup
+
 1. Press **Command + K** and type "custom context"
 2. Add organization-wide context about your business, terminology, and key metrics
 3. For complex data structures, add descriptions to schemas and columns in the data sources section

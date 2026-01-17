@@ -15,13 +15,13 @@ Basedash provides a public API for programmatic access to certain features. This
 Most API endpoints are available at:
 
 ```
-https://app.basedash.com/api/public/
+https://charts.basedash.com/api/public/
 ```
 
 The SSO endpoint for embedding uses a different path:
 
 ```
-https://app.basedash.com/api/sso/jwt
+https://charts.basedash.com/api/sso/jwt
 ```
 
 ## Authentication
@@ -51,7 +51,7 @@ Authorization: Bearer <basedash_api_key>
 Example with curl:
 
 ```bash
-curl -X POST https://app.basedash.com/api/public/organizations \
+curl -X POST https://charts.basedash.com/api/public/organizations \
   -H "Authorization: Bearer <basedash_api_key>" \
   -H "Content-Type: application/json" \
   -d '{"name": "My Organization"}'

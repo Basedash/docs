@@ -1,7 +1,7 @@
 ---
-title: 'SQL editor'
-description: 'Write and execute SQL queries in Basedash'
-icon: 'database'
+title: "SQL editor"
+description: "Write and execute SQL queries in Basedash"
+icon: "database"
 ---
 
 While Basedash excels at creating charts through natural language, you can also write custom SQL queries when you need more control or complex analysis.
@@ -9,6 +9,7 @@ While Basedash excels at creating charts through natural language, you can also 
 ## The SQL editor
 
 ### Features
+
 - Syntax highlighting
 - Auto-completion
 - Schema browser
@@ -19,6 +20,7 @@ While Basedash excels at creating charts through natural language, you can also 
 ## Writing queries
 
 ### Basic query structure
+
 ```sql
 SELECT column1, column2
 FROM your_table
@@ -29,7 +31,9 @@ LIMIT 100
 ```
 
 ### AI query assistant
+
 Need help writing SQL? Our AI can:
+
 - Generate queries from natural language
 - Explain complex queries
 - Suggest optimizations
@@ -40,12 +44,14 @@ Just describe what you want to query, and the AI will help write the SQL.
 ## Query best practices
 
 ### Performance
+
 - Use appropriate LIMIT clauses
-- Avoid SELECT *
+- Avoid SELECT \*
 - Index important columns
 - Use efficient joins
 
 ### Organization
+
 - Format queries for readability
 - Add comments for complex logic
 - Use CTEs for better structure
@@ -54,21 +60,22 @@ Just describe what you want to query, and the AI will help write the SQL.
 ## Working with results
 
 ### Visualization
+
 - Convert results to charts
 - Export to CSV/Excel
 - Share query results
 - Save as dashboard components
 
-### Cached results
-- Query results are cached for 24 hours
-- View cache status for each query
-- Force refresh when needed
-- Configure caching per query
+### Result freshness
+
+Results refresh when you rerun a query or change inputs. Basedash may temporarily cache some results in your browser to improve performance.
 
 ## Advanced features
 
 ### Variables
+
 Use variables in your queries:
+
 ```sql
 SELECT *
 FROM orders
@@ -77,12 +84,14 @@ WHERE date >= {{start_date}}
 ```
 
 ### Scheduled queries
+
 - Set up recurring queries
 - Export results automatically
 - Monitor query performance
 - Get alerts on failures
 
 ## Security
+
 - Read-only access by default
 - Query history logging
 - Resource usage limits
