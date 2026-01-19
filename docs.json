@@ -28,9 +28,10 @@
             "group": "Features",
             "pages": [
               "features/chat",
-              "features/autopilot",
               "features/dashboards",
               "features/charts",
+              "features/insights",
+              "features/alerts",
               "features/chart-types/breakdowns",
               "features/filters-and-variables",
               "features/embedding",
@@ -822,10 +823,8 @@
         "groups": [
           {
             "group": "Overview",
-            
-            "pages": [
-              "api-reference/overview"
-            ]
+
+            "pages": ["api-reference/overview"]
           },
           {
             "group": "Endpoints",
