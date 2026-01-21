@@ -313,7 +313,7 @@ Add your domain to the `embedAllowedOrigins` array. Make sure to include the ful
 - Check that the JWT hasn't expired (tokens should be short-lived)
 - Ensure you're signing with the HS256 algorithm
 - Verify the clock on your server is accurate (JWT validation allows 30 seconds of clock skew)
-  </Accordion>
+</Accordion>
 
 <Accordion title="Missing Referer header">
 **Error**: "Unable to verify the request origin"
@@ -322,7 +322,7 @@ This happens when allowed origins are configured but the browser doesn't send a 
 
 - Your page doesn't have `Referrer-Policy: no-referrer`
 - You're not loading the iframe from a `file://` URL during development
-  </Accordion>
+</Accordion>
 
 <Accordion title="Organization not found">
 **Error**: "The organization ID in your JWT does not match any Basedash organization"
