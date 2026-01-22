@@ -300,6 +300,107 @@ By default, the public CDN URL for uploaded files is constructed as `https://{S3
 S3_CDN_BASE_URL=https://cdn.example.com
 ```
 
+<AccordionGroup>
+  <Accordion title="Google Cloud Storage setup">
+    Follow these steps to configure Google Cloud Storage (GCS) as your S3-compatible storage backend.
+
+    ## Step 1: Create a Google Cloud Storage Bucket
+
+    1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
+    2. Navigate to **Cloud Storage** → **Buckets**
+    3. Click **Create bucket**
+    4. Configure the bucket:
+       - **Name**: Choose a globally unique name (e.g., `basedash-uploads-yourcompany`)
+       - **Location type**: Choose based on your needs (Regional is typically fine)
+       - **Region**: Select a region close to your users
+       - **Storage class**: Standard
+       - **Access control**: Choose **Fine-grained** (required for ACL-based public-read access)
+       - **Public access prevention**: **Uncheck** "Enforce public access prevention on this bucket" (since Basedash uploads files with `public-read` ACL)
+    5. Click **Create**
+
+    ## Step 2: Configure Bucket Permissions
+
+    1. Go to your bucket → **Permissions** tab
+    2. Click **Grant Access**
+    3. Add `allUsers` as a principal with the role **Storage Object Viewer** (this allows public read access to uploaded files)
+
+    ## Step 3: Enable Interoperability (S3-Compatible Access)
+
+    1. Go to **Cloud Storage** → **Settings** (gear icon in the left sidebar)
+    2. Click the **Interoperability** tab
+    3. Under "Access keys for service accounts," click **Create a key for a service account**
+    4. Select or create a service account with **Storage Admin** permissions for your bucket
+    5. Click **Create key**
+    6. **Save both values**:
+       - **Access key** (this is your `S3_BUCKET_ACCESS_KEY_ID`)
+       - **Secret** (this is your `S3_BUCKET_SECRET_ACCESS_KEY`)
+
+    ## Step 4: Configure CORS
+
+    Since Basedash uploads files directly from the browser using pre-signed URLs, you need to configure CORS. Create a file called `cors.json`:
+
+    ```json
+    [
+      {
+        "origin": ["https://your-basedash-domain.com", "http://localhost:3000"],
+        "method": ["GET", "PUT", "HEAD"],
+        "responseHeader": ["Content-Type", "Content-Length", "x-amz-acl"],
+        "maxAgeSeconds": 3600
+      }
+    ]
+    ```
+
+    Apply the CORS configuration using the `gcloud` CLI:
+
+    ```bash
+    gcloud storage buckets update gs://YOUR_BUCKET_NAME --cors-file=cors.json
+    ```
+
+    Or via the Console:
+
+    1. Install Google Cloud SDK if not already installed
+    2. Run the command above
+
+    ## Step 5: Set Environment Variables
+
+    Add these environment variables to your Basedash deployment:
+
+    ```bash
+    # Required
+    S3_BUCKET_NAME=your-bucket-name
+    S3_BUCKET_ENDPOINT=https://storage.googleapis.com
+    S3_BUCKET_REGION=auto
+    S3_BUCKET_ACCESS_KEY_ID=GOOG1E...  # Your interoperability access key
+    S3_BUCKET_SECRET_ACCESS_KEY=...    # Your interoperability secret
+
+    # Optional - CDN URL for serving files
+    # S3_CDN_BASE_URL=https://your-cdn-domain.com
+    ```
+
+    **Note about the CDN URL**: If you don't set up a CDN, Basedash will automatically construct the public URL using `S3_BUCKET_NAME` and `S3_BUCKET_ENDPOINT`. Only set `S3_CDN_BASE_URL` if you have configured a CDN (like Google Cloud CDN) to serve files from your bucket.
+
+    ## Step 6: Verify the Setup
+
+    After deploying with the new environment variables:
+
+    1. Try uploading a user avatar or organization icon
+    2. Check that the file appears in your GCS bucket
+    3. Verify the public URL works by accessing it directly
+
+    ## Summary of Environment Variables
+
+    | Variable                      | Value                            | Description                           |
+    | ----------------------------- | -------------------------------- | ------------------------------------- |
+    | `S3_BUCKET_NAME`              | `your-bucket-name`               | The GCS bucket name                   |
+    | `S3_BUCKET_ENDPOINT`          | `https://storage.googleapis.com` | GCS S3-compatible endpoint            |
+    | `S3_BUCKET_REGION`            | `auto`                           | Can be `auto` or your bucket's region |
+    | `S3_BUCKET_ACCESS_KEY_ID`     | Your HMAC access key             | From Interoperability settings        |
+    | `S3_BUCKET_SECRET_ACCESS_KEY` | Your HMAC secret                 | From Interoperability settings        |
+    | `S3_CDN_BASE_URL`             | `https://your-cdn-domain.com`    | (Optional) Only set if using a CDN    |
+
+  </Accordion>
+</AccordionGroup>
+
 ### Slack integration (optional) - ALPHA
 
 > **Note**: Slack integration is currently in alpha and not fully supported for self-hosted deployments.
