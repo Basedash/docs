@@ -1,17 +1,19 @@
 ---
-title: 'Snowflake'
-description: 'Connect your Snowflake data warehouse to Basedash'
+title: "Snowflake"
+description: "Connect your Snowflake data warehouse to Basedash"
 ---
 
 Connect your Snowflake data warehouse to Basedash to analyze and visualize your enterprise data.
 
 ## Prerequisites
+
 - A Snowflake account
 - User credentials with appropriate access
 - Account identifier (organization-account.region)
 - Warehouse, database, and schema information
 
 ## Connection setup
+
 1. From your Basedash dashboard, click "Add Data Source"
 2. Select "Snowflake" as your data warehouse
 3. Enter your connection details:
@@ -26,7 +28,9 @@ Connect your Snowflake data warehouse to Basedash to analyze and visualize your 
 5. Save your connection
 
 ## Required permissions
+
 Your Snowflake user needs:
+
 - `USAGE` on warehouse
 - `USAGE` on database
 - `USAGE` on schema
@@ -34,6 +38,7 @@ Your Snowflake user needs:
 - `MONITOR` on warehouse (recommended)
 
 ## Best practices
+
 - Create a dedicated user for Basedash
 - Use appropriate warehouse sizing
 - Grant minimum required permissions
@@ -41,6 +46,7 @@ Your Snowflake user needs:
 - Regularly rotate credentials
 
 ## Performance optimization
+
 - Choose appropriate warehouse size
 - Use clustering keys for large tables
 - Leverage materialized views
@@ -49,6 +55,7 @@ Your Snowflake user needs:
 - Enable result caching
 
 ## Troubleshooting
+
 - Verify user permissions
 - Check warehouse availability
 - Monitor credit usage
@@ -60,6 +67,7 @@ Your Snowflake user needs:
 You can add custom context to help the AI better understand your data structure and business logic. Consider adding context at the database or schema level if you notice the AI struggling to locate or understand specific data.
 
 ### When to add context
+
 - **Complex transformed data**: When the AI needs help understanding data transformation logic
 - **Business-specific metrics**: If calculated fields or KPIs need additional explanation
 - **Unclear naming conventions**: When table or column names don't clearly indicate their purpose

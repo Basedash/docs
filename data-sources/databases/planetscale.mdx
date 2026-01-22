@@ -1,6 +1,6 @@
 ---
-title: 'PlanetScale'
-description: 'Connect your PlanetScale database to Basedash'
+title: "PlanetScale"
+description: "Connect your PlanetScale database to Basedash"
 ---
 
 Connect your PlanetScale database to Basedash to visualize and analyze your application data.
@@ -10,6 +10,7 @@ Connect your PlanetScale database to Basedash to visualize and analyze your appl
 The easiest way to connect is by using the connection string (URI) method. In Basedash, press <kbd>Command</kbd> + <kbd>K</kbd> and paste your connection string to start the connection flow immediately.
 
 Example:
+
 ```
 mysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE]?sslmode=require
 ```
@@ -34,11 +35,13 @@ If you prefer to enter credentials manually, use the following details:
 5. Save your connection
 
 ## Required permissions
+
 - Database password with read access
 - Access to the desired branch (main or development)
 - Appropriate organization permissions
 
 ## Best practices
+
 - Use a dedicated password for Basedash
 - Connect to the appropriate branch
 - Enable SSL for secure connections
@@ -46,6 +49,7 @@ If you prefer to enter credentials manually, use the following details:
 - Monitor query performance
 
 ## Performance optimization
+
 - Use appropriate indexes
 - Monitor slow queries
 - Set up proper schema design
@@ -53,6 +57,7 @@ If you prefer to enter credentials manually, use the following details:
 - Use query caching when possible
 
 ## Troubleshooting
+
 - Verify database password is active
 - Check branch availability
 - Monitor connection limits
@@ -64,6 +69,7 @@ If you prefer to enter credentials manually, use the following details:
 You can add custom context to help the AI better understand your data structure and business logic. Consider adding context at the database or schema level if you notice the AI struggling to locate or understand specific data.
 
 ### When to add context
+
 - **Complex JSON columns**: When the AI needs help understanding nested data structures
 - **Unclear naming conventions**: If table or column names don't clearly indicate their purpose
 - **Business-specific terminology**: When your data uses internal abbreviations or custom terms

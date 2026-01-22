@@ -1,7 +1,7 @@
 ---
-title: 'Funnel charts'
-description: 'Visualize journey steps and flow progression with funnel charts'
-icon: 'funnel'
+title: "Funnel charts"
+description: "Visualize journey steps and flow progression with funnel charts"
+icon: "funnel"
 ---
 
 Funnel charts show the progression through a series of steps in any journey, automatically calculating drop-offs between stages. They're perfect for analyzing activation rates, onboarding flows, MRR growth, or any multi-step process where you want to see progression and drop-offs. **Important**: You must explicitly define the steps of your journey for the funnel to work properly.
@@ -11,6 +11,7 @@ Funnel charts show the progression through a series of steps in any journey, aut
 ## When to use funnel charts
 
 ### Perfect for:
+
 - **Predefined time periods**: MRR growth month over month
 - **Explicit journey steps**: User onboarding with defined stages
 - **Clear process stages**: Sales pipeline with specific milestones
@@ -18,6 +19,7 @@ Funnel charts show the progression through a series of steps in any journey, aut
 - **Process optimization**: Find bottlenecks in any workflow
 
 ### Not ideal for:
+
 - **Vague journey descriptions**: "User activation funnel" without defined steps
 - **Time series data**: Use [line charts](/features/chart-types/line-charts) instead
 - **Category comparisons**: Use [horizontal bar charts](/features/chart-types/horizontal-bar-charts) instead
@@ -27,35 +29,39 @@ Funnel charts show the progression through a series of steps in any journey, aut
 ## Example queries
 
 ### Predefined time periods
+
 ```
 Show me MRR growth month over month as a funnel chart
 ```
 
 ### Onboarding with defined steps
+
 ```
 Display onboarding drop-offs: signup, email verification, profile completion, first action
 ```
 
 ### User journey with explicit steps
+
 ```
 Show me user activation journey: visit, signup, email verification, first login, first feature use
 ```
 
 ### Sales pipeline with clear stages
+
 ```
 Create a funnel chart of sales pipeline: lead created, qualified, proposal sent, negotiation, closed won
 ```
 
 ### Marketing funnel with defined steps
+
 ```
 Show me marketing funnel: website visit, page view, form fill, email signup, conversion
 ```
 
-
-
 ## Best practices
 
 ### Journey definition
+
 - **Explicit step definition**: You must clearly define each step of the journey
 - **Describe each step**: Clearly define what each stage represents
 - **Natural progression**: Ensure stages follow a logical order
@@ -63,6 +69,7 @@ Show me marketing funnel: website visit, page view, form fill, email signup, con
 - **Clear stage names**: Use descriptive, consistent naming
 
 ### Automatic ordering
+
 - **Basedash ordering**: AI automatically orders stages logically
 - **Drop-off calculation**: Automatic calculation of drop-offs between stages
 - **Proportional display**: Bars sized proportionally to stage values
@@ -71,18 +78,21 @@ Show me marketing funnel: website visit, page view, form fill, email signup, con
 ### Common use cases
 
 #### User journeys
+
 - Signup to activation flows
 - Onboarding completion rates
 - Feature adoption funnels
 - User engagement progression
 
 #### Business metrics
+
 - MRR growth month over month
 - Revenue progression by stage
 - Customer lifetime value growth
 - Subscription upgrade flows
 
 #### Process optimization
+
 - Sales pipeline analysis
 - Support ticket resolution
 - Manufacturing processes
@@ -91,21 +101,27 @@ Show me marketing funnel: website visit, page view, form fill, email signup, con
 ## Advanced features
 
 ### Multi-source data
+
 Pull from different data sources:
+
 - Different tables for each stage
 - Various event types and sources
 - Mixed data types and formats
 - Cross-system journey tracking
 
 ### Drop-off analysis
+
 Identify specific drop-off points:
+
 - Stage-by-stage conversion rates
 - Bottleneck identification
 - Optimization opportunities
 - Performance benchmarking
 
 ### Journey optimization
+
 Improve process efficiency:
+
 - Identify problematic stages
 - Compare different time periods
 - Test process improvements
@@ -114,6 +130,7 @@ Improve process efficiency:
 ## Common pitfalls
 
 ### Avoid these mistakes:
+
 1. **Inconsistent definitions**: Ensure stage definitions are clear
 2. **Wrong time windows**: Use appropriate time periods for each stage
 3. **Missing context**: Include baseline or comparison data
@@ -121,6 +138,7 @@ Improve process efficiency:
 5. **No drop-off analysis**: Focus on where users leave
 
 ### Data quality issues:
+
 - **Attribution problems**: Ensure proper user/session tracking
 - **Duplicate counting**: Handle multiple events per user
 - **Missing stages**: Account for users who skip stages
@@ -129,21 +147,25 @@ Improve process efficiency:
 ## Example scenarios
 
 ### E-commerce optimization
+
 ```
 Show me the conversion funnel from homepage visit to purchase completion
 ```
 
 ### SaaS onboarding
+
 ```
 Create a funnel chart of user signup to feature activation
 ```
 
 ### Marketing campaign
+
 ```
 Display lead generation funnel from ad click to qualified lead
 ```
 
 ### Customer support
+
 ```
 Show me support ticket resolution funnel by priority level
 ```

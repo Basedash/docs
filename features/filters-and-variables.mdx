@@ -1,7 +1,7 @@
 ---
-title: 'Filters and variables'
-description: 'Use filters to make your dashboards dynamic and interactive'
-icon: 'sliders'
+title: "Filters and variables"
+description: "Use filters to make your dashboards dynamic and interactive"
+icon: "sliders"
 ---
 
 Filters allow you to create dynamic, interactive dashboards that adapt to user selections and time ranges. They work at the dashboard level and automatically inject values into your chart queries, making it easy to explore different data slices without rewriting prompts.
@@ -27,18 +27,21 @@ Basedash supports multiple variable types you can use to create dynamic, interac
 Record filters allow you to select specific records from your database tables. They're perfect for entity-level dashboards where you want to focus on individual records.
 
 **Features:**
+
 - Dropdown selection from database records
 - Automatic population from your data source
 - Support for multiple values (optional)
 - Required/optional configuration
 
 **Common use cases:**
+
 - User profile dashboards
 - Order detail pages
 - Customer account views
 - Product detail pages
 
 **Example:**
+
 ```
 Show me user details for a specific user
 ```
@@ -55,18 +58,21 @@ Show me user details for a specific user
 Text filters provide free-form text input for string-based filtering and search functionality.
 
 **Features:**
+
 - Free text input
 - String matching and search
 - Case-sensitive and case-insensitive options
 - Support for partial matches
 
 **Common use cases:**
+
 - Name searches
 - Email filtering
 - Description searches
 - Custom text-based filtering
 
 **Example:**
+
 ```
 Show me customers with names containing "John"
 ```
@@ -76,18 +82,21 @@ Show me customers with names containing "John"
 Number filters handle numeric input for quantitative filtering and calculations.
 
 **Features:**
+
 - Numeric input validation
 - Range selection (min/max values)
 - Mathematical operations
 - Precision control
 
 **Common use cases:**
+
 - Revenue thresholds
 - Age ranges
 - Price filtering
 - Quantity limits
 
 **Example:**
+
 ```
 Show me orders with total value greater than $100
 ```
@@ -97,18 +106,21 @@ Show me orders with total value greater than $100
 Boolean filters provide true/false or yes/no selection options for binary filtering.
 
 **Features:**
+
 - Toggle or checkbox interface
 - True/false selection
 - Default value configuration
 - Simple binary logic
 
 **Common use cases:**
+
 - Active/inactive status
 - Feature flags
 - Subscription status
 - Binary classifications
 
 **Example:**
+
 ```
 Show me only active users
 ```
@@ -118,18 +130,21 @@ Show me only active users
 List filters provide predefined selection options from a curated list of values.
 
 **Features:**
+
 - Dropdown with predefined options
 - Single or multiple selection
 - Custom option lists
 - Static value management
 
 **Common use cases:**
+
 - Category selection
 - Region filtering
 - Status selection
 - Department filtering
 
 **Example:**
+
 ```
 Show me sales by region (North, South, East, West)
 ```
@@ -139,18 +154,21 @@ Show me sales by region (North, South, East, West)
 SQL filters allow you to create custom SQL-based filtering logic for complex queries.
 
 **Features:**
+
 - Custom SQL query input
 - Advanced filtering logic
 - Dynamic query generation
 - Complex conditional logic
 
 **Common use cases:**
+
 - Custom business logic
 - Complex filtering requirements
 - Dynamic query conditions
 - Advanced data manipulation
 
 **Example:**
+
 ```
 Show me users who meet custom criteria defined in SQL
 ```
@@ -167,15 +185,19 @@ Basedash provides built-in time controls when your SQL uses the time variables. 
 ## Filter configuration options
 
 ### Multiple values
+
 Enable "Allow multiple values" to let users select multiple options from list and record filters.
 
 ### Required filters
+
 Mark filters as "Required" to ensure they always have a value before queries execute.
 
 ### Public dashboard visibility
+
 Control whether filters appear on public dashboards with the "Show on public dashboard" option.
 
 ### Default values
+
 Set default values for filters to provide starting points for user interactions.
 
 ## Automatic filter creation
@@ -192,66 +214,82 @@ Basedash automatically creates appropriate filter types when you use certain lan
 ## Using filters with chart types
 
 ### Line charts
+
 ```
 Show me user signups over time
 ```
+
 - **Time filters**: Automatically adds date range selection
 - **Record filters**: Can add user selection for specific user trends
 - **Number filters**: Can filter by thresholds (e.g., users with >10 logins)
 
 ### Bar charts
+
 ```
 Show me companies by user size
 ```
+
 - **Record filters**: Can add company selection for detailed views
 - **List filters**: Can filter by industry, region, or other categories
 - **Boolean filters**: Can show only active/inactive companies
 
 ### Funnel charts
+
 ```
 Show me user activation funnel
 ```
+
 - **Time filters**: Controls the time period for funnel analysis
 - **Record filters**: Can focus on specific user segments
 - **Boolean filters**: Can filter by user status or conditions
 
 ### Activity charts
+
 ```
 Show me user activity over time
 ```
+
 - **Time filters**: Controls the date range for the heatmap
 - **Record filters**: Can show activity for specific users
 - **Number filters**: Can filter by activity thresholds
 
 ### Map visualizations
+
 ```
 Show me website visitors by country
 ```
+
 - **Time filters**: Controls the time period for geographic data
 - **List filters**: Can filter by specific countries or regions
 - **Text filters**: Can search for specific locations
 
 ### Detail views
+
 ```
 Show me user details for a specific user
 ```
+
 - **Record filters**: Essential for selecting which user to display
 - **Time filters**: Can control related time-based metrics
 - **Boolean filters**: Can filter by user status or conditions
 
 ### Tables
+
 ```
 Show me customer data
 ```
+
 - **Record filters**: Can add customer selection
 - **Time filters**: Controls the time period for customer data
 - **Text filters**: Can search for specific customer names or emails
 - **Number filters**: Can filter by customer value or metrics
 
 ### Number displays
+
 ```
 Show me total revenue
 ```
+
 - **Time filters**: Controls the time period for revenue calculation
 - **Record filters**: Can show revenue for specific customers or segments
 - **Number filters**: Can set minimum/maximum revenue thresholds
@@ -260,19 +298,23 @@ Show me total revenue
 ## Best practices
 
 ### Use open-ended language
+
 Instead of specific time periods, use open-ended language to leverage filters:
 
 **Good:**
+
 ```
 Show me user signups over time
 ```
 
 **Avoid:**
+
 ```
 Show me user signups for the last 7 days
 ```
 
 ### Reference other charts
+
 Since Basedash AI understands your entire dashboard, you can reference other charts:
 
 ```
@@ -280,6 +322,7 @@ Show me the same data as the revenue chart but for a different time period
 ```
 
 ### Leverage entity context
+
 For entity-level dashboards, use entity-specific language:
 
 ```
@@ -290,16 +333,19 @@ Show me this organization's performance metrics
 ## Accessing and managing filters
 
 ### Variables tab in code editor
+
 You can view and manage all variables for a dashboard by going to the **Variables** tab within the full-screen code editor. This shows variables with their current values and allows you to modify configurations.
 
 {/* TODO: Add screenshot of Variables tab in code editor showing all filters with their values */}
 
 ### Filter highlighting
+
 When you hover over a filter on a dashboard, charts that use that filter will be highlighted, making it easy to see which charts are affected by each filter.
 
 {/* TODO: Add screenshot showing filter highlighting when hovering over a filter with affected charts highlighted */}
 
 ### Applying filters to other charts
+
 To apply an existing filter to another chart, simply tell the AI to update the chart to use the filter. For example:
 
 ```
@@ -317,9 +363,11 @@ The AI will automatically understand which filters are applicable and update the
 ## Advanced features
 
 ### Cross-chart filtering
+
 Variables can affect multiple charts on the same dashboard, creating cohesive analysis experiences.
 
 ### Dynamic variables
+
 Variables can be used in calculated columns and external links:
 
 ```
@@ -327,6 +375,7 @@ Create a Stripe link for this user's customer ID
 ```
 
 ### Filter dependencies
+
 Filters can be linked together, where one filter's selection affects the options available in another.
 
 ## Related features

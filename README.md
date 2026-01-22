@@ -11,6 +11,7 @@ This repository contains the documentation for Basedash, our AI-native business 
 
 2. **Clone the Repository**
    Open Terminal and run these commands:
+
    ```bash
    cd Documents  # or wherever you want to store the project
    git clone https://github.com/Basedash/docs.git
@@ -28,6 +29,7 @@ You'll need to follow these steps every time you want to make a change.
 
 1. **Get Latest Changes**
    Before making any changes, always get the latest updates:
+
    ```bash
    git pull origin main
    ```
@@ -40,9 +42,11 @@ You'll need to follow these steps every time you want to make a change.
 
 3. **Testing Your Changes**
    To preview your changes locally, run:
+
    ```bash
    mint dev
    ```
+
    This will start a local server at http://localhost:3000 where you can preview the changes.
 
 4. **Saving Your Changes**
@@ -73,6 +77,7 @@ For more details on how this works, see the [Mintlify OpenAPI setup documentatio
 ## Need Help?
 
 If you get stuck at any point:
+
 1. Use the Cursor AI to ask for help
 2. Reach out to the development team on Slack
 3. Check the [Mintlify documentation](https://mintlify.com/docs)

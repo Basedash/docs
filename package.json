@@ -4,7 +4,12 @@
   "description": "Basedash documentation site",
   "scripts": {
     "generate-todos": "node scripts/generate-todos.js",
-    "dev": "mintlify dev"
+    "dev": "mintlify dev",
+    "fmt": "prettier --write \"**/*.{mdx,md,json}\"",
+    "fmt:check": "prettier --check \"**/*.{mdx,md,json}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2"
   },
   "private": true
 }

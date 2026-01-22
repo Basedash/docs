@@ -1,6 +1,6 @@
 ---
-title: 'Data visibility controls'
-description: 'Hide tables, schemas, and columns from AI access and queries'
+title: "Data visibility controls"
+description: "Hide tables, schemas, and columns from AI access and queries"
 ---
 
 Basedash provides comprehensive data visibility controls that allow you to hide tables, schemas, and columns from AI access across your entire organization. When hidden, these data sources become completely inaccessible to queries and are treated as if they don't exist.
@@ -15,6 +15,7 @@ When you hide a table, schema, or column in Basedash:
 - **Changes apply organization-wide** - all team members are affected
 
 This is particularly useful for:
+
 - Hiding sensitive or internal data
 - Removing deprecated tables from AI suggestions
 - Controlling what data the AI can analyze
@@ -57,13 +58,17 @@ To hide specific columns within a table:
 ## Managing hidden data
 
 ### Viewing hidden items
+
 Hidden tables, schemas, and columns are typically marked with visual indicators:
+
 - Hidden tables show a crossed-out eye icon
 - Hidden columns may show a different icon or styling
 - The **Hidden** toggle will be in the "on" position
 
 ### Unhiding data
+
 To make hidden data visible again:
+
 1. Navigate to the hidden item in the data sources section
 2. For tables: Right-click and select **Hide table** again to toggle visibility
 3. For schemas: Click the **Hide schema** button again to toggle visibility
@@ -73,16 +78,19 @@ To make hidden data visible again:
 ## Best practices
 
 ### Data governance
+
 - **Document your hiding decisions** - keep track of why certain data is hidden
 - **Regular reviews** - periodically review hidden items to ensure they're still necessary
 - **Team communication** - inform your team about what data has been hidden and why
 
 ### Security considerations
+
 - **Sensitive data** - hide tables containing PII, financial information, or internal metrics
 - **Test data** - hide development or testing tables that shouldn't be analyzed
 - **Deprecated data** - hide old tables that are no longer maintained
 
 ### Performance optimization
+
 - **Unused tables** - hide tables that are no longer actively used
 - **Large datasets** - consider hiding very large tables that could impact query performance
 - **Experimental data** - hide tables that are still in development
@@ -90,19 +98,25 @@ To make hidden data visible again:
 ## Troubleshooting
 
 ### AI still references hidden data
+
 If the AI continues to reference hidden data:
+
 - Ensure the hiding toggle is properly set
 - Check if you're working with a cached version of the data source
 - Verify that the change has been applied across your organization
 
 ### Can't find hiding controls
+
 If you can't locate the hiding options:
+
 - Ensure you have the appropriate permissions in your organization
 - Check if your data source supports data hiding
 - Contact your Basedash administrator for assistance
 
 ### Hidden data still appearing in queries
+
 If hidden data appears in existing queries:
+
 - Hidden data only affects new AI-generated queries
 - Existing saved queries may still reference hidden data
 - Review and update any saved queries that reference hidden sources

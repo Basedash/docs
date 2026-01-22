@@ -1,7 +1,7 @@
 ---
-title: 'Deploy'
-description: 'Deploy Basedash using agent-based deployment or container registry'
-icon: 'rocket'
+title: "Deploy"
+description: "Deploy Basedash using agent-based deployment or container registry"
+icon: "rocket"
 ---
 
 > **Note**: This guide assumes you have access to the Distr customer portal. If you haven't received your invite yet, see the [Getting started](/self-hosting/overview#getting-started) section in Overview.
@@ -17,18 +17,21 @@ Basedash uses [Distr](https://distr.sh/docs/getting-started/what-is-distr/), an 
 The Distr agent runs in your environment and automatically manages Basedash deployment, updates, and health monitoring.
 
 **How it works**:
+
 - Install the Distr agent on your target server with a single command
 - Agent polls the Distr Hub every 5 seconds for deployment instructions
 - Automatically pulls container images, deploys via Docker Compose, and reports status
 - Provides automatic updates and version management through the Distr portal
 
 **Benefits**:
+
 - **Fully automated** - Agent handles deployment, updates, and rollbacks
 - **Health monitoring** - Built-in status reporting and deployment health checks
 - **Version control** - Manage versions and deployment schedules via Distr portal
 - **Outbound-only connectivity** - No need to expose ports; agent connects outbound to Distr Hub
 
 **Prerequisites**:
+
 - Server with Docker installed
 - Outbound HTTPS connectivity to Distr Hub
 - Target credentials from Distr portal (targetId and targetSecret)
@@ -50,18 +53,21 @@ The Distr agent runs in your environment and automatically manages Basedash depl
 Pull container images directly from the Distr registry and deploy using your own docker-compose configuration or orchestration tools.
 
 **How it works**:
+
 - Authenticate to Distr's private OCI-compliant registry using a Personal Access Token (PAT)
 - Pull Basedash container images from the registry
 - Deploy using provided docker-compose files or author your own
 - Manually manage updates by pulling new image versions
 
 **Benefits**:
+
 - **Full control** - You decide when and how to deploy and update
 - **Existing workflows** - Integrate with your CI/CD pipelines and deployment automation
 - **Flexible** - Works with existing Docker infrastructure and multi-container setups
 - **Air-gap compatible** - Pull once, deploy in isolated environments
 
 **Prerequisites**:
+
 - Server with Docker installed
 - Personal Access Token from Distr portal
 - Network access to data sources
@@ -76,16 +82,20 @@ Pull container images directly from the Distr registry and deploy using your own
    ```
 4. Download the provided docker-compose file or author your own
 5. Pull and run Basedash:
+
    ```bash
    docker compose pull
    docker compose up -d
    ```
 
    <Tip>
-   On initial deployment, run without `-d` to inspect logs in real-time. Configuration errors may prevent the app from running. See the [Configure](/self-hosting/configure) section for setup details.
+     On initial deployment, run without `-d` to inspect logs in real-time.
+     Configuration errors may prevent the app from running. See the
+     [Configure](/self-hosting/configure) section for setup details.
    </Tip>
 
 **Updates**: Pull new image versions from the registry when you're ready to update:
+
 ```bash
 docker compose pull
 docker compose up -d
@@ -112,6 +122,7 @@ For 1-10 concurrent users:
 - **Storage**: 50GB SSD
 
 **Cloud provider options:**
+
 - AWS: t3.large
 - GCP: e2-standard-2
 - Digital Ocean: 2vCPU/8GB Droplet

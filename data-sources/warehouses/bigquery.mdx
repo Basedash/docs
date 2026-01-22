@@ -1,17 +1,19 @@
 ---
-title: 'BigQuery'
-description: 'Connect your BigQuery data warehouse to Basedash'
+title: "BigQuery"
+description: "Connect your BigQuery data warehouse to Basedash"
 ---
 
 Connect your Google BigQuery data warehouse to Basedash to analyze and visualize your enterprise data.
 
 ## Prerequisites
+
 - A [Google Cloud project with BigQuery enabled](https://console.cloud.google.com/?src=Basedash)
 - Service account with BigQuery access
 - Service account key file (JSON)
 - Relevant dataset permissions
 
 ## Connection setup
+
 1. From your Basedash dashboard, click "Add Data Source"
 2. Select "BigQuery" as your data warehouse
 3. Upload your service account key file
@@ -21,12 +23,15 @@ Connect your Google BigQuery data warehouse to Basedash to analyze and visualize
 7. Save your connection
 
 ## Required permissions
+
 Your service account needs the following IAM roles:
+
 - `roles/bigquery.dataViewer` - to read data
 - `roles/bigquery.jobUser` - to run queries
 - `roles/bigquery.resourceViewer` - to list projects and datasets
 
 ## Best practices
+
 - Create a dedicated service account for Basedash
 - Grant minimum required permissions
 - Regularly rotate service account keys
@@ -34,6 +39,7 @@ Your service account needs the following IAM roles:
 - Set appropriate query cost limits
 
 ## Performance optimization
+
 - Use clustered and partitioned tables
 - Materialize commonly used views
 - Create appropriate table statistics
@@ -41,6 +47,7 @@ Your service account needs the following IAM roles:
 - Set up appropriate caching policies
 
 ## Troubleshooting
+
 - Verify service account permissions
 - Check if datasets are accessible
 - Monitor query quotas and limits
@@ -51,9 +58,11 @@ Your service account needs the following IAM roles:
 You can add custom context to help the AI better understand your data structure and business logic. Consider adding context at the dataset or schema level if you notice the AI struggling to locate or understand specific data.
 
 ### Automatic metadata import
+
 Basedash automatically imports table and column descriptions that are already set up in your BigQuery instance. If you have existing metadata in BigQuery, it will be available in Basedash without additional configuration.
 
 ### When to add context
+
 - **Complex transformed data**: When the AI needs help understanding data transformation logic
 - **Business-specific metrics**: If calculated fields or KPIs need additional explanation
 - **Unclear naming conventions**: When table or column names don't clearly indicate their purpose

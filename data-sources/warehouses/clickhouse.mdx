@@ -1,17 +1,19 @@
 ---
-title: 'ClickHouse'
-description: 'Connect your ClickHouse database to Basedash'
+title: "ClickHouse"
+description: "Connect your ClickHouse database to Basedash"
 ---
 
 Connect your ClickHouse data warehouse to Basedash to analyze and visualize your enterprise data.
 
 ## Prerequisites
+
 - A ClickHouse server or cloud instance
 - User credentials with appropriate access
 - Server host and port information
 - SSL certificates (if using secure connection)
 
 ## Connection setup
+
 1. From your Basedash dashboard, click "Add Data Source"
 2. Select "ClickHouse" as your data warehouse
 3. Enter your connection details:
@@ -25,13 +27,16 @@ Connect your ClickHouse data warehouse to Basedash to analyze and visualize your
 5. Save your connection
 
 ## Required permissions
+
 Your ClickHouse user needs:
+
 - `SELECT` privilege on required databases/tables
 - `SHOW` privilege on databases
 - `SHOW TABLES` privilege
 - `SHOW COLUMNS` privilege
 
 ## Best practices
+
 - Create a dedicated user for Basedash
 - Enable SSL for secure connections
 - Grant minimum required permissions
@@ -39,6 +44,7 @@ Your ClickHouse user needs:
 - Regularly rotate credentials
 
 ## Performance optimization
+
 - Use appropriate table engines
 - Configure proper partitioning
 - Set up materialized views
@@ -47,6 +53,7 @@ Your ClickHouse user needs:
 - Enable query caching
 
 ## Troubleshooting
+
 - Verify user permissions
 - Check server connectivity
 - Monitor resource usage
@@ -59,6 +66,7 @@ Your ClickHouse user needs:
 You can add custom context to help the AI better understand your data structure and business logic. Consider adding context at the database or schema level if you notice the AI struggling to locate or understand specific data.
 
 ### When to add context
+
 - **Complex analytics data**: When the AI needs help understanding data structure and metrics
 - **Business-specific metrics**: If calculated fields or KPIs need additional explanation
 - **Unclear naming conventions**: When table or column names don't clearly indicate their purpose

@@ -13,24 +13,28 @@ Your tracking setup should include these core components:
 ### Data sources
 
 **Product analytics**: Track user behavior and engagement
+
 - User actions and events
 - Feature usage patterns
 - Session data and flows
 - Conversion funnels
 
 **Financial systems**: Track revenue and subscription data
+
 - Billing and subscription management
 - Payment processing
 - Revenue recognition
 - Financial reporting
 
 **Sales and marketing tools**: Track lead generation and conversion
+
 - CRM systems
 - Marketing automation platforms
 - Advertising platforms
 - Email marketing tools
 
 **Customer support systems**: Track satisfaction and health
+
 - Support ticket data
 - Customer satisfaction scores
 - Health and engagement metrics
@@ -38,6 +42,7 @@ Your tracking setup should include these core components:
 ### Data warehouse
 
 Centralize your data in a single location:
+
 - **Cloud warehouses**: Snowflake, BigQuery, Redshift
 - **Operational databases**: PostgreSQL, MySQL
 - **Data lakes**: For unstructured or semi-structured data
@@ -45,6 +50,7 @@ Centralize your data in a single location:
 ### Business intelligence layer
 
 Transform raw data into actionable insights:
+
 - Connect to multiple data sources
 - Calculate complex metrics automatically
 - Create interactive dashboards
@@ -57,12 +63,14 @@ Transform raw data into actionable insights:
 ### Start with your primary KPI
 
 Focus on tracking your one primary metric first:
+
 - **If MRR is your primary KPI**: Set up revenue tracking from billing systems
 - **If WAU is your primary KPI**: Set up user activity tracking
 
 ### Define events and metrics clearly
 
 Create a tracking plan that specifies:
+
 - **What events to track**: User actions that matter for your business
 - **When to track them**: Trigger conditions for each event
 - **What data to capture**: Properties and context for each event
@@ -71,6 +79,7 @@ Create a tracking plan that specifies:
 ### Implement consistent tracking
 
 Use consistent naming conventions:
+
 ```
 user_signed_up
 user_activated
@@ -80,6 +89,7 @@ feature_used
 ```
 
 Include relevant properties:
+
 ```
 user_signed_up {
   user_id: "12345",
@@ -106,29 +116,34 @@ user_signed_up {
 ### Essential startup dashboard sections
 
 **Executive summary**:
+
 - Primary KPI (MRR or WAU)
 - Key secondary metrics
 - Growth rates and trends
 
 **Product metrics**:
+
 - Daily/Weekly/Monthly active users
 - Feature adoption rates
 - User engagement scores
 - Activation and onboarding metrics
 
 **Revenue metrics**:
+
 - MRR/ARR and growth rates
 - Customer counts and ARPU
 - Revenue by segment
 - Expansion and churn revenue
 
 **Unit economics**:
+
 - Customer acquisition cost
 - Lifetime value
 - LTV:CAC ratio
 - Payback periods
 
 **Growth and acquisition**:
+
 - New user signups
 - Acquisition by channel
 - Conversion rates
@@ -137,18 +152,21 @@ user_signed_up {
 ### Dashboard tools for startups
 
 The key is choosing tools that can:
+
 - Connect to multiple data sources
 - Handle complex calculations automatically
 - Update in real-time
 - Enable both self-service and guided analysis
 
 **Modern business intelligence platforms** are particularly well-suited for startups because they:
+
 - Reduce time from setup to insights
 - Handle the complexity of multi-source data integration
 - Provide both pre-built dashboards and flexible exploration
 - Scale with your data needs as you grow
 
 **AI-native platforms** offer additional benefits:
+
 - Automatically suggest relevant metrics and visualizations
 - Enable natural language queries about your data
 - Provide contextual insights and explanations
@@ -161,12 +179,14 @@ The key is choosing tools that can:
 ### Direct database connections
 
 Connect directly to your operational databases:
+
 - **Pros**: Real-time data, no data movement
 - **Cons**: Can impact performance, limited transformation capabilities
 
 ### ETL/ELT pipelines
 
 Extract, transform, and load data into a warehouse:
+
 - **ETL tools**: Fivetran, Stitch, Airbyte
 - **Benefits**: Reliable, scalable, handles complex transformations
 - **Considerations**: Some latency, ongoing costs
@@ -174,6 +194,7 @@ Extract, transform, and load data into a warehouse:
 ### API integrations
 
 Pull data directly from SaaS tools:
+
 - **Stripe API**: For payment and subscription data
 - **Intercom API**: For customer support metrics
 - **Google Analytics API**: For website and marketing data
@@ -181,6 +202,7 @@ Pull data directly from SaaS tools:
 ### Hybrid approaches
 
 Combine multiple strategies:
+
 - Real-time dashboards for operational metrics
 - Warehouse-based reporting for complex analysis
 - API integrations for external tools
@@ -192,16 +214,19 @@ Combine multiple strategies:
 ### Set up proactive monitoring
 
 **Performance alerts**:
+
 - MRR growth below target
 - Churn rate above threshold
 - CAC increasing beyond acceptable range
 
 **Anomaly detection**:
+
 - Unusual spikes or drops in key metrics
 - Significant changes in user behavior
 - Data quality issues
 
 **Regular reports**:
+
 - Weekly metrics summaries for the team
 - Monthly board reports
 - Quarterly business reviews
@@ -344,5 +369,8 @@ The key is matching your analytics sophistication to your business stage. Don't 
 The goal is turning data into decisions. Your tracking infrastructure should enable faster, better-informed choices about product, marketing, and business strategy.
 
 <Card title="Next steps" icon="arrow-right">
-With proper tracking in place, you need to effectively communicate your metrics to stakeholders. Learn about [communicating metrics](/startup-metrics/communicating-metrics) to share insights that drive action and alignment.
+  With proper tracking in place, you need to effectively communicate your
+  metrics to stakeholders. Learn about [communicating
+  metrics](/startup-metrics/communicating-metrics) to share insights that drive
+  action and alignment.
 </Card>

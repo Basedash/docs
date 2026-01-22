@@ -1,7 +1,7 @@
 ---
-title: 'Activity charts'
-description: 'Display GitHub-style daily activity heatmaps'
-icon: 'grid'
+title: "Activity charts"
+description: "Display GitHub-style daily activity heatmaps"
+icon: "grid"
 ---
 
 Activity charts display GitHub-style heatmaps that show daily activity patterns over time. They're perfect for visualizing daily summaries of events, user activity, or any metric that occurs on a daily basis.
@@ -11,6 +11,7 @@ Activity charts display GitHub-style heatmaps that show daily activity patterns 
 ## When to use activity charts
 
 ### Perfect for:
+
 - **Daily activity patterns**: User signups, logins, or events per day
 - **GitHub-style heatmaps**: Visual representation of daily activity intensity
 - **Habit tracking**: Daily occurrences of specific events
@@ -18,6 +19,7 @@ Activity charts display GitHub-style heatmaps that show daily activity patterns 
 - **Daily summaries**: Aggregated daily metrics
 
 ### Not ideal for:
+
 - **Hourly patterns**: Use other chart types for sub-daily granularity
 - **Category comparisons**: Use [horizontal bar charts](/features/chart-types/horizontal-bar-charts) instead
 - **Single metrics**: Use [number displays](/features/chart-types/number-displays) instead
@@ -26,36 +28,40 @@ Activity charts display GitHub-style heatmaps that show daily activity patterns 
 ## Example queries
 
 ### User signups
+
 ```
 Show me user signups over time in an activity chart
 ```
 
 ### Daily activity
+
 ```
 Display daily user logins as an activity chart
 ```
 
 ### Event tracking
+
 ```
 Create an activity chart of daily order completions
 ```
 
 ### Habit tracking
+
 ```
 Show me daily exercise sessions in an activity chart
 ```
 
-
-
 ## Best practices
 
 ### Data preparation
+
 - **Daily aggregation**: Always group by DATE() for daily summaries
 - **Handle missing days**: Include zero values for days with no activity
 - **Consistent time periods**: Use consistent date ranges (typically 90 days to 1 year)
 - **Single metric focus**: Focus on one type of activity per chart
 
 ### Visual design
+
 - **Color intensity**: Darker colors indicate higher activity levels
 - **Clear date labels**: Include month/year labels for context
 - **Legend**: Provide clear legend for activity intensity scale
@@ -64,18 +70,21 @@ Show me daily exercise sessions in an activity chart
 ### Common use cases
 
 #### User activity tracking
+
 - Daily user signups
 - Daily login activity
 - Daily feature usage
 - Daily engagement metrics
 
 #### Habit and behavior tracking
+
 - Daily exercise sessions
 - Daily study sessions
 - Daily task completions
 - Daily goal achievements
 
 #### Business metrics
+
 - Daily order completions
 - Daily customer interactions
 - Daily content creation
@@ -84,21 +93,27 @@ Show me daily exercise sessions in an activity chart
 ## Advanced features
 
 ### Activity streaks
+
 Identify consistent patterns:
+
 - Consecutive days of activity
 - Longest activity streaks
 - Break patterns in activity
 - Consistency metrics
 
 ### Seasonal patterns
+
 Identify recurring patterns:
+
 - Weekly patterns (weekend vs weekday)
 - Monthly patterns
 - Seasonal variations
 - Holiday impacts
 
 ### Intensity analysis
+
 Understand activity levels:
+
 - High activity periods
 - Low activity periods
 - Activity distribution
@@ -107,6 +122,7 @@ Understand activity levels:
 ## Common pitfalls
 
 ### Avoid these mistakes:
+
 1. **Sub-daily granularity**: Activity charts only work with daily data
 2. **Multiple metrics**: Focus on one activity type per chart
 3. **Missing days**: Include zero values for days with no activity
@@ -114,6 +130,7 @@ Understand activity levels:
 5. **Complex aggregations**: Keep aggregations simple and daily-focused
 
 ### Data quality issues:
+
 - **Non-daily data**: Ensure data is aggregated to daily level
 - **Missing dates**: Fill in missing dates with zero values
 - **Inconsistent activity definition**: Clearly define what counts as activity
@@ -122,26 +139,31 @@ Understand activity levels:
 ## Example scenarios
 
 ### User signups
+
 ```
 Show me user signups over time in an activity chart for the past year
 ```
 
 ### Daily logins
+
 ```
 Display daily user login activity as an activity chart
 ```
 
 ### Order completions
+
 ```
 Create an activity chart of daily order completions for the last 6 months
 ```
 
 ### Feature usage
+
 ```
 Show me daily feature usage activity in an activity chart
 ```
 
 ### Exercise tracking
+
 ```
 Display daily exercise sessions as an activity chart
 ```
@@ -149,12 +171,14 @@ Display daily exercise sessions as an activity chart
 ## Interpreting activity charts
 
 ### Pattern identification
+
 - **Activity streaks**: Identify consecutive days of activity
 - **Gaps**: Find periods with no activity
 - **Weekly patterns**: Understand weekend vs weekday patterns
 - **Seasonal trends**: Spot long-term activity patterns
 
 ### Business insights
+
 - **User engagement**: Understand daily user activity patterns
 - **Growth trends**: Identify periods of increased activity
 - **Habit formation**: Track consistent daily behaviors
