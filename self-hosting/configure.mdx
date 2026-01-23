@@ -244,6 +244,24 @@ With email configured, users can:
 - **Multi-organization support** - Deploy multiple workspaces or organizations
 - **Granular permissions** - Maintain the same access control features as cloud
 
+### Disable public signups
+
+For private deployments where you want to restrict who can create accounts, you can disable public signups:
+
+```bash
+DISABLE_PUBLIC_SIGNUPS=true
+```
+
+When enabled, this blocks manual signup while still allowing:
+
+- **First user signup** - Automatically allowed to bootstrap the instance
+- **User invitations** - Team members can still be invited via magic links
+- **JWT SSO** - Embedded authentication continues to work
+- **Enterprise SSO** - SAML/OIDC authentication is unaffected
+- **Existing users** - Login for users who already have accounts
+
+This is useful when you want to control exactly who has access to your Basedash instance and prevent unauthorized users from creating new organizations.
+
 ## Update management
 
 ### Agent deployment updates
