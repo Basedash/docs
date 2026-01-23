@@ -248,6 +248,13 @@ Your JWT must include these claims:
 
 For security, you can restrict which domains can embed your Basedash organization. Configure this at **Settings → Embedding**
 
+You can add specific origins (e.g., `https://app.example.com`) or use wildcard patterns to allow all subdomains of a domain (e.g., `https://*.example.com`).
+
+<Note>
+  Wildcard patterns must include a full domain name. Overly broad patterns like
+  `https://*.com` are not allowed.
+</Note>
+
 If no origins are configured, embeds are allowed from any domain.
 
 ### Security best practices
@@ -302,7 +309,7 @@ Enable embedding when creating the organization by setting `fullEmbedEnabled: tr
 <Accordion title="Origin not allowed">
 **Error**: "This embed is not authorized to load from [origin]"
 
-Add your domain to the `embedAllowedOrigins` array. Make sure to include the full origin (e.g., `https://app.example.com`).
+Add your domain to the `embedAllowedOrigins` array. You can add a specific origin (e.g., `https://app.example.com`) or use a wildcard pattern to allow all subdomains (e.g., `https://*.example.com`).
 
 </Accordion>
 
