@@ -66,8 +66,12 @@ CREATE POLICY orders_group_policy ON orders
   FOR SELECT
   USING (
     current_setting('basedash.groups', true) IS NULL
-    OR ',' || current_setting('basedash.groups', true) || ','
-      LIKE '%,' || department || ',%'
+    OR department = ANY (
+      string_to_array(
+        current_setting('basedash.groups', true),
+        ','
+      )
+    )
   );
 ```
 
