@@ -20,167 +20,72 @@ Basedash automatically creates filters when you use certain language patterns in
 
 ## Filter types
 
-Basedash supports multiple variable types you can use to create dynamic, interactive dashboards. Each type serves a specific purpose and provides different functionality.
+Basedash supports several filter types:
 
-### Record filters
-
-Record filters allow you to select specific records from your database tables. They're perfect for entity-level dashboards where you want to focus on individual records.
-
-**Features:**
-
-- Dropdown selection from database records
-- Automatic population from your data source
-- Support for multiple values (optional)
-- Required/optional configuration
-
-**Common use cases:**
-
-- User profile dashboards
-- Order detail pages
-- Customer account views
-- Product detail pages
-
-**Example:**
-
-```
-Show me user details for a specific user
-```
-
-{/* TODO: Add screenshot of record filter dropdown showing user selection with multiple users listed */}
-{/* TODO: Add screenshot of text filter input field with search functionality */}
-{/* TODO: Add screenshot of number filter with min/max range controls */}
-{/* TODO: Add screenshot of boolean filter with toggle/checkbox interface */}
-{/* TODO: Add screenshot of list filter dropdown with predefined options */}
-{/* TODO: Add screenshot of SQL filter with custom query input field */}
-
-### Text filters
-
-Text filters provide free-form text input for string-based filtering and search functionality.
-
-**Features:**
-
-- Free text input
-- String matching and search
-- Case-sensitive and case-insensitive options
-- Support for partial matches
-
-**Common use cases:**
-
-- Name searches
-- Email filtering
-- Description searches
-- Custom text-based filtering
-
-**Example:**
-
-```
-Show me customers with names containing "John"
-```
-
-### Number filters
-
-Number filters handle numeric input for quantitative filtering and calculations.
-
-**Features:**
-
-- Numeric input validation
-- Range selection (min/max values)
-- Mathematical operations
-- Precision control
-
-**Common use cases:**
-
-- Revenue thresholds
-- Age ranges
-- Price filtering
-- Quantity limits
-
-**Example:**
-
-```
-Show me orders with total value greater than $100
-```
-
-### Boolean filters
-
-Boolean filters provide true/false or yes/no selection options for binary filtering.
-
-**Features:**
-
-- Toggle or checkbox interface
-- True/false selection
-- Default value configuration
-- Simple binary logic
-
-**Common use cases:**
-
-- Active/inactive status
-- Feature flags
-- Subscription status
-- Binary classifications
-
-**Example:**
-
-```
-Show me only active users
-```
+- **Text**: Free-form text input for string matching and search
+- **Number**: Numeric input for quantities, thresholds, and ranges
+- **Boolean**: True/false toggle for binary conditions
+- **List**: Dropdown selection from a predefined set of options
+- **Record**: Dropdown selection populated from database records
+- **SQL**: Custom SQL-based filtering for advanced logic
 
 ### List filters
 
-List filters provide predefined selection options from a curated list of values.
+List filters let you define a static set of options for users to choose from. This is useful when you have a known set of values that don't come from a database table, such as status categories, regions, or time periods. You can configure whether users can select a single value or multiple values.
 
-**Features:**
+### Record filters
 
-- Dropdown with predefined options
-- Single or multiple selection
-- Custom option lists
-- Static value management
-
-**Common use cases:**
-
-- Category selection
-- Region filtering
-- Status selection
-- Department filtering
-
-**Example:**
-
-```
-Show me sales by region (North, South, East, West)
-```
+Record filters automatically populate options from your database tables. When you create a record filter, Basedash queries the table and displays records in a searchable dropdown. This is ideal for entity-level dashboards where users need to select a specific customer, order, or user to view details about.
 
 ### SQL filters
 
-SQL filters allow you to create custom SQL-based filtering logic for complex queries.
+SQL filters let you write custom SQL to generate the list of options. This gives you full control over the dropdown values, allowing you to join tables, apply conditions, or format display labels. Use SQL filters when the built-in list and record filters don't provide enough flexibility.
 
-**Features:**
+## Built-in variables
 
-- Custom SQL query input
-- Advanced filtering logic
-- Dynamic query generation
-- Complex conditional logic
+Basedash provides built-in variables for time-based filtering. When your SQL references these variables, Basedash automatically shows the corresponding controls in the dashboard filter bar.
 
-**Common use cases:**
+| Variable        | Type   | Description                                                  |
+| --------------- | ------ | ------------------------------------------------------------ |
+| `start_date`    | Date   | Start of the selected date range, formatted as `YYYY-MM-DD`  |
+| `end_date`      | Date   | End of the selected date range, formatted as `YYYY-MM-DD`    |
+| `time_interval` | String | Grouping interval: `HOUR`, `DAY`, `WEEK`, `MONTH`, or `YEAR` |
+| `search_value`  | String | Text entered in the search input (for searchable dropdowns)  |
 
-- Custom business logic
-- Complex filtering requirements
-- Dynamic query conditions
-- Advanced data manipulation
+### Date range
 
-**Example:**
+The date range picker lets users select a time period. When they select a range like "Last 30 days", Basedash calculates the actual dates and injects them into the `start_date` and `end_date` variables.
 
+**Available options:**
+
+- **Last N days**: `LAST_7_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`
+- **Last N months**: `LAST_6_MONTHS`, `LAST_1_YEAR`
+- **This period**: `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_QUARTER`, `THIS_YEAR`
+- **All time**: `ALL_TIME`
+- **Custom**: User-specified start and end dates
+
+For example, if a user selects "Last 30 days" on January 15, 2025:
+
+- `start_date` resolves to `2024-12-16`
+- `end_date` resolves to `2025-01-15`
+
+### Time interval
+
+The time interval selector controls how data is grouped in time-series charts. Charts automatically use this value when grouping by date.
+
+**Available options:** `HOUR`, `DAY`, `WEEK`, `MONTH`, `YEAR`
+
+### Example usage
+
+```sql
+SELECT
+  DATE_TRUNC('{{time_interval}}', created_at) AS period,
+  COUNT(*) AS signups
+FROM users
+WHERE created_at BETWEEN '{{start_date}}' AND '{{end_date}}'
+GROUP BY period
+ORDER BY period
 ```
-Show me users who meet custom criteria defined in SQL
-```
-
-## Built-in filters
-
-Basedash provides built-in time controls when your SQL uses the time variables. These appear at the dashboard level and apply across charts that reference them:
-
-- **Date range**: Predefined ranges such as `LAST_30_DAYS`, `THIS_MONTH`, or a custom range
-- **Time interval**: Aggregation interval such as `DAY`, `WEEK`, `MONTH`, `YEAR`
-
-{/* TODO: Add screenshot of built-in filters showing start date, end date, and time interval controls on a dashboard */}
 
 ## Filter configuration options
 
@@ -194,7 +99,7 @@ Mark filters as "Required" to ensure they always have a value before queries exe
 
 ### Public dashboard visibility
 
-Control whether filters appear on public dashboards with the "Show on public dashboard" option.
+Filters are hidden by default on public dashboards. To show a filter, edit the filter and enable the "Show on public dashboard" option. Hidden filters still apply their default values to queries—they're just not visible or editable by viewers.
 
 <Warning>
   When a filter is shown on a public dashboard, any viewer can provide arbitrary
@@ -373,6 +278,16 @@ The AI will automatically understand which filters are applicable and update the
 ### Secure filtering
 
 Secure filtering allows you to lock filter values in public dashboard URLs using JWT tokens. This prevents viewers from modifying certain filter values, making it safe to share dashboards that filter data by tenant, user, or other sensitive parameters.
+
+#### When to use secure filtering
+
+Hiding a filter (via "Show on public dashboard") is cosmetic—it removes the filter from the UI, but viewers can still pass values via URL parameters. Use hidden filters when you want a cleaner interface for non-sensitive data.
+
+Use secure filtering when filter values must be truly locked:
+
+- **Multi-tenant applications**: Lock a `company_id` or `tenant_id` filter so each customer only sees their own data
+- **User-specific dashboards**: Lock a `user_id` filter to show personalized data
+- **Sensitive data access**: Ensure viewers cannot modify filters that control access to restricted information
 
 #### How it works
 

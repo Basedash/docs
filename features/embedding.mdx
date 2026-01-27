@@ -34,11 +34,21 @@ Embeds use a share link with the `/shared/{id}` path.
 
 ### Show or hide dashboard filters
 
-In the share dialog, you can configure whether dashboard filters are visible in the embed. This is useful when you want a clean, fixed view (hidden filters) versus an explorable view (shown filters).
+Filters are hidden by default on embedded dashboards. To show a filter, edit the filter and enable the "Show on public dashboard" option. This is configured per-filter, allowing you to choose exactly which filters viewers can interact with.
+
+See [filter configuration options](/features/filters-and-variables#filter-configuration-options) for more details on per-filter settings.
+
+<Warning>
+  When a filter is shown on a public dashboard, any viewer can provide arbitrary
+  values. If the filter is used in a SQL query, viewers can inject any value
+  into that query. Ensure this is acceptable for your use case, and always use
+  read-only database credentials. For sensitive data, consider using [secure
+  filtering](/features/filters-and-variables#secure-filtering) instead.
+</Warning>
 
 ### Secure filtering
 
-For embedded dashboards that need locked filter values (e.g., filtering by tenant or user), you can use JWT-based secure filtering. This allows you to pre-set filter values that viewers cannot modify. See [secure filtering](/features/filters-and-variables#secure-filtering) for details.
+Hiding a filter is cosmetic—it removes the filter from the UI, but viewers can still pass values via URL parameters. For true security where filter values must be locked (e.g., filtering by tenant or user), use JWT-based secure filtering. This allows you to pre-set filter values that viewers cannot modify. See [secure filtering](/features/filters-and-variables#secure-filtering) for details.
 
 ## Full app embedding
 
