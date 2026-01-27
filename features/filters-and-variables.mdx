@@ -468,7 +468,7 @@ url = generate_secure_dashboard_url('abc123', {'company_id': 'comp_456'})
 
 #### JWT secret
 
-The JWT secret used to sign tokens is the same secret used for [full app embedding](/features/embedding#step-1-enable-embedding). You can find it at **Settings → Embedding** after enabling full app embedding.
+The JWT secret used to sign tokens is the same secret used for [full app embedding](/features/embedding#step-1-enable-embedding). You can find it at **Settings → Security**.
 
 <Warning>
   Store your JWT secret securely in environment variables. Never expose it in
@@ -502,7 +502,7 @@ Filters can be linked together, where one filter's selection affects the options
 
 ## Related features
 
-- [Embedding](/features/embedding) - Embed dashboards or the full app, and find your JWT secret for secure filtering
+- [Embedding](/features/embedding) - Embed dashboards or the full app
 - [Dashboards](/features/dashboards) - Organize charts with shared filters
 - [Custom context](/features/custom-context) - Add business context to improve AI understanding
 - **URL parameters**: On internal dashboards, variables use the `var_` prefix. On public dashboards (shared links), variables use the `evar_` prefix and are URL-encoded. System parameters include `dateRange`, `groupByInterval`, `customDateFrom`, and `customDateTo`.

@@ -79,7 +79,9 @@ Setting up full app embedding involves these steps:
 
 ### Step 1: Enable embedding
 
-Enable embedding for your organization by going to **Settings → Embedding → Enable full app embedding**. Once enabled, you can copy your JWT secret from this page. The JWT secret is used to sign tokens that authenticate users into the embedded app.
+Enable embedding for your organization by going to **Settings → Embedding → Enable full app embedding**.
+
+You'll also need your JWT secret to sign tokens that authenticate users into the embedded app. You can find this at **Settings → Security**.
 
 <Warning>
   Store your `jwtSecret` securely in your environment variables. Never expose it
