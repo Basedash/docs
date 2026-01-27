@@ -10,13 +10,16 @@ Filters allow you to create dynamic, interactive dashboards that adapt to user s
 
 Filters are dashboard-level controls that automatically add variables to your chart queries. When you reference entities or time periods in your prompts, Basedash intelligently creates the appropriate filters and injects them into your SQL queries.
 
-### Automatic filter creation
+## Automatic filter creation
 
-Basedash automatically creates filters when you use certain language patterns in your prompts:
+Basedash automatically creates appropriate filter types when you use certain language patterns in your prompts:
 
-- **Entity references**: "Show me details for a user" → Creates a user selector
+- **Entity references**: "Show me details for a user" → Creates a record filter
 - **Time references**: "Revenue over time" → Creates date range filters
-- **Aggregation references**: "Group by category" → Creates grouping options
+- **Text searches**: "Customers named John" → Creates text filters
+- **Numeric thresholds**: "Orders over $100" → Creates number filters
+- **Boolean conditions**: "Only active users" → Creates boolean filters
+- **Category selections**: "Sales by region" → Creates list filters
 
 ## Filter types
 
@@ -98,114 +101,27 @@ Mark filters as "Required" to ensure they always have a value before queries exe
 
 ### Public dashboard visibility
 
-Filters are hidden by default on public dashboards. To show a filter, edit the filter and enable the "Show on public dashboard" option. Hidden filters still apply their default values to queries—they're just not visible or editable by viewers.
-
-<Warning>
-  When a filter is shown on a public dashboard, any viewer can provide arbitrary
-  values. If the filter is used in a SQL query, viewers can inject any value
-  into that query. Ensure this is acceptable for your use case, and always use
-  read-only database credentials. For sensitive data, consider using [secure
-  filtering](#secure-filtering) instead.
-</Warning>
+Filters are hidden by default on public dashboards. To show a filter, edit the filter and enable the "Show on public dashboard" option. Hidden filters still apply their default values to queries—they're just not visible or editable by viewers. See [embedding](/features/embedding#dashboard-filters) for more details on filter visibility and security considerations.
 
 ### Default values
 
 Set default values for filters to provide starting points for user interactions.
 
-## Automatic filter creation
+## Accessing and managing filters
 
-Basedash automatically creates appropriate filter types when you use certain language patterns in your prompts:
+### Variables tab in the full page editor
 
-- **Entity references**: "Show me details for a user" → Creates a record filter
-- **Time references**: "Revenue over time" → Creates date range filters
-- **Text searches**: "Customers named John" → Creates text filters
-- **Numeric thresholds**: "Orders over $100" → Creates number filters
-- **Boolean conditions**: "Only active users" → Creates boolean filters
-- **Category selections**: "Sales by region" → Creates list filters
+You can view and manage all variables for a dashboard by going to the **Variables** tab within the full-screen chart editor. This shows variables with their current values and allows you to modify configurations.
 
-## Using filters with chart types
+### Applying filters to other charts
 
-### Line charts
+When multiple charts use a variable with the same name, they share a single filter control. Changing the filter value updates all charts that reference that variable, creating cohesive analysis experiences across the dashboard.
 
-```
-Show me user signups over time
-```
-
-- **Time filters**: Automatically adds date range selection
-- **Record filters**: Can add user selection for specific user trends
-- **Number filters**: Can filter by thresholds (e.g., users with >10 logins)
-
-### Bar charts
-
-```
-Show me companies by user size
-```
-
-- **Record filters**: Can add company selection for detailed views
-- **List filters**: Can filter by industry, region, or other categories
-- **Boolean filters**: Can show only active/inactive companies
-
-### Funnel charts
-
-```
-Show me user activation funnel
-```
-
-- **Time filters**: Controls the time period for funnel analysis
-- **Record filters**: Can focus on specific user segments
-- **Boolean filters**: Can filter by user status or conditions
-
-### Activity charts
-
-```
-Show me user activity over time
-```
-
-- **Time filters**: Controls the date range for the heatmap
-- **Record filters**: Can show activity for specific users
-- **Number filters**: Can filter by activity thresholds
-
-### Map visualizations
-
-```
-Show me website visitors by country
-```
-
-- **Time filters**: Controls the time period for geographic data
-- **List filters**: Can filter by specific countries or regions
-- **Text filters**: Can search for specific locations
-
-### Detail views
-
-```
-Show me user details for a specific user
-```
-
-- **Record filters**: Essential for selecting which user to display
-- **Time filters**: Can control related time-based metrics
-- **Boolean filters**: Can filter by user status or conditions
-
-### Tables
-
-```
-Show me customer data
-```
-
-- **Record filters**: Can add customer selection
-- **Time filters**: Controls the time period for customer data
-- **Text filters**: Can search for specific customer names or emails
-- **Number filters**: Can filter by customer value or metrics
-
-### Number displays
-
-```
-Show me total revenue
-```
-
-- **Time filters**: Controls the time period for revenue calculation
-- **Record filters**: Can show revenue for specific customers or segments
-- **Number filters**: Can set minimum/maximum revenue thresholds
-- **Boolean filters**: Can filter by active/inactive customers
+<Note>
+  To apply an existing filter to another chart, tell the AI to update the chart.
+  For example: "Update this chart to use the same date range as the revenue
+  chart" or "Apply the user filter from the activity chart to this chart."
+</Note>
 
 ## Best practices
 
@@ -242,181 +158,8 @@ Show me this user's order history
 Show me this organization's performance metrics
 ```
 
-## Accessing and managing filters
-
-### Variables tab in code editor
-
-You can view and manage all variables for a dashboard by going to the **Variables** tab within the full-screen code editor. This shows variables with their current values and allows you to modify configurations.
-
-{/* TODO: Add screenshot of Variables tab in code editor showing all filters with their values */}
-
-### Filter highlighting
-
-When you hover over a filter on a dashboard, charts that use that filter will be highlighted, making it easy to see which charts are affected by each filter.
-
-{/* TODO: Add screenshot showing filter highlighting when hovering over a filter with affected charts highlighted */}
-
-### Applying filters to other charts
-
-To apply an existing filter to another chart, simply tell the AI to update the chart to use the filter. For example:
-
-```
-Update this chart to use the same date range as the revenue chart
-```
-
-```
-Apply the user filter from the activity chart to this chart
-```
-
-The AI will automatically understand which filters are applicable and update the chart accordingly.
-
-{/* TODO: Add screenshot showing before/after of applying a filter to another chart */}
-
-## Advanced features
-
-### Secure filtering
-
-Secure filtering allows you to lock filter values in public dashboard URLs using JWT tokens. This prevents viewers from modifying certain filter values, making it safe to share dashboards that filter data by tenant, user, or other sensitive parameters.
-
-#### When to use secure filtering
-
-Hiding a filter (via "Show on public dashboard") is cosmetic—it removes the filter from the UI, but viewers can still pass values via URL parameters. Use hidden filters when you want a cleaner interface for non-sensitive data.
-
-Use secure filtering when filter values must be truly locked:
-
-- **Multi-tenant applications**: Lock a `company_id` or `tenant_id` filter so each customer only sees their own data
-- **User-specific dashboards**: Lock a `user_id` filter to show personalized data
-- **Sensitive data access**: Ensure viewers cannot modify filters that control access to restricted information
-
-#### How it works
-
-Instead of allowing viewers to select filter values, you generate a signed JWT containing the locked values and append it to the public dashboard URL. Basedash verifies the JWT signature and applies the locked values server-side, so viewers cannot tamper with them.
-
-#### URL format
-
-The secure filtering URL follows this pattern:
-
-```
-https://charts.basedash.com/shared/{publicSharingLinkId}/{jwtToken}
-```
-
-- **publicSharingLinkId**: The ID from your public share link. When you enable sharing on a dashboard and copy the link, it looks like `https://charts.basedash.com/shared/abc123`. The `abc123` part is your `publicSharingLinkId`.
-- **jwtToken**: A signed JWT containing the locked filter values.
-
-#### JWT payload
-
-Your JWT must include these claims:
-
-| Claim             | Type   | Required | Description                                             |
-| ----------------- | ------ | -------- | ------------------------------------------------------- |
-| `dashboardLinkId` | string | Yes      | Must match the `publicSharingLinkId` in the URL         |
-| `params`          | object | Yes      | Key-value pairs of filter syntax names to locked values |
-| `exp`             | number | Yes      | Expiration timestamp (Unix seconds)                     |
-| `iat`             | number | No       | Issued-at timestamp (Unix seconds)                      |
-
-The `params` object keys should match your filter's syntax name (e.g., `user_id`, `company_id`). Values can be strings, numbers, booleans, or arrays of strings.
-
-#### Example
-
-Here's an example JWT payload that locks a `company_id` filter:
-
-```json
-{
-  "dashboardLinkId": "abc123",
-  "params": {
-    "company_id": "comp_456"
-  },
-  "exp": 1735689600,
-  "iat": 1735686000
-}
-```
-
-And example code to generate the token:
-
-<CodeGroup>
-
-```javascript Node.js
-import jwt from "jsonwebtoken";
-
-function generateSecureDashboardUrl(publicSharingLinkId, lockedParams) {
-  const token = jwt.sign(
-    {
-      dashboardLinkId: publicSharingLinkId,
-      params: lockedParams,
-    },
-    process.env.BASEDASH_EMBED_JWT_SECRET,
-    { expiresIn: "1h" },
-  );
-
-  return `https://charts.basedash.com/shared/${publicSharingLinkId}/${token}`;
-}
-
-// Usage
-const url = generateSecureDashboardUrl("abc123", { company_id: "comp_456" });
-```
-
-```python Python
-import jwt
-import os
-from datetime import datetime, timedelta
-
-def generate_secure_dashboard_url(public_sharing_link_id, locked_params):
-    payload = {
-        'dashboardLinkId': public_sharing_link_id,
-        'params': locked_params,
-        'exp': datetime.utcnow() + timedelta(hours=1),
-        'iat': datetime.utcnow(),
-    }
-    token = jwt.encode(
-        payload,
-        os.environ['BASEDASH_EMBED_JWT_SECRET'],
-        algorithm='HS256'
-    )
-    return f'https://charts.basedash.com/shared/{public_sharing_link_id}/{token}'
-
-# Usage
-url = generate_secure_dashboard_url('abc123', {'company_id': 'comp_456'})
-```
-
-</CodeGroup>
-
-#### JWT secret
-
-The JWT secret used to sign tokens is the same secret used for [full app embedding](/features/embedding#step-1-enable-embedding). You can find it at **Settings → Security**.
-
-<Warning>
-  Store your JWT secret securely in environment variables. Never expose it in
-  client-side code.
-</Warning>
-
-#### Behavior
-
-When a JWT is provided in the URL:
-
-- Locked filters are applied server-side and cannot be changed by viewers
-- Locked filters are hidden from the filter bar on the dashboard
-- Other filters (not included in the JWT) remain interactive if configured to show on public dashboards
-- If the JWT is invalid, expired, or the signature doesn't match, the dashboard returns an error
-
-### Cross-chart filtering
-
-Variables can affect multiple charts on the same dashboard, creating cohesive analysis experiences.
-
-### Dynamic variables
-
-Variables can be used in calculated columns and external links:
-
-```
-Create a Stripe link for this user's customer ID
-```
-
-### Filter dependencies
-
-Filters can be linked together, where one filter's selection affects the options available in another.
-
 ## Related features
 
 - [Embedding](/features/embedding) - Embed dashboards or the full app
 - [Dashboards](/features/dashboards) - Organize charts with shared filters
 - [Custom context](/features/custom-context) - Add business context to improve AI understanding
-- **URL parameters**: On internal dashboards, variables use the `var_` prefix. On public dashboards (shared links), variables use the `evar_` prefix and are URL-encoded. System parameters include `dateRange`, `groupByInterval`, `customDateFrom`, and `customDateTo`.

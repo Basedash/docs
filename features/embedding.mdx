@@ -32,23 +32,143 @@ Embeds use a share link with the `/shared/{id}` path.
 ></iframe>
 ```
 
-### Show or hide dashboard filters
+### Dashboard filters
 
-Filters are hidden by default on embedded dashboards. To show a filter, edit the filter and enable the "Show on public dashboard" option. This is configured per-filter, allowing you to choose exactly which filters viewers can interact with.
+#### Visibility
 
-See [filter configuration options](/features/filters-and-variables#filter-configuration-options) for more details on per-filter settings.
+Filters are hidden by default on embedded dashboards. To show a filter, edit the filter and enable the "Show on public dashboard" option. This is configured per-filter, allowing you to choose exactly which filters viewers can interact with. For more information on configuring filters, see the [filters and variables documentation](/features/filters-and-variables).
 
 <Warning>
   When a filter is shown on a public dashboard, any viewer can provide arbitrary
   values. If the filter is used in a SQL query, viewers can inject any value
   into that query. Ensure this is acceptable for your use case, and always use
   read-only database credentials. For sensitive data, consider using [secure
-  filtering](/features/filters-and-variables#secure-filtering) instead.
+  filtering](#secure-filtering) instead.
 </Warning>
 
-### Secure filtering
+#### Secure filtering
 
-Hiding a filter is cosmetic—it removes the filter from the UI, but viewers can still pass values via URL parameters. For true security where filter values must be locked (e.g., filtering by tenant or user), use JWT-based secure filtering. This allows you to pre-set filter values that viewers cannot modify. See [secure filtering](/features/filters-and-variables#secure-filtering) for details.
+Secure filtering allows you to lock filter values in public dashboard URLs using JWT tokens. This prevents viewers from modifying certain filter values, making it safe to share dashboards that filter data by tenant, user, or other sensitive parameters.
+
+**When to use secure filtering**
+
+When a filter is hidden (via "Show on public dashboard" disabled), the filter uses its default value and viewers cannot override it via URL parameters—those values are enforced server-side.
+
+Use secure filtering when you need to **dynamically set different filter values for different viewers**:
+
+- **Multi-tenant applications**: Lock a `company_id` or `tenant_id` filter so each customer only sees their own data
+- **User-specific dashboards**: Lock a `user_id` filter to show personalized data
+- **Sensitive data access**: Ensure viewers cannot modify filters that control access to restricted information
+
+**How it works**
+
+Instead of allowing viewers to select filter values, you generate a signed JWT containing the locked values and append it to the public dashboard URL. Basedash verifies the JWT signature and applies the locked values server-side, so viewers cannot tamper with them.
+
+**URL format**
+
+The secure filtering URL follows this pattern:
+
+```
+https://charts.basedash.com/shared/{publicSharingLinkId}/{jwtToken}
+```
+
+- **publicSharingLinkId**: The ID from your public share link. When you enable sharing on a dashboard and copy the link, it looks like `https://charts.basedash.com/shared/abc123`. The `abc123` part is your `publicSharingLinkId`.
+- **jwtToken**: A signed JWT containing the locked filter values.
+
+**JWT payload**
+
+Your JWT must include these claims:
+
+| Claim             | Type   | Required | Description                                             |
+| ----------------- | ------ | -------- | ------------------------------------------------------- |
+| `dashboardLinkId` | string | Yes      | Must match the `publicSharingLinkId` in the URL         |
+| `params`          | object | Yes      | Key-value pairs of filter syntax names to locked values |
+| `exp`             | number | Yes      | Expiration timestamp (Unix seconds)                     |
+| `iat`             | number | No       | Issued-at timestamp (Unix seconds)                      |
+
+The `params` object keys should match your filter's syntax name (e.g., `user_id`, `company_id`). Values can be strings, numbers, booleans, or arrays of strings.
+
+**Example**
+
+Here's an example JWT payload that locks a `company_id` filter:
+
+```json
+{
+  "dashboardLinkId": "abc123",
+  "params": {
+    "company_id": "comp_456"
+  },
+  "exp": 1735689600,
+  "iat": 1735686000
+}
+```
+
+And example code to generate the token:
+
+<CodeGroup>
+
+```javascript Node.js
+import jwt from "jsonwebtoken";
+
+function generateSecureDashboardUrl(publicSharingLinkId, lockedParams) {
+  const token = jwt.sign(
+    {
+      dashboardLinkId: publicSharingLinkId,
+      params: lockedParams,
+    },
+    process.env.BASEDASH_EMBED_JWT_SECRET,
+    { expiresIn: "1h" },
+  );
+
+  return `https://charts.basedash.com/shared/${publicSharingLinkId}/${token}`;
+}
+
+// Usage
+const url = generateSecureDashboardUrl("abc123", { company_id: "comp_456" });
+```
+
+```python Python
+import jwt
+import os
+from datetime import datetime, timedelta
+
+def generate_secure_dashboard_url(public_sharing_link_id, locked_params):
+    payload = {
+        'dashboardLinkId': public_sharing_link_id,
+        'params': locked_params,
+        'exp': datetime.utcnow() + timedelta(hours=1),
+        'iat': datetime.utcnow(),
+    }
+    token = jwt.encode(
+        payload,
+        os.environ['BASEDASH_EMBED_JWT_SECRET'],
+        algorithm='HS256'
+    )
+    return f'https://charts.basedash.com/shared/{public_sharing_link_id}/{token}'
+
+# Usage
+url = generate_secure_dashboard_url('abc123', {'company_id': 'comp_456'})
+```
+
+</CodeGroup>
+
+**JWT secret**
+
+The JWT secret used to sign tokens is the same secret used for [full app embedding](#step-1-enable-embedding). You can find it at **Settings → Security**.
+
+<Warning>
+  Store your JWT secret securely in environment variables. Never expose it in
+  client-side code.
+</Warning>
+
+**Behavior**
+
+When a JWT is provided in the URL:
+
+- Locked filters are applied server-side and cannot be changed by viewers
+- Locked filters are hidden from the filter bar on the dashboard
+- Other filters (not included in the JWT) remain interactive if configured to show on public dashboards
+- If the JWT is invalid, expired, or the signature doesn't match, the dashboard returns an error
 
 ## Full app embedding
 
