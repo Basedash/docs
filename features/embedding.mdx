@@ -36,6 +36,10 @@ Embeds use a share link with the `/shared/{id}` path.
 
 In the share dialog, you can configure whether dashboard filters are visible in the embed. This is useful when you want a clean, fixed view (hidden filters) versus an explorable view (shown filters).
 
+### Secure filtering
+
+For embedded dashboards that need locked filter values (e.g., filtering by tenant or user), you can use JWT-based secure filtering. This allows you to pre-set filter values that viewers cannot modify. See [secure filtering](/features/filters-and-variables#secure-filtering) for details.
+
 ## Full app embedding
 
 Full app embedding lets you embed the entire Basedash experience inside your product. Your users can view dashboards, build new charts, and chat with the AI assistant—all without leaving your application.
@@ -345,6 +349,6 @@ Verify that the `orgId` claim in your JWT matches an existing Basedash organizat
 ## Related pages
 
 - [API reference](/api-reference/overview)
-- [Filters and variables](/features/filters-and-variables)
+- [Filters and variables](/features/filters-and-variables) - Includes secure filtering for locking filter values on public dashboards
 - [Dashboards](/features/dashboards)
 - [Chat](/features/chat)

@@ -196,6 +196,14 @@ Mark filters as "Required" to ensure they always have a value before queries exe
 
 Control whether filters appear on public dashboards with the "Show on public dashboard" option.
 
+<Warning>
+  When a filter is shown on a public dashboard, any viewer can provide arbitrary
+  values. If the filter is used in a SQL query, viewers can inject any value
+  into that query. Ensure this is acceptable for your use case, and always use
+  read-only database credentials. For sensitive data, consider using [secure
+  filtering](#secure-filtering) instead.
+</Warning>
+
 ### Default values
 
 Set default values for filters to provide starting points for user interactions.
@@ -362,6 +370,120 @@ The AI will automatically understand which filters are applicable and update the
 
 ## Advanced features
 
+### Secure filtering
+
+Secure filtering allows you to lock filter values in public dashboard URLs using JWT tokens. This prevents viewers from modifying certain filter values, making it safe to share dashboards that filter data by tenant, user, or other sensitive parameters.
+
+#### How it works
+
+Instead of allowing viewers to select filter values, you generate a signed JWT containing the locked values and append it to the public dashboard URL. Basedash verifies the JWT signature and applies the locked values server-side, so viewers cannot tamper with them.
+
+#### URL format
+
+The secure filtering URL follows this pattern:
+
+```
+https://charts.basedash.com/shared/{publicSharingLinkId}/{jwtToken}
+```
+
+- **publicSharingLinkId**: The ID from your public share link. When you enable sharing on a dashboard and copy the link, it looks like `https://charts.basedash.com/shared/abc123`. The `abc123` part is your `publicSharingLinkId`.
+- **jwtToken**: A signed JWT containing the locked filter values.
+
+#### JWT payload
+
+Your JWT must include these claims:
+
+| Claim             | Type   | Required | Description                                             |
+| ----------------- | ------ | -------- | ------------------------------------------------------- |
+| `dashboardLinkId` | string | Yes      | Must match the `publicSharingLinkId` in the URL         |
+| `params`          | object | Yes      | Key-value pairs of filter syntax names to locked values |
+| `exp`             | number | Yes      | Expiration timestamp (Unix seconds)                     |
+| `iat`             | number | No       | Issued-at timestamp (Unix seconds)                      |
+
+The `params` object keys should match your filter's syntax name (e.g., `user_id`, `company_id`). Values can be strings, numbers, booleans, or arrays of strings.
+
+#### Example
+
+Here's an example JWT payload that locks a `company_id` filter:
+
+```json
+{
+  "dashboardLinkId": "abc123",
+  "params": {
+    "company_id": "comp_456"
+  },
+  "exp": 1735689600,
+  "iat": 1735686000
+}
+```
+
+And example code to generate the token:
+
+<CodeGroup>
+
+```javascript Node.js
+import jwt from "jsonwebtoken";
+
+function generateSecureDashboardUrl(publicSharingLinkId, lockedParams) {
+  const token = jwt.sign(
+    {
+      dashboardLinkId: publicSharingLinkId,
+      params: lockedParams,
+    },
+    process.env.BASEDASH_EMBED_JWT_SECRET,
+    { expiresIn: "1h" },
+  );
+
+  return `https://charts.basedash.com/shared/${publicSharingLinkId}/${token}`;
+}
+
+// Usage
+const url = generateSecureDashboardUrl("abc123", { company_id: "comp_456" });
+```
+
+```python Python
+import jwt
+import os
+from datetime import datetime, timedelta
+
+def generate_secure_dashboard_url(public_sharing_link_id, locked_params):
+    payload = {
+        'dashboardLinkId': public_sharing_link_id,
+        'params': locked_params,
+        'exp': datetime.utcnow() + timedelta(hours=1),
+        'iat': datetime.utcnow(),
+    }
+    token = jwt.encode(
+        payload,
+        os.environ['BASEDASH_EMBED_JWT_SECRET'],
+        algorithm='HS256'
+    )
+    return f'https://charts.basedash.com/shared/{public_sharing_link_id}/{token}'
+
+# Usage
+url = generate_secure_dashboard_url('abc123', {'company_id': 'comp_456'})
+```
+
+</CodeGroup>
+
+#### JWT secret
+
+The JWT secret used to sign tokens is the same secret used for [full app embedding](/features/embedding#step-1-enable-embedding). You can find it at **Settings → Embedding** after enabling full app embedding.
+
+<Warning>
+  Store your JWT secret securely in environment variables. Never expose it in
+  client-side code.
+</Warning>
+
+#### Behavior
+
+When a JWT is provided in the URL:
+
+- Locked filters are applied server-side and cannot be changed by viewers
+- Locked filters are hidden from the filter bar on the dashboard
+- Other filters (not included in the JWT) remain interactive if configured to show on public dashboards
+- If the JWT is invalid, expired, or the signature doesn't match, the dashboard returns an error
+
 ### Cross-chart filtering
 
 Variables can affect multiple charts on the same dashboard, creating cohesive analysis experiences.
@@ -380,7 +502,7 @@ Filters can be linked together, where one filter's selection affects the options
 
 ## Related features
 
-- [Embedding charts](/features/embedding) - Embed filtered charts in external applications
+- [Embedding](/features/embedding) - Embed dashboards or the full app, and find your JWT secret for secure filtering
 - [Dashboards](/features/dashboards) - Organize charts with shared filters
 - [Custom context](/features/custom-context) - Add business context to improve AI understanding
 - **URL parameters**: On internal dashboards, variables use the `var_` prefix. On public dashboards (shared links), variables use the `evar_` prefix and are URL-encoded. System parameters include `dateRange`, `groupByInterval`, `customDateFrom`, and `customDateTo`.
