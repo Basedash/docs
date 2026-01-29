@@ -262,6 +262,59 @@ When enabled, this blocks manual signup while still allowing:
 
 This is useful when you want to control exactly who has access to your Basedash instance and prevent unauthorized users from creating new organizations.
 
+## License key
+
+Self-hosted Basedash instances require a license key for proper operation. The license key enables license validation, usage tracking, and ensures you receive ongoing support and updates.
+
+### Obtaining a license key
+
+Contact Basedash at support@basedash.com to obtain your license key. Once you have it, add it to your environment configuration:
+
+```bash
+LICENSE_KEY=your-license-key-here
+```
+
+### License behavior
+
+**Without a license key:**
+
+- The application functions normally
+- An info banner is displayed prompting you to add a license key
+- No heartbeats are sent to the license server
+
+**With a valid license key:**
+
+- The application sends periodic heartbeats (every 6 hours) to the Basedash license server
+- Heartbeats report basic usage metrics (organization and user counts) for billing purposes
+- No banner is displayed when your license is active and valid
+
+### Grace periods
+
+Basedash includes grace periods to ensure your deployment remains operational during temporary issues:
+
+- **License expiration**: 14-day grace period after expiration. During this time, a warning banner is displayed but all features remain available. After the grace period, new organization creation is disabled.
+- **Network issues**: 7-day grace period if the license server cannot be reached. This ensures your deployment continues working during network outages or maintenance windows.
+
+### Troubleshooting license issues
+
+**"License key not configured" banner:**
+
+Add your `LICENSE_KEY` to your environment configuration and restart the application.
+
+**"Unable to verify license" warning:**
+
+1. Check that your deployment has outbound network access to `charts.basedash.com`
+2. Verify no firewall rules are blocking HTTPS traffic
+3. The application will continue working during network issues (7-day grace period)
+
+**"License has expired" error:**
+
+Contact Basedash at support@basedash.com to renew your license. During the 14-day grace period, all features remain available. After the grace period, new organization creation is disabled until you renew.
+
+**"License has been deactivated" error:**
+
+Your license has been manually deactivated. Contact Basedash support to resolve this issue.
+
 ## Update management
 
 ### Agent deployment updates
