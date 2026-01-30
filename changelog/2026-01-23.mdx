@@ -1,0 +1,44 @@
+---
+title: "January 23, 2026"
+description: "Embedding controls upgrade, renameable chats, improved Insights access, and responsive dashboards."
+---
+
+## Embedding & self-hosted controls
+
+Embedding Basedash now has a cleaner, more "white-label" feel out of the box, with a simplified sidebar and fewer distractions when running inside an iframe. This makes it much easier to drop Basedash into an existing product experience without exposing unrelated navigation.
+
+Admins also get more control over embedded deployments: you can customize the embedded theme, hide the org name in the sidebar, and hide the suggested prompt placeholders in chat. For multi-tenant apps, embed origin allowlists now support safe wildcard subdomains—so you don't need to add every tenant URL one-by-one.
+
+## Chat organization: rename chats
+
+You can now rename chats, which is especially useful when a chat turns into a long-running "project" and the original auto-title no longer reflects what you're doing. This makes it easier to scan your chat list later and jump back into ongoing work.
+
+## Insights: easier to access, easier to run
+
+Insights are now easier to discover and navigate, with UI improvements plus dedicated mobile support—so you can review insights on the go without needing the desktop experience. We also added quicker navigation entry points so Insights are easier to reach when you're moving fast through the product.
+
+For teams that don't use Slack (especially self-hosted), Slack-related UI now only shows up when Slack is actually configured—reducing clutter and avoiding dead-end settings.
+
+## Dashboards & charts: responsive layouts
+
+Dashboards now adapt more intelligently to the available screen/container width, including automatically shifting to a single-column layout when space is tight. This improves usability across smaller screens and embedded contexts.
+
+We also fixed several chart rendering edge cases (including negative values and sizing inside chat) so charts look correct and stay readable across more datasets and layouts.
+
+## Fixes and improvements
+
+- Added a one-click "New dashboard" button and restored the dashboards landing page link in embedded mode.
+- Allowed embedded SSO customers to programmatically set avatars for "managed" embedded users.
+- Improved bar charts with negative values so they render correctly.
+- Fixed chart sizing issues when charts render inside chat.
+- Fixed pie chart import issues.
+- Reduced "Invalid code" errors during SSO signup by improving the signup flow.
+- Prevented rare app freezes when switching between users (logout → login).
+- Restricted group management actions to admins in the command menu.
+- Improved email presentation by setting a proper sender name and cleaning up subject lines/templates (including a dedicated Insight email template).
+- Added new subscription and trial lifecycle email templates.
+- Made self-hosted asset/CDN configuration more flexible so uploads can work cleanly with your own CDN/storage setup.
+- Expanded the public API for admins to manage organization members (list/get/delete) and optionally fetch an organization's JWT secret when explicitly requested.
+- Improved Redshift schema detection so Redshift connections introspect more reliably.
+- Disabled AI chat file upload and audio transcription UI when Zero Data Retention mode is enabled (to avoid showing features that won't work in that configuration).
+- Improved command menu behavior and keyboard UX (including better focus and ordering).
