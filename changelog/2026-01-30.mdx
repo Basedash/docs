@@ -1,0 +1,43 @@
+---
+title: "January 30, 2026"
+description: "CSV uploads in chat, locked filters for public dashboards, and drilldowns on Number charts."
+---
+
+## Upload CSVs to chat (and use them in your questions)
+
+You can now attach CSV files directly in chat and ask questions against them—great for workflows like "use these IDs from my spreadsheet, then look them up in my database and return a joined table." The AI will read the CSV and treat it as structured context, so you don't have to copy/paste rows into the prompt.
+
+We also expanded what the chart agent can accept so it's easier to provide visual context when you're building or refining charts.
+
+## Public dashboards & embeds: more secure, more controllable
+
+Public dashboards can now support "locked" filters via a secure token, so you can embed or share a dashboard where viewers can't change specific filter values. This is especially useful when embedding dashboards into customer-facing portals or internal tools where the dashboard should always stay scoped to a specific account/region/team.
+
+We also improved embed behavior so full-app embeds are more appropriately "locked down," and made it easier to find the security credentials you need without forcing you to turn on unrelated embedding features.
+
+## Drilldowns got a major upgrade (including Number charts)
+
+Drilldowns now work on Number charts, so you can click a top-line metric and immediately see the underlying rows that make it up—without having to redesign the chart as a table first.
+
+On top of that, drilldowns are now more flexible: you can edit the drilldown SQL to control exactly what someone sees when they click into a chart, which makes drilldowns far more useful for real workflows (auditing, investigating outliers, and answering follow-up questions fast).
+
+## Fixes and improvements
+
+- Added full-value tooltips on metric cards so you can see exact numbers (not just abbreviated values).
+- Improved chart sizing on first render to reduce "jumping" as dashboards load.
+- Improved metric text sizing for better readability across layouts.
+- Fixed dashboard filter values not carrying over when opening a chart in the SQL editor.
+- Fixed connections showing "initial sync" and "broken" states at the same time after a failed first sync.
+- Enabled more natural follow-ups to reports in Slack threads by reusing the original report context automatically.
+- Surfaced database sync timeout errors in Slack (with clearer feedback and faster recovery).
+- Fixed horizontal scrolling behavior in tables.
+- Fixed vertical scrolling issues in the chat side panel.
+- Made scrollbars easier to discover (especially helpful if you're not using a trackpad).
+- Fixed "Copy raw value" from the table cell context menu.
+- Retained whitespace formatting in text blocks/charts.
+- Tweaked vertical bar hover behavior to feel more precise.
+- Improved Postgres connection options to support Unix socket-based setups (useful for certain hosted/self-hosted environments).
+- Fixed Redshift schema sync failures related to column detection.
+- Reduced cases where chats could disappear unexpectedly.
+- Fixed web search behavior in AI where it wasn't working correctly.
+- Added clearer license status handling for self-hosted deployments.
