@@ -109,8 +109,8 @@ Deploy Basedash to your Kubernetes cluster using our official Helm chart. This m
 
 **How it works**:
 
-- Authenticate to Distr's private registry using a Personal Access Token (PAT)
-- Pull the Helm chart and container images from the Distr registry
+- Download the Helm chart from our chart repository
+- Authenticate to Distr's container registry for the app image
 - Configure your deployment using a values file
 - Deploy using standard Helm commands
 
@@ -126,13 +126,13 @@ Deploy Basedash to your Kubernetes cluster using our official Helm chart. This m
 - Kubernetes cluster (1.24+)
 - Helm 3.x installed
 - `kubectl` configured for your cluster
-- Personal Access Token from Distr portal
+- Personal Access Token from Distr portal (for container images)
 
 **Installation**:
 
 1. **Create image pull secret**
 
-   Log in to your Distr customer portal and generate a Personal Access Token (PAT), then create a Kubernetes secret:
+   Log in to your Distr customer portal and generate a Personal Access Token (PAT), then create a Kubernetes secret for pulling container images:
 
    ```bash
    kubectl create secret docker-registry distr-registry \
@@ -141,19 +141,13 @@ Deploy Basedash to your Kubernetes cluster using our official Helm chart. This m
      --docker-password=YOUR_DISTR_ACCESS_TOKEN
    ```
 
-2. **Authenticate Helm with Distr**
+2. **Download the Helm chart**
 
    ```bash
-   echo "YOUR_DISTR_ACCESS_TOKEN" | helm registry login registry.distr.sh -u - --password-stdin
+   helm pull https://charts-self-hosted.sfo3.cdn.digitaloceanspaces.com/helm/basedash-charts-0.1.0.tgz
    ```
 
-3. **Pull the Helm chart**
-
-   ```bash
-   helm pull oci://registry.distr.sh/basedash/basedash-charts --version 0.1.0
-   ```
-
-4. **Create your values file**
+3. **Create your values file**
 
    Save as `values.yaml`:
 
@@ -186,13 +180,13 @@ Deploy Basedash to your Kubernetes cluster using our official Helm chart. This m
 
    See [Configuration](/self-hosting/configure) for all available options including AI, S3 storage, and Slack integration.
 
-5. **Install the chart**
+4. **Install the chart**
 
    ```bash
    helm install basedash-charts ./basedash-charts-0.1.0.tgz -f values.yaml
    ```
 
-6. **Verify the deployment**
+5. **Verify the deployment**
 
    ```bash
    kubectl get pods -l app.kubernetes.io/name=basedash-charts
@@ -243,10 +237,10 @@ postgres:
 
 **Updates**:
 
-Pull the new chart version and upgrade:
+Download the new chart version and upgrade:
 
 ```bash
-helm pull oci://registry.distr.sh/basedash/basedash-charts --version X.Y.Z
+helm pull https://charts-self-hosted.sfo3.cdn.digitaloceanspaces.com/helm/basedash-charts-X.Y.Z.tgz
 helm upgrade basedash-charts ./basedash-charts-X.Y.Z.tgz -f values.yaml
 ```
 
