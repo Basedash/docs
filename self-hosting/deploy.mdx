@@ -101,12 +101,151 @@ docker compose pull
 docker compose up -d
 ```
 
-### Other deployment options
+### Kubernetes deployment
 
-**Kubernetes deployment**
-For organizations with existing Kubernetes infrastructure, we provide Helm charts for deployment. Contact our team to discuss your K8s requirements and receive the appropriate Helm charts.
+**Best for**: Organizations with existing Kubernetes infrastructure who want to deploy Basedash using Helm.
 
-**Air-gapped deployment**
+Deploy Basedash to your Kubernetes cluster using our official Helm chart. This method gives you full control over the deployment while leveraging Kubernetes-native features like auto-scaling, rolling updates, and resource management.
+
+**How it works**:
+
+- Download the Helm chart from our chart repository
+- Authenticate to Distr's container registry for the app image
+- Configure your deployment using a values file
+- Deploy using standard Helm commands
+
+**Benefits**:
+
+- **Kubernetes-native** - Uses standard Kubernetes resources (Deployments, StatefulSets, Services)
+- **Helm managed** - Easy upgrades, rollbacks, and configuration management
+- **Flexible** - Bring your own PostgreSQL, configure ingress, customize resources
+- **Production ready** - Includes health checks, resource limits, and proper service dependencies
+
+**Prerequisites**:
+
+- Kubernetes cluster (1.24+)
+- Helm 3.x installed
+- `kubectl` configured for your cluster
+- Personal Access Token from Distr portal (for container images)
+
+**Installation**:
+
+1. **Create image pull secret**
+
+   Log in to your Distr customer portal and generate a Personal Access Token (PAT), then create a Kubernetes secret for pulling container images:
+
+   ```bash
+   kubectl create secret docker-registry distr-registry \
+     --docker-server=registry.distr.sh \
+     --docker-username=- \
+     --docker-password=YOUR_DISTR_ACCESS_TOKEN
+   ```
+
+2. **Download the Helm chart**
+
+   ```bash
+   helm pull https://charts-self-hosted.sfo3.cdn.digitaloceanspaces.com/helm/basedash-charts-0.1.0.tgz
+   ```
+
+3. **Create your values file**
+
+   Save as `values.yaml`:
+
+   ```yaml
+   # Image pull secret (required)
+   imagePullSecrets:
+     - name: distr-registry
+
+   app:
+     baseUrl: "https://charts.yourdomain.com"
+
+   postgres:
+     auth:
+       password: "" # Generate: openssl rand -hex 24
+
+   secrets:
+     cryptoKey: "" # Generate: openssl rand -hex 32
+     electricSecret: "" # Generate: uuidgen
+     prismaFieldEncryptionKey: "" # Generate: npx @47ng/cloak generate
+
+   email:
+     provider: smtp
+     smtp:
+       host: "smtp.example.com"
+       port: 587
+       user: ""
+       password: ""
+       fromEmail: "noreply@yourdomain.com"
+   ```
+
+   See [Configuration](/self-hosting/configure) for all available options including AI, S3 storage, and Slack integration.
+
+4. **Install the chart**
+
+   ```bash
+   helm install basedash-charts ./basedash-charts-0.1.0.tgz -f values.yaml
+   ```
+
+5. **Verify the deployment**
+
+   ```bash
+   kubectl get pods -l app.kubernetes.io/name=basedash-charts
+   kubectl get svc
+   ```
+
+**Accessing Basedash**:
+
+If using a LoadBalancer service:
+
+```bash
+kubectl get svc basedash-charts-app -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+```
+
+Or configure ingress in your values file:
+
+```yaml
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: charts.yourdomain.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: charts-tls
+      hosts:
+        - charts.yourdomain.com
+```
+
+**Using external PostgreSQL**:
+
+To bring your own PostgreSQL database instead of deploying one:
+
+```yaml
+postgres:
+  enabled: false
+  external:
+    url: "postgresql://user:pass@your-postgres-host:5432/basedash"
+```
+
+<Warning>
+  Your PostgreSQL must have `wal_level=logical` enabled for ElectricSQL sync to work.
+</Warning>
+
+**Updates**:
+
+Download the new chart version and upgrade:
+
+```bash
+helm pull https://charts-self-hosted.sfo3.cdn.digitaloceanspaces.com/helm/basedash-charts-X.Y.Z.tgz
+helm upgrade basedash-charts ./basedash-charts-X.Y.Z.tgz -f values.yaml
+```
+
+### Air-gapped deployment
+
 For fully isolated environments with no internet connectivity, we support physical media transfers (USB/secure media) with encrypted updates. Contact our team to set up an air-gapped deployment plan.
 
 ## Machine specifications
