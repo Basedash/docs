@@ -278,22 +278,19 @@ LICENSE_KEY=your-license-key-here
 
 **Without a license key:**
 
-- The application functions normally
-- An info banner is displayed prompting you to add a license key
-- No heartbeats are sent to the license server
+- The server will not start
 
 **With a valid license key:**
 
-- The application sends periodic heartbeats (every 6 hours) to the Basedash license server
+- The application validates the license at startup; startup fails fast if the license is invalid
+- Periodic heartbeats (every 6 hours) are sent to the Basedash license server
 - Heartbeats report basic usage metrics (organization and user counts) for billing purposes
 - No banner is displayed when your license is active and valid
+- If we fail to validate the license on a heartbeat, the app retries with exponential backoff (starting at 5 minutes, doubling up to 6 hours). The app continues to run and shows a warning banner until the next successful heartbeat
 
-### Grace periods
+### Sandbox licenses
 
-Basedash includes grace periods to ensure your deployment remains operational during temporary issues:
-
-- **License expiration**: 14-day grace period after expiration. During this time, a warning banner is displayed but all features remain available. After the grace period, new organization creation is disabled.
-- **Network issues**: 7-day grace period if the license server cannot be reached. This ensures your deployment continues working during network outages or maintenance windows.
+Sandbox licenses are intended for QA and CI environments. When using a sandbox license a "Sandbox environment" info banner is displayed at the top of the app and usage is not counted towards your billing.
 
 ### Troubleshooting license issues
 
@@ -305,11 +302,11 @@ Add your `LICENSE_KEY` to your environment configuration and restart the applica
 
 1. Check that your deployment has outbound network access to `charts.basedash.com`
 2. Verify no firewall rules are blocking HTTPS traffic
-3. The application will continue working during network issues (7-day grace period)
+3. The application continues to run and will retry with exponential backoff (5 minutes, then doubling up to 6 hours) until the next successful heartbeat
 
 **"License has expired" error:**
 
-Contact Basedash at support@basedash.com to renew your license. During the 14-day grace period, all features remain available. After the grace period, new organization creation is disabled until you renew.
+Contact Basedash at support@basedash.com to renew your license. Expiration takes effect immediately; new organization creation is disabled until you renew.
 
 **"License has been deactivated" error:**
 
