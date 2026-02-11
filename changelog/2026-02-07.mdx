@@ -1,0 +1,28 @@
+---
+title: "February 7, 2026"
+description: "Desktop notifications are live, chart management is faster (rename + refresh), and syncs/reports run more reliably in the background."
+---
+
+## Refresh and organize charts faster
+
+You can now refresh data for a single chart directly from the chart menu—handy when you're iterating on one view and don't want to refresh an entire dashboard.
+
+We also made chart renaming feel much more lightweight: click the chart title in the header to rename it right in place, so keeping dashboards tidy is a lot quicker.
+
+## Stay in flow while AI works
+
+Basedash can now send desktop notifications when AI finishes, so you can switch tabs (or step away) and still know exactly when results are ready.
+
+We also added clearer loading states while chat messages are loading, making conversations feel more responsive—especially on slower connections or when opening longer threads.
+
+## Fixes and improvements
+
+- Fixed dashboards briefly showing older cached data after a refresh/reload.
+- Improved how AI formats percentage values so results read correctly as 0–100% (instead of 0–1).
+- Improved AI SQL generation across dialects with clearer dialect-specific guidance.
+- Improved reliability of AI query execution by automatically correcting certain tool-call errors.
+- Improved stability of live streaming updates for chats and chart runs (long-lived connections now recover more gracefully).
+- Reduced duplicate/overlapping data sync runs (including debouncing repeated manual sync clicks).
+- Made periodic data syncing more consistent by moving it fully server-side.
+- Improved scheduled report reliability and scalability so reports are less likely to miss runs under load.
+- Fixed a background job edge case that could cause intermittent failures.
