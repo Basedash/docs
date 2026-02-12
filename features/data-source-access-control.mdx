@@ -1,0 +1,68 @@
+---
+title: "Data source access control"
+description: "Restrict which groups and members can query specific data sources"
+icon: "user-lock"
+---
+
+Data source access control lets you restrict who can query each data source in your organization. You can grant access to everyone in the organization, to specific groups, or to individual members. When no grants are configured for a data source, everyone retains access (backwards compatible).
+
+## How it works
+
+Access is controlled by **grants** per data source:
+
+- **No grants** – Everyone in the organization can query the data source (default, backwards compatible).
+- **At least one grant** – Only users who have a matching grant can query. You can use:
+  - **Everyone in organization** – All org members can query.
+  - **Group** – Any member of that group can query.
+  - **Individual member** – That specific member can query.
+
+A user can query a data source if they have access through any one of these: an "everyone" grant, a group they belong to, or a direct member grant.
+
+## Who can manage access
+
+Only **admins** can manage data source access. They can add or remove grants, and toggle "everyone in organization" for each data source. See [Invite your team](/getting-started/invite-team) for admin privileges.
+
+## Managing access
+
+To manage who can query a data source:
+
+1. Open the command menu (Cmd+K or Ctrl+K).
+2. Type the name of the data source and select it.
+3. Choose **Manage access**.
+
+From there you can:
+
+- Toggle **Everyone in organization** (can query vs no access).
+- Add or remove **groups** that can query.
+- Add or remove **individual members** who can query.
+
+Changes take effect immediately; users without access will no longer see the data source in switchers and cannot run queries against it.
+
+## Where access is enforced
+
+Data source grants are enforced everywhere queries run:
+
+- Charts and dashboards
+- AI chat
+- Data exports (e.g. table record export)
+- SQL editor
+- Chart variables (only accessible data sources appear in the variable editor)
+
+If a user does not have a grant for a data source, they cannot query it through any of these surfaces.
+
+## Basedash Warehouse and Fivetran connectors
+
+<Info>
+  Access control applies at the **data source** level only. It does not
+  currently support restricting access to individual Fivetran connectors
+  within the Basedash Warehouse. If a user has access to the warehouse data
+  source, they can query all connector data synced into that warehouse. To
+  limit access within the warehouse, you can use
+  [row level security](/features/row-level-security) at the database level.
+</Info>
+
+## Related features
+
+- [Data visibility controls](/data-sources/data-visibility) – Hide tables, schemas, and columns from AI and queries organization-wide.
+- [Row level security](/features/row-level-security) – Control which rows users can see within a Postgres data source using database policies.
+- [Security](/essentials/security) – Overview of access controls and security in Basedash.

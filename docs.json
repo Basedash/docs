@@ -40,6 +40,7 @@
               "features/slack",
               "features/sso",
               "features/custom-context",
+              "features/data-source-access-control",
               "features/row-level-security"
             ]
           },
