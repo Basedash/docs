@@ -1,0 +1,31 @@
+---
+title: "February 13, 2026"
+description: "Tighter data-source access controls, cleaner sharing/embedding UX, and a handful of dashboard and chat papercuts smoothed out."
+---
+
+## Control access to each data source (admin-managed)
+
+You can now restrict who can query specific data sources inside an organization. Admins can grant access to "everyone", specific groups, or specific people—while keeping existing orgs fully backwards-compatible (if you don't configure grants, nothing changes).
+
+This makes it much easier to onboard teammates safely (especially in larger orgs) without needing to split work across separate workspaces or duplicate connections.
+
+## Sharing & embed experiences are cleaner and more intuitive
+
+Dashboard sharing permissions were streamlined into a clearer, single permissions list (instead of an "Everyone/Restricted" toggle), with improved behavior when multiple permission types overlap.
+
+And for teams running Basedash in full-app embed mode, share menus are now hidden throughout the app—keeping embedded experiences focused and reducing "wait, should I click that?" confusion.
+
+## Fixes and improvements
+
+- Added data-source access filtering across the product (so you only see/query what you have access to).
+- Added an empty state in the chat sidebar when no chats match your current filter.
+- Added an option to copy a chart's SQL.
+- Displayed Stripe discounts on the upgrade page (when a discount applies).
+- Improved dashboard grid responsiveness.
+- Fixed the filter popover opening automatically.
+- Fixed the "Reset" button behavior on table views.
+- Prevented empty SQL queries from running.
+- Fixed "Copy as PNG" exports clipping dashboard metrics.
+- Fixed metric layout overflow in some views.
+- Improved sharing dialog layout to prevent overflow in tight widths.
+- Added an SMTP "From email" field to self-hosted system settings (so admins don't have to rely on an env var alone).
