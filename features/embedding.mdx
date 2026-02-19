@@ -348,7 +348,7 @@ You can customize the appearance of the embedded app by appending query paramete
 
 ```html
 <iframe
-  src="https://charts.basedash.com/api/sso/jwt?jwt=YOUR_JWT_TOKEN&theme=dark&hide_org_name=true"
+  src="https://charts.basedash.com/api/sso/jwt?jwt=YOUR_JWT_TOKEN&theme=dark&hide_org_name=true&hide_insights=true"
   width="100%"
   height="800"
   frameborder="0"
@@ -358,8 +358,9 @@ You can customize the appearance of the embedded app by appending query paramete
 | Parameter                | Values                  | Default | Description                                                                 |
 | ------------------------ | ----------------------- | ------- | --------------------------------------------------------------------------- |
 | `theme`                  | `light`, `dark`, `auto` | `auto`  | Override the theme for the embedded app. `auto` uses the system preference. |
-| `hide_org_name`          | `true`                  | `false` | Hide the organization name in the sidebar                                   |
-| `hide_suggested_prompts` | `true`                  | `false` | Hide the suggested prompts in the AI chat input                             |
+| `hide_org_name`          | `true`, `false`         | `false` | Show or hide the organization name in the embed sidebar                     |
+| `hide_insights`          | `true`, `false`         | `false` | Show or hide the Insights page in the embed sidebar                         |
+| `hide_suggested_prompts` | `true`, `false`         | `false` | Show or hide the suggested prompts in the AI chat input                     |
 
 ### JWT claims reference
 
