@@ -1,0 +1,30 @@
+---
+title: "February 20, 2026"
+description: "Faster real-time updates, infinite scroll for tables, and more control over Insights."
+---
+
+## Faster, more reliable live updates (Chat + Charts)
+
+We made a substantial set of improvements to how Basedash streams live updates for chats and charts. The result is noticeably smoother real-time behavior—especially during longer sessions—reducing cases where updates stall, disconnect, or require a refresh to catch up.
+
+These changes also improve the experience during deploys and intermittent network hiccups, so live content (like chat responses and chart updates) keeps flowing more consistently.
+
+## Infinite scroll for tables (no more paging)
+
+Tables now support infinite scrolling, replacing traditional pagination. As you scroll, you can load more rows seamlessly—making it much easier to explore large result sets without jumping page-to-page.
+
+This update applies across the product wherever tables appear (including dashboards and chart pages), and keeps the experience focused on exploration rather than navigation.
+
+## More control over Insights (including via API)
+
+You can now disable Insights at the organization level—useful for teams who want tighter control over what appears in the UI and what gets generated. This setting is also configurable via the public API for teams managing orgs programmatically.
+
+## Fixes and improvements
+
+- Added the ability to reorder filters.
+- Improved variable creation/editing with AI-assisted enhancements.
+- Reduced confusion during long-running data syncs by hiding certain "still syncing" connectors after 24 hours (purely visual).
+- Improved the stability of the chart agent's streaming responses.
+- Improved chat message rendering resilience during partial updates.
+- Strengthened security on authentication pages to better prevent clickjacking.
+- Removed legacy "insight of the day" alerts.
