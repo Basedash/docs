@@ -11,6 +11,11 @@
   "appearance": {
     "default": "system"
   },
+  "seo": {
+    "metatags": {
+      "canonical": "https://www.basedash.com/docs"
+    }
+  },
   "navigation": {
     "tabs": [
       {
@@ -844,7 +849,8 @@
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.svg",
+    "href": "https://www.basedash.com"
   },
   "navbar": {
     "links": [
